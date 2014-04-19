@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <title>git hooks 发送邮件</title>
+        <meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="shortcut icon" href="http://launchyard.com/images/favicon.png"/>
+        <!-- <link rel="shortcut icon" href="/"/> -->
+        <link rel="stylesheet" href="/theme/css/main.css" type="text/css" />
+
+        <!--[if IE]>
+                <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+
+        <!--[if lte IE 7]>
+                <link rel="stylesheet" type="text/css" media="all" href="/css/ie.css"/>
+                <script src="/js/IE8.js" type="text/javascript"></script><![endif]-->
+
+        <!--[if lt IE 7]>
+                <link rel="stylesheet" type="text/css" media="all" href="/css/ie6.css"/><![endif]-->
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js" type="text/javascript"></script>
+
+
+</head>
+
+<body id="index" class="home">
+	
+  <!--      <header id="banner" class="body">
+                <h1><a href="/"><img src="http://www.launchyard.com/images/logo.png" /></a></h1>
+        </header> -->
+<!-- /#banner -->
+	    <div class="AvatarPad">
+            <a href="/"></a>
+            <img src="images/avatar.png" alt="avatar">
+            <br/><br/>
+        </div>
+
+<section id="content" >
+    <div class="body">
+      <article>
+        <header>
+          <h1 class="entry-title">
+            <a href="/git-hooks-auto-email.html" rel="bookmark"
+               title="Permalink to git hooks 发送邮件">git hooks 发送邮件</a></h1>
+
+        </header>
+
+        <div class="entry-content">
+<div class="post-info">
+	<ul>
+        <li class="vcard author">
+                 by&nbsp;<a class="url fn" href="/author/cao-yi-jun.html">曹逸君</a>
+        </li>
+        <li class="published" title="2013-11-11T21:41:33">
+          on&nbsp;一 11 十一月 2013
+        </li>
+
+	</ul>
+<p>Category: <a href="/tag/git-hook-email.html">git hook email</a></p>
+</div><!-- /.post-info -->          <p>前面用git得<code>post-receive</code>钩子实现了自动部署，很是舒畅，然后想着自动群发个邮件，项目组得人都能及时得知仓库更新、项目进度岂不是很好。</p>
+<p>我搜到得实现方式有用sendmail得，有用smtp的。但因为我很懒。已经用过web.py得sendmail.简洁到根本不想去搞其他配置。像这样：(其实用python得标准库也很简单。)</p>
+<div class="highlight"><pre><span class="n">import</span> <span class="n">web</span>
+<span class="n">web</span><span class="p">.</span><span class="n">config</span><span class="p">.</span><span class="n">smtp_server</span> <span class="o">=</span> <span class="err">&#39;</span><span class="n">smtp</span><span class="p">.</span><span class="n">gmail</span><span class="p">.</span><span class="n">com</span><span class="err">&#39;</span>
+<span class="n">web</span><span class="p">.</span><span class="n">config</span><span class="p">.</span><span class="n">smtp_port</span> <span class="o">=</span> <span class="mi">587</span>
+<span class="n">web</span><span class="p">.</span><span class="n">config</span><span class="p">.</span><span class="n">smtp_username</span> <span class="o">=</span> <span class="err">&#39;</span><span class="n">qunfazhuanyong</span><span class="err">@</span><span class="n">gmail</span><span class="p">.</span><span class="n">com</span><span class="err">&#39;</span>
+<span class="n">web</span><span class="p">.</span><span class="n">config</span><span class="p">.</span><span class="n">smtp_password</span> <span class="o">=</span> <span class="err">&#39;</span><span class="n">mima</span><span class="err">&#39;</span>
+<span class="n">web</span><span class="p">.</span><span class="n">config</span><span class="p">.</span><span class="n">smtp_starttls</span> <span class="o">=</span> <span class="n">True</span>
+</pre></div>
+
+
+<p>发送邮件就是<code>web.sendmail('qunfazhuanyong@gmail.com', receiver, title, msg)</code></p>
+<p>非常赏心悦目，然后我十分作死得选择继续用bash写<code>post-receive</code>钩子。</p>
+<p>bash简直大坑，各种奇怪的惯例，扭曲得语法，和系统工具的紧密利用。不仔细看遍bash手册会写得非常痛苦。各种搜索。最终写出得<code>post-receive</code>:</p>
+<div class="highlight"><pre><span class="c">#!/bin/sh</span>
+<span class="c">#auto deploy and sendmail</span>
+
+<span class="nb">echo</span> <span class="s1">&#39;auto deploy&#39;</span>
+<span class="nv">RET</span><span class="o">=</span><span class="sb">`</span>git --git-dir<span class="o">=</span>/home/git/app.git/ --work-tree<span class="o">=</span>/webroot/app reset --hard<span class="sb">`</span>
+<span class="nv">STAT</span><span class="o">=</span><span class="nv">$?</span>
+<span class="k">if</span> <span class="o">[</span> <span class="nv">$STAT</span> -eq 0 <span class="o">]</span>; <span class="k">then</span>
+<span class="k">    </span>git show |echo <span class="s1">$&#39;new chc deployed\n&#39;</span><span class="s2">&quot;$(cat)&quot;</span>|./hooks/sendmail.py
+    <span class="nb">echo</span> <span class="s1">&#39;deployed!&#39;</span>
+<span class="k">else</span>
+<span class="k">    </span><span class="nb">echo</span> <span class="s1">$&#39;deploy error\n&#39;</span><span class="s2">&quot;$RET&quot;</span>|./hooks/sendmail.py
+    <span class="nb">echo</span> <span class="s2">&quot;=口= something went wrong. $STAT&quot;</span>
+<span class="k">fi</span>
+</pre></div>
+
+
+<p>坑点如下：</p>
+<p><code>\n</code>转义？单引号加$,<code>echo -e</code>也可以</p>
+<p><code>$'deploy error\n'</code></p>
+<p>字符串链接？放在一起就是</p>
+<p><code>$'deploy error\n'"$RET"</code></p>
+<p>还有系统方面得一个概念。参数和标准输入是不一样得。</p>
+<blockquote>
+<p><code>./sendmail.py  嘿是我 其实没什么事</code>
+<code>sys.argv == ['sendmail.py','嘿是我','其实没什么事']</code></p>
+<p><code>./test.sh 卧槽你想干嘛</code></p>
+<p><code>$0==./test.sh  $1==卧槽你想干嘛</code></p>
+</blockquote>
+<p>以上是参数。以下分别为python和bash里获取标准输入</p>
+<blockquote>
+<p><code>sys.stdin.read()</code> 当然还有readline readlines。我觉得这里直接read()最省事。</p>
+<p><code>"$(cat)"</code> 巨坑bash来了，<code>cat</code>不加参数得时候就是<code>cat /dev/stdin</code>，从标准输入输出到标准输出。然后用<code>$(命令)</code>取值。<strong>用双引号变量才会取值，换行符才会保留</strong></p>
+</blockquote>
+<p>深感bash真不友好。python我只要随便搜搜，大概知道要用sys.stdin得库。help看下帮助马上就知道要用read还是readline还是readlines。bash只能不停搜索搜索。看手册都不知道要看哪儿。一开是我还以为是echo把换行给去掉了。=。=</p>
+<p>然后便是最强大得管道了。也就是：<code>|</code></p>
+<p><a href="http://www.cnblogs.com/chengmo/archive/2010/10/21/1856577.html">关于管道</a></p>
+<p>完整的<code>sendmail.py</code>代码如下：</p>
+<div class="highlight"><pre><span class="c">#! /usr/bin/env python</span>
+<span class="c"># coding=utf-8</span>
+<span class="c">#    sendmail</span>
+<span class="c">#    C19&lt;classone2010@gmail.com&gt;</span>
+
+<span class="kn">import</span> <span class="nn">web</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+<span class="n">web</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">smtp_server</span> <span class="o">=</span> <span class="s">&#39;smtp.gmail.com&#39;</span>
+<span class="n">web</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">smtp_port</span> <span class="o">=</span> <span class="mi">587</span>
+<span class="n">web</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">smtp_username</span> <span class="o">=</span> <span class="s">&#39;qunfazhuanyong@gmail.com&#39;</span>
+<span class="n">web</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">smtp_password</span> <span class="o">=</span> <span class="s">&#39;mima&#39;</span>
+<span class="n">web</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">smtp_starttls</span> <span class="o">=</span> <span class="bp">True</span>
+
+<span class="c">#receiver list</span>
+<span class="n">receiver</span> <span class="o">=</span> <span class="p">[</span><span class="s">&#39;dev1@gmail.com&#39;</span><span class="p">,</span><span class="s">&#39;dev2@gmail.com&#39;</span><span class="p">,</span><span class="s">&#39;dev3@gmail.com&#39;</span><span class="p">,</span><span class="s">&#39;dev4@gmail.com&#39;</span><span class="p">]</span>
+<span class="k">def</span> <span class="nf">sendmail</span><span class="p">(</span><span class="n">title</span><span class="p">,</span><span class="n">msg</span><span class="p">):</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">&quot;sending mail {0}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">title</span><span class="p">))</span>
+    <span class="n">web</span><span class="o">.</span><span class="n">sendmail</span><span class="p">(</span><span class="s">&#39;qunfazhuanyong@gmail.com&#39;</span><span class="p">,</span> <span class="n">receiver</span><span class="p">,</span> <span class="n">title</span><span class="p">,</span> <span class="n">msg</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">2</span><span class="p">:</span>
+        <span class="n">sendmail</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">stdin</span> <span class="o">=</span> <span class="n">sys</span><span class="o">.</span><span class="n">stdin</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+        <span class="n">stdin</span> <span class="o">=</span> <span class="n">stdin</span><span class="o">.</span><span class="kp">split</span><span class="p">(</span><span class="s">&#39;</span><span class="se">\n</span><span class="s">&#39;</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">sendmail</span><span class="p">(</span><span class="n">stdin</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">stdin</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+</pre></div>
+
+
+<p>其实，如果全部用python实现要舒服得多。。=。=</p>
+        </div><!-- /.entry-content -->
+
+      </article>
+    </div>
+</section>
+        <section id="extras" >
+       
+        
+        </section><!-- /#extras -->
+	
+        <footer id="contentinfo" >
+                <address id="about" class="vcard ">
+                Proudly powered by <a href="http://getpelican.com/" target="_blank">Pelican</a>, which takes
+                great advantage of <a href="http://python.org" target="_blank">Python</a>. &copy; <a class="url fn" href="http://launchyard.com">LaunchYard</a>
+		
+                </address><!-- /#about -->
+		
+
+                
+        </footer><!-- /#contentinfo -->
+
+    <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-33228021-1']);
+    _gaq.push(['_trackPageview']);
+    (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+    </script>
+</body>
+</html>

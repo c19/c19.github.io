@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <title>曹逸君 Blog - 曹逸君</title>
+        <meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="shortcut icon" href="http://launchyard.com/images/favicon.png"/>
+        <!-- <link rel="shortcut icon" href="/"/> -->
+        <link rel="stylesheet" href="/theme/css/main.css" type="text/css" />
+
+        <!--[if IE]>
+                <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+
+        <!--[if lte IE 7]>
+                <link rel="stylesheet" type="text/css" media="all" href="/css/ie.css"/>
+                <script src="/js/IE8.js" type="text/javascript"></script><![endif]-->
+
+        <!--[if lt IE 7]>
+                <link rel="stylesheet" type="text/css" media="all" href="/css/ie6.css"/><![endif]-->
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js" type="text/javascript"></script>
+
+
+</head>
+
+<body id="index" class="home">
+	
+  <!--      <header id="banner" class="body">
+                <h1><a href="/"><img src="http://www.launchyard.com/images/logo.png" /></a></h1>
+        </header> -->
+<!-- /#banner -->
+	    <div class="AvatarPad">
+            <a href="/"></a>
+            <img src="images/avatar.png" alt="avatar">
+            <br/><br/>
+        </div>
+
+        
+        
+
+    
+            <aside id="featured">
+                <div class="body">
+                    <article>
+                        <h1 class="entry-title"><a href="/tongji-university-electrictiy-balance-low-warner.html">同济电费过低提醒</a></h1>
+<div class="post-info">
+	<ul>
+        <li class="vcard author">
+                 by&nbsp;<a class="url fn" href="/author/cao-yi-jun.html">曹逸君</a>
+        </li>
+        <li class="published" title="2013-11-19T22:47:29">
+          on&nbsp;二 19 十一月 2013
+        </li>
+
+	</ul>
+<p>Category: <a href="/tag/weekend-project.html">weekend-project</a></p>
+</div><!-- /.post-info --><p>这要从几天前宿舍突然断电说起。代码敲得正欢，卡擦。没电了。网也断了（路由断电）。</p>
+<p>坑爹呢这是，宿舍一伙人第一反映，没电费了，赶紧去交。交完发现，其实我们还有200Kwh剩余。</p>
+<p>又交了400￥.于是就有了800Kwh，估计一年都有可能用不完。而断电只是由于不明原因跳闸。</p>
+<p>电费系统坑点：</p>
+<p>1.预冲式，没电费了直接断电，无提示。</p>
+<p>2.缴费终端查询和缴费分开，只缴费是看不到剩余的。</p>
+<p>3.钱交了，想退恐怕是极难的。</p>
+<p>同济有个能源网可以查剩余电量。一天一更新。<a href="nyglzx.tongji.edu.cn/web/datastat.aspx">nyglzx.tongji.edu.cn/web/datastat.aspx</a></p>
+<p>这次被坑后，我含着悲愤，写了个自动检测电量得脚本<a href="https://github.com/c19/TJwarner">github repo</a></p>
+<p>电量低于一点值，比如10Kwh就发邮件到我邮箱提醒我。</p>
+<p>然后又想了，其他小伙伴说不定也有这个需求，就写了个简单得页面放到服务器上提供电费过低提示功能。</p>
+<p>脚本写的很简陋、很难看。如果需求大得话继续改进吧。</p>
+<p>话说一句print()很诡异的只在服务器上用nginx+uwsgi出编码错误(<code>ascii' codec can't encode characters</code>)</p>
+<p>在本机无论是nginx+uwsgi。还是直接用web.py自带得webserver都没问题，在服务器上就执着得报错，还偶尔不报，非常郁闷。</p>
+<p>喔。地址是<a href="http://tjwarner.caoyijun.com/">http://tjwarner.caoyijun.com/</a></p>
+<p>11-25 更新，有7、8个用户，但以脚本抓取得方式很不稳定，查询网站时常timeout。(可能VPS在海外得关系)。</p>
+<p>信息源不稳定真是个很痛苦得事情，要做很多补丁式得东西。重试、预测等(能源网一天更新一次)。</p>
+                    </article>
+                </div>
+            </aside><!-- /#featured -->
+            
+        
+        
+
+    
+            <aside id="featured">
+                <div class="body">
+                    <article>
+                        <h1 class="entry-title"><a href="/why-company-will-die-out.html">为什么公司必亡</a></h1>
+<div class="post-info">
+	<ul>
+        <li class="vcard author">
+                 by&nbsp;<a class="url fn" href="/author/cao-yi-jun.html">曹逸君</a>
+        </li>
+        <li class="published" title="2013-11-12T16:50:51">
+          on&nbsp;二 12 十一月 2013
+        </li>
+
+	</ul>
+<p>Category: <a href="/tag/thoughts.html">Thoughts</a></p>
+</div><!-- /.post-info --><p>一个游戏公司，一个网页游戏开发团队包括设计师需要30+人。
+他们用C++写业务逻辑，声称那样更稳定。</p>
+<p>我认识得页游小团队除了投资人整个就只有6人。美工外包。
+他们用clojure。</p>
+<p>一个网络广告公司（网络广告投放）IT团队有60人，人人做得事情都不重复。
+HR不懂技术分不清运维、C/C++程序员、android开发等等。</p>
+<p>而事实上搜索引擎得广告投递根本不需要这种公司代理，页面上简单操作就能顺利投递，实时查看收益。</p>
+<p>公司的内耗十分严重，公司所有者不信任执行者，会使用更容易找到替换人员得技术，把职能分得更细，而只要把所有者和执行者分开，就会有这种问题。</p>
+<p>黑客和画家对此已有详细得论述。</p>
+<p>可喜的是看到不少小团队开始去公司化，没有经理职位。没有高级头衔。执行者既是所有者。</p>
+<p>相信将来这样的高效、全能得小团队将会击溃各种传统腐朽冗杂的大小公司。</p>
+                    </article>
+                </div>
+            </aside><!-- /#featured -->
+            
+        
+        
+
+    
+            <aside id="featured">
+                <div class="body">
+                    <article>
+                        <h1 class="entry-title"><a href="/git-hooks-auto-email.html">git hooks 发送邮件</a></h1>
+<div class="post-info">
+	<ul>
+        <li class="vcard author">
+                 by&nbsp;<a class="url fn" href="/author/cao-yi-jun.html">曹逸君</a>
+        </li>
+        <li class="published" title="2013-11-11T21:41:33">
+          on&nbsp;一 11 十一月 2013
+        </li>
+
+	</ul>
+<p>Category: <a href="/tag/git-hook-email.html">git hook email</a></p>
+</div><!-- /.post-info --><p>前面用git得<code>post-receive</code>钩子实现了自动部署，很是舒畅，然后想着自动群发个邮件，项目组得人都能及时得知仓库更新、项目进度岂不是很好。</p>
+<p>我搜到得实现方式有用sendmail得，有用smtp的。但因为我很懒。已经用过web.py得sendmail.简洁到根本不想去搞其他配置。像这样：(其实用python得标准库也很简单。)</p>
+<div class="highlight"><pre><span class="n">import</span> <span class="n">web</span>
+<span class="n">web</span><span class="p">.</span><span class="n">config</span><span class="p">.</span><span class="n">smtp_server</span> <span class="o">=</span> <span class="err">&#39;</span><span class="n">smtp</span><span class="p">.</span><span class="n">gmail</span><span class="p">.</span><span class="n">com</span><span class="err">&#39;</span>
+<span class="n">web</span><span class="p">.</span><span class="n">config</span><span class="p">.</span><span class="n">smtp_port</span> <span class="o">=</span> <span class="mi">587</span>
+<span class="n">web</span><span class="p">.</span><span class="n">config</span><span class="p">.</span><span class="n">smtp_username</span> <span class="o">=</span> <span class="err">&#39;</span><span class="n">qunfazhuanyong</span><span class="err">@</span><span class="n">gmail</span><span class="p">.</span><span class="n">com</span><span class="err">&#39;</span>
+<span class="n">web</span><span class="p">.</span><span class="n">config</span><span class="p">.</span><span class="n">smtp_password</span> <span class="o">=</span> <span class="err">&#39;</span><span class="n">mima</span><span class="err">&#39;</span>
+<span class="n">web</span><span class="p">.</span><span class="n">config</span><span class="p">.</span><span class="n">smtp_starttls</span> <span class="o">=</span> <span class="n">True</span>
+</pre></div>
+
+
+<p>发送邮件就是<code>web.sendmail('qunfazhuanyong@gmail.com', receiver, title, msg)</code></p>
+<p>非常赏心悦目，然后我十分作死得选择继续用bash写<code>post-receive</code>钩子。</p>
+<p>bash简直大坑，各种奇怪的惯例，扭曲得语法，和系统工具的紧密利用。不仔细看遍bash手册会写得非常痛苦。各种搜索。最终写出得<code>post-receive</code>:</p>
+<div class="highlight"><pre><span class="c">#!/bin/sh</span>
+<span class="c">#auto deploy and sendmail</span>
+
+<span class="nb">echo</span> <span class="s1">&#39;auto deploy&#39;</span>
+<span class="nv">RET</span><span class="o">=</span><span class="sb">`</span>git --git-dir<span class="o">=</span>/home/git/app.git/ --work-tree<span class="o">=</span>/webroot/app reset --hard<span class="sb">`</span>
+<span class="nv">STAT</span><span class="o">=</span><span class="nv">$?</span>
+<span class="k">if</span> <span class="o">[</span> <span class="nv">$STAT</span> -eq 0 <span class="o">]</span>; <span class="k">then</span>
+<span class="k">    </span>git show |echo <span class="s1">$&#39;new chc deployed\n&#39;</span><span class="s2">&quot;$(cat)&quot;</span>|./hooks/sendmail.py
+    <span class="nb">echo</span> <span class="s1">&#39;deployed!&#39;</span>
+<span class="k">else</span>
+<span class="k">    </span><span class="nb">echo</span> <span class="s1">$&#39;deploy error\n&#39;</span><span class="s2">&quot;$RET&quot;</span>|./hooks/sendmail.py
+    <span class="nb">echo</span> <span class="s2">&quot;=口= something went wrong. $STAT&quot;</span>
+<span class="k">fi</span>
+</pre></div>
+
+
+<p>坑点如下：</p>
+<p><code>\n</code>转义？单引号加$,<code>echo -e</code>也可以</p>
+<p><code>$'deploy error\n'</code></p>
+<p>字符串链接？放在一起就是</p>
+<p><code>$'deploy error\n'"$RET"</code></p>
+<p>还有系统方面得一个概念。参数和标准输入是不一样得。</p>
+<blockquote>
+<p><code>./sendmail.py  嘿是我 其实没什么事</code>
+<code>sys.argv == ['sendmail.py','嘿是我','其实没什么事']</code></p>
+<p><code>./test.sh 卧槽你想干嘛</code></p>
+<p><code>$0==./test.sh  $1==卧槽你想干嘛</code></p>
+</blockquote>
+<p>以上是参数。以下分别为python和bash里获取标准输入</p>
+<blockquote>
+<p><code>sys.stdin.read()</code> 当然还有readline readlines。我觉得这里直接read()最省事。</p>
+<p><code>"$(cat)"</code> 巨坑bash来了，<code>cat</code>不加参数得时候就是<code>cat /dev/stdin</code>，从标准输入输出到标准输出。然后用<code>$(命令)</code>取值。<strong>用双引号变量才会取值，换行符才会保留</strong></p>
+</blockquote>
+<p>深感bash真不友好。python我只要随便搜搜，大概知道要用sys.stdin得库。help看下帮助马上就知道要用read还是readline还是readlines。bash只能不停搜索搜索。看手册都不知道要看哪儿。一开是我还以为是echo把换行给去掉了。=。=</p>
+<p>然后便是最强大得管道了。也就是：<code>|</code></p>
+<p><a href="http://www.cnblogs.com/chengmo/archive/2010/10/21/1856577.html">关于管道</a></p>
+<p>完整的<code>sendmail.py</code>代码如下：</p>
+<div class="highlight"><pre><span class="c">#! /usr/bin/env python</span>
+<span class="c"># coding=utf-8</span>
+<span class="c">#    sendmail</span>
+<span class="c">#    C19&lt;classone2010@gmail.com&gt;</span>
+
+<span class="kn">import</span> <span class="nn">web</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+<span class="n">web</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">smtp_server</span> <span class="o">=</span> <span class="s">&#39;smtp.gmail.com&#39;</span>
+<span class="n">web</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">smtp_port</span> <span class="o">=</span> <span class="mi">587</span>
+<span class="n">web</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">smtp_username</span> <span class="o">=</span> <span class="s">&#39;qunfazhuanyong@gmail.com&#39;</span>
+<span class="n">web</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">smtp_password</span> <span class="o">=</span> <span class="s">&#39;mima&#39;</span>
+<span class="n">web</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">smtp_starttls</span> <span class="o">=</span> <span class="bp">True</span>
+
+<span class="c">#receiver list</span>
+<span class="n">receiver</span> <span class="o">=</span> <span class="p">[</span><span class="s">&#39;dev1@gmail.com&#39;</span><span class="p">,</span><span class="s">&#39;dev2@gmail.com&#39;</span><span class="p">,</span><span class="s">&#39;dev3@gmail.com&#39;</span><span class="p">,</span><span class="s">&#39;dev4@gmail.com&#39;</span><span class="p">]</span>
+<span class="k">def</span> <span class="nf">sendmail</span><span class="p">(</span><span class="n">title</span><span class="p">,</span><span class="n">msg</span><span class="p">):</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">&quot;sending mail {0}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">title</span><span class="p">))</span>
+    <span class="n">web</span><span class="o">.</span><span class="n">sendmail</span><span class="p">(</span><span class="s">&#39;qunfazhuanyong@gmail.com&#39;</span><span class="p">,</span> <span class="n">receiver</span><span class="p">,</span> <span class="n">title</span><span class="p">,</span> <span class="n">msg</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">2</span><span class="p">:</span>
+        <span class="n">sendmail</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">stdin</span> <span class="o">=</span> <span class="n">sys</span><span class="o">.</span><span class="n">stdin</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+        <span class="n">stdin</span> <span class="o">=</span> <span class="n">stdin</span><span class="o">.</span><span class="kp">split</span><span class="p">(</span><span class="s">&#39;</span><span class="se">\n</span><span class="s">&#39;</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">sendmail</span><span class="p">(</span><span class="n">stdin</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">stdin</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+</pre></div>
+
+
+<p>其实，如果全部用python实现要舒服得多。。=。=</p>
+                    </article>
+                </div>
+            </aside><!-- /#featured -->
+            
+        
+        
+
+    
+            <aside id="featured">
+                <div class="body">
+                    <article>
+                        <h1 class="entry-title"><a href="/git-hooks-auto-deploy-website.html">git hooks 自动部署网站</a></h1>
+<div class="post-info">
+	<ul>
+        <li class="vcard author">
+                 by&nbsp;<a class="url fn" href="/author/cao-yi-jun.html">曹逸君</a>
+        </li>
+        <li class="published" title="2013-11-10T19:42:10">
+          on&nbsp;日 10 十一月 2013
+        </li>
+
+	</ul>
+<p>Category: <a href="/tag/git-hook-auuto-deploy.html">git hook auuto deploy</a></p>
+</div><!-- /.post-info --><p>git的hook提供了非常大得自由度。 
+有commit发邮件啦。push后更新网站啦。做测试啦。无所不能。</p>
+<p>所谓hook就是.git/hooks目录下得各种脚本。根据名字分别在不同情况下由git调用。这里post-receives是接收push结束后触发。</p>
+<p><code>.git/hooks/post-receive</code></p>
+<div class="highlight"><pre><span class="c">#!/bin/sh</span>
+<span class="nb">echo</span> <span class="s1">&#39;auto deploy&#39;</span>
+git --git-dir<span class="o">=</span>/path/blog.git/ --work-tree<span class="o">=</span>/webroot/blog reset --hard
+<span class="nv">STAT</span><span class="o">=</span><span class="nv">$?</span>
+<span class="k">if</span> <span class="o">[</span> <span class="nv">$STAT</span> -eq 0 <span class="o">]</span>; <span class="k">then</span>
+<span class="k">    </span><span class="nb">echo</span> <span class="s1">&#39;deployed!&#39;</span>
+<span class="k">else</span>
+<span class="k">    </span><span class="nb">echo</span> <span class="s2">&quot;=口= something went wrong. $STAT&quot;</span>
+<span class="k">fi</span>
+</pre></div>
+
+
+<p>说起来被shell脚本坑了一道。<code>[ $STAT -eq 0 ]</code>和<code>[$STAT -eq 0]</code>是不一样的。</p>
+<p>字符串比较和数字比较是不一样的。表达式还有圆括号、方框号、双圆括号、双方框号之分。</p>
+<p>虽说shell script很不习惯，也可以用Python等其他脚本语言，但直接写命令进去还是最符合平时在shell中的操作。</p>
+<p>比较有意思的是这句。<code>git --git-dir=/path/blog.git/ --work-tree=/webroot/blog reset --hard</code></p>
+<p>我得工作流是笔记本写好博文，生成静态文件，git commit然后push到服务器的bare仓库。通过bare仓库得钩子将文件更新到webroot。</p>
+<p>因为webroot目录不是git仓库，所以就采取了这种以真正得git仓库为仓库(git-dir)，把工作目录(work-tree)定为webroot然后reset的这种暴力方式。</p>
+<p>如果你想，其实把webroot作为git得work-tree目录也行。要更直接。连hook都不用写了。</p>
+<p>为什么不用rsync或者Capistrano？=。= 纯粹是因为懒。</p>
+<p>当我只需要一个简单得更新文件得时候，不想牵扯到更多东西，既然git写个hook可以搞定，以后还可以随意扩展，就不想增加复杂性了。</p>
+                    </article>
+                </div>
+            </aside><!-- /#featured -->
+            
+        
+        
+
+    
+            <aside id="featured">
+                <div class="body">
+                    <article>
+                        <h1 class="entry-title"><a href="/fuck-nikola-use-pelican.html">从nikola换成pelican</a></h1>
+<div class="post-info">
+	<ul>
+        <li class="vcard author">
+                 by&nbsp;<a class="url fn" href="/author/cao-yi-jun.html">曹逸君</a>
+        </li>
+        <li class="published" title="2013-11-10T15:01:07">
+          on&nbsp;日 10 十一月 2013
+        </li>
+
+	</ul>
+<p>Category: <a href="/tag/static-blog-generator.html">static-blog-generator</a></p>
+</div><!-- /.post-info --><p>有个博客还是很重要的。
+nikola默认用reStructuredText做轻量标记语言。
+不知道是不是markdown先入为主。觉得RST很不好用。</p>
+<p>nikola v6.2.1 的base template文件：<code>/usr/local/lib/python2.7/dist-packages/nikola/data/themes/base/templates/disqus_helper.tmpl</code></p>
+<p>存在bug。有一句：</p>
+<p><code>dsq.src = \'http://\' + disqus_shortname + \'.disqus.com/embed.js\';</code></p>
+<p>不知道谁很想当然得写了个<code>http://</code>进去。https的网站，比如说我，就郁闷了。</p>
+<p>在github上看下发现bug四天前已经被修复了。   =。= 下东西还是直接从github上下最新得比较舒服。</p>
+<p>20140419 update:</p>
+<p>更换为pelican。Nikola各种恼人的小bug。egg文件权限去掉了read搞得其他库都出问题。所有文章全部全文列在首页。(默认设置)。今天又发现galleries里图片文件名为中文编码出问题。虽然不是nikola的问题。而是doit的。换python3环境也各种问题。来老扔warning you must install markdown blah blah。。不爽。目录结构也很乱。相比pelican的整体结构就很简洁。quickstart问题也很亲切。是否通过ftp或ssh或Dropbox S3部署之类。</p>
+<div class="highlight"><pre><span class="n">Welcome</span> <span class="n">to</span> <span class="n">pelican</span><span class="o">-</span><span class="n">quickstart</span> <span class="n">v3</span><span class="mf">.3.0</span><span class="p">.</span>
+
+<span class="n">This</span> <span class="n">script</span> <span class="n">will</span> <span class="n">help</span> <span class="n">you</span> <span class="n">create</span> <span class="n">a</span> <span class="n">new</span> <span class="n">Pelican</span><span class="o">-</span><span class="n">based</span> <span class="n">website</span><span class="p">.</span>
+
+<span class="n">Please</span> <span class="n">answer</span> <span class="n">the</span> <span class="n">following</span> <span class="n">questions</span> <span class="n">so</span> <span class="n">this</span> <span class="n">script</span> <span class="n">can</span> <span class="n">generate</span> <span class="n">the</span> <span class="n">files</span>
+<span class="n">needed</span> <span class="n">by</span> <span class="n">Pelican</span><span class="p">.</span>
+
+
+<span class="o">&gt;</span> <span class="n">Where</span> <span class="k">do</span> <span class="n">you</span> <span class="n">want</span> <span class="n">to</span> <span class="n">create</span> <span class="n">your</span> <span class="n">new</span> <span class="n">web</span> <span class="n">site</span><span class="o">?</span> <span class="p">[.]</span> 
+<span class="o">&gt;</span> <span class="n">What</span> <span class="n">will</span> <span class="n">be</span> <span class="n">the</span> <span class="n">title</span> <span class="n">of</span> <span class="n">this</span> <span class="n">web</span> <span class="n">site</span><span class="o">?</span> <span class="err">曹逸君</span> <span class="n">Blog</span>
+<span class="o">&gt;</span> <span class="n">Who</span> <span class="n">will</span> <span class="n">be</span> <span class="n">the</span> <span class="n">author</span> <span class="n">of</span> <span class="n">this</span> <span class="n">web</span> <span class="n">site</span><span class="o">?</span> <span class="err">曹逸君</span>     
+<span class="o">&gt;</span> <span class="n">What</span> <span class="n">will</span> <span class="n">be</span> <span class="n">the</span> <span class="k">default</span> <span class="n">language</span> <span class="n">of</span> <span class="n">this</span> <span class="n">web</span> <span class="n">site</span><span class="o">?</span> <span class="p">[</span><span class="n">en</span><span class="p">]</span> <span class="n">zh</span>
+<span class="o">&gt;</span> <span class="n">Do</span> <span class="n">you</span> <span class="n">want</span> <span class="n">to</span> <span class="n">specify</span> <span class="n">a</span> <span class="n">URL</span> <span class="n">prefix</span><span class="o">?</span> <span class="n">e</span><span class="p">.</span><span class="n">g</span><span class="p">.,</span> <span class="n">http</span><span class="o">:</span><span class="c1">//example.com   (Y/n) n</span>
+<span class="o">&gt;</span> <span class="n">Do</span> <span class="n">you</span> <span class="n">want</span> <span class="n">to</span> <span class="n">enable</span> <span class="n">article</span> <span class="n">pagination</span><span class="o">?</span> <span class="p">(</span><span class="n">Y</span><span class="o">/</span><span class="n">n</span><span class="p">)</span> 
+<span class="o">&gt;</span> <span class="n">How</span> <span class="n">many</span> <span class="n">articles</span> <span class="n">per</span> <span class="n">page</span> <span class="k">do</span> <span class="n">you</span> <span class="n">want</span><span class="o">?</span> <span class="p">[</span><span class="mi">10</span><span class="p">]</span> <span class="mi">7</span>
+<span class="o">&gt;</span> <span class="n">Do</span> <span class="n">you</span> <span class="n">want</span> <span class="n">to</span> <span class="n">generate</span> <span class="n">a</span> <span class="n">Fabfile</span><span class="o">/</span><span class="n">Makefile</span> <span class="n">to</span> <span class="n">automate</span> <span class="n">generation</span> <span class="n">and</span> <span class="n">publishing</span><span class="o">?</span> <span class="p">(</span><span class="n">Y</span><span class="o">/</span><span class="n">n</span><span class="p">)</span> 
+<span class="o">&gt;</span> <span class="n">Do</span> <span class="n">you</span> <span class="n">want</span> <span class="n">an</span> <span class="k">auto</span><span class="o">-</span><span class="n">reload</span> <span class="o">&amp;</span> <span class="n">simpleHTTP</span> <span class="n">script</span> <span class="n">to</span> <span class="n">assist</span> <span class="n">with</span> <span class="n">theme</span> <span class="n">and</span> <span class="n">site</span> <span class="n">development</span><span class="o">?</span> <span class="p">(</span><span class="n">Y</span><span class="o">/</span><span class="n">n</span><span class="p">)</span> 
+<span class="o">&gt;</span> <span class="n">Do</span> <span class="n">you</span> <span class="n">want</span> <span class="n">to</span> <span class="n">upload</span> <span class="n">your</span> <span class="n">website</span> <span class="n">using</span> <span class="n">FTP</span><span class="o">?</span> <span class="p">(</span><span class="n">y</span><span class="o">/</span><span class="n">N</span><span class="p">)</span> 
+<span class="o">&gt;</span> <span class="n">Do</span> <span class="n">you</span> <span class="n">want</span> <span class="n">to</span> <span class="n">upload</span> <span class="n">your</span> <span class="n">website</span> <span class="n">using</span> <span class="n">SSH</span><span class="o">?</span> <span class="p">(</span><span class="n">y</span><span class="o">/</span><span class="n">N</span><span class="p">)</span> 
+<span class="o">&gt;</span> <span class="n">Do</span> <span class="n">you</span> <span class="n">want</span> <span class="n">to</span> <span class="n">upload</span> <span class="n">your</span> <span class="n">website</span> <span class="n">using</span> <span class="n">Dropbox</span><span class="o">?</span> <span class="p">(</span><span class="n">y</span><span class="o">/</span><span class="n">N</span><span class="p">)</span> 
+<span class="o">&gt;</span> <span class="n">Do</span> <span class="n">you</span> <span class="n">want</span> <span class="n">to</span> <span class="n">upload</span> <span class="n">your</span> <span class="n">website</span> <span class="n">using</span> <span class="n">S3</span><span class="o">?</span> <span class="p">(</span><span class="n">y</span><span class="o">/</span><span class="n">N</span><span class="p">)</span> 
+<span class="o">&gt;</span> <span class="n">Do</span> <span class="n">you</span> <span class="n">want</span> <span class="n">to</span> <span class="n">upload</span> <span class="n">your</span> <span class="n">website</span> <span class="n">using</span> <span class="n">Rackspace</span> <span class="n">Cloud</span> <span class="n">Files</span><span class="o">?</span> <span class="p">(</span><span class="n">y</span><span class="o">/</span><span class="n">N</span><span class="p">)</span>
+</pre></div>
+
+
+<p>略微蛋疼的是之前markdown头部是这样标注标题的：</p>
+<div class="highlight"><pre><span class="o">&lt;!--</span>
+<span class="p">..</span> <span class="n">link</span><span class="o">:</span>
+<span class="p">..</span> <span class="n">description</span><span class="o">:</span>
+<span class="p">..</span> <span class="n">tags</span><span class="o">:</span>
+<span class="p">..</span> <span class="n">date</span><span class="o">:</span> <span class="mi">2013</span><span class="o">/</span><span class="mi">11</span><span class="o">/</span><span class="mi">19</span> <span class="mi">22</span><span class="o">:</span><span class="mi">47</span><span class="o">:</span><span class="mi">29</span>
+<span class="p">..</span> <span class="n">title</span><span class="o">:</span> <span class="err">同济电费过低提醒</span>
+<span class="p">..</span> <span class="n">slug</span><span class="o">:</span> <span class="n">tongji</span><span class="o">-</span><span class="n">university</span><span class="o">-</span><span class="n">electrictiy</span><span class="o">-</span><span class="n">balance</span><span class="o">-</span><span class="n">low</span><span class="o">-</span><span class="n">warner</span>
+<span class="o">--&gt;</span>
+</pre></div>
+
+
+<p>而pelican认的格式是这种：</p>
+<div class="highlight"><pre><span class="n">link</span><span class="o">:</span>
+<span class="n">description</span><span class="o">:</span>
+<span class="n">tags</span><span class="o">:</span>
+<span class="n">date</span><span class="o">:</span> <span class="mi">2013</span><span class="o">-</span><span class="mi">11</span><span class="o">-</span><span class="mi">19</span> <span class="mi">22</span><span class="o">:</span><span class="mi">47</span><span class="o">:</span><span class="mi">29</span>
+<span class="n">title</span><span class="o">:</span> <span class="err">同济电费过低提醒</span>
+<span class="n">slug</span><span class="o">:</span> <span class="n">tongji</span><span class="o">-</span><span class="n">university</span><span class="o">-</span><span class="n">electrictiy</span><span class="o">-</span><span class="n">balance</span><span class="o">-</span><span class="n">low</span><span class="o">-</span><span class="n">warner</span>
+</pre></div>
+
+
+<p>注意那个日期格式的不同。。没错。就是这么蛋疼。Pelican能做得兼容容错性更好就更好了。</p>
+<p>最坑的是markdown的table居然不给我生成出来。Pelican就啥事没有。明明都用的markdown的库。。搞不懂。</p>
+                    </article>
+ 
+<div class="paginator">
+            <div class="navButton"> <a href="/author/cao-yi-jun.html" >Prev</a></div>
+    <div class="navButton">Page 2 / 2</div>
+</div>
+                </div>
+            </aside><!-- /#featured -->
+            
+        
+        <section id="extras" >
+       
+        
+        </section><!-- /#extras -->
+	
+        <footer id="contentinfo" >
+                <address id="about" class="vcard ">
+                Proudly powered by <a href="http://getpelican.com/" target="_blank">Pelican</a>, which takes
+                great advantage of <a href="http://python.org" target="_blank">Python</a>. &copy; <a class="url fn" href="http://launchyard.com">LaunchYard</a>
+		
+                </address><!-- /#about -->
+		
+
+                
+        </footer><!-- /#contentinfo -->
+
+    <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-33228021-1']);
+    _gaq.push(['_trackPageview']);
+    (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+    </script>
+</body>
+</html>
