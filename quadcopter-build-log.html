@@ -55,7 +55,7 @@
         </li>
 
 	</ul>
-<p>Category: <a href="http://caoyijun.com/tag/quadcopter-quaddrone-diy.html">Quadcopter QuadDrone DIY</a></p>
+
 </div><!-- /.post-info -->          <h1>四轴[四旋翼]飞行器搭建日志</h1>
 <h4>和小伙伴<a href="https://breeswish.org">@施闻轩</a>上了一个名为"微小飞行器制作"的课。本以为是教做四轴飞行器的，后来发现主要是做航模的,不过老师也鼓励我们做四轴。</h4>
 <h3>配置表</h3>
@@ -165,6 +165,28 @@
 </tbody>
 </table>
 <p>以上价格都没包括邮费。淘宝链接我就不给了。也不敢说自己买到得是比较好的。</p>
+<p>第一批配件，后面其实充电器、接线都是后来买的。目前买了三批：
+<img alt="配件" src="/images/quadcopter/all_parts.jpg" /></p>
+<p>然后买的电机的香蕉头是没焊上的。要自己焊。也有些是焊好的。其实没焊上去我们可以调整线的长度啥的。我当时没多想就急着焊上去了。_(:з」∠)_。然后电调一般是没焊的。焊接的时候固定好香蕉头，把焊锡融在槽里放满。在冷却前把电线铁芯塞进去等凝固就行了。不用把电线包皮也沾住。然后用热缩管套上热风枪或者电吹风吹一吹缩好就行了。上图：
+<img alt="香蕉头焊接2" src="/images/quadcopter/香蕉头焊接2.jpg" />
+寝室没台钳，用院里发的神书《软件精英》[从没看过]凑合。然后电烙铁也是个很破的。工作室的高级的头很细。能从香蕉头母头边缘的小孔插进去。很是方便。
+<img alt="香蕉头焊接" src="/images/quadcopter/香蕉头焊接.jpg" />
+谁公头谁母头其实随意。但似乎惯例是电机公头。电调母头。
+<img alt="电调电机香蕉头" src="/images/quadcopter/电调电机香蕉头.jpg" />
+电机和电调能链接后就可以拿Arduino控制电调(ESC)试试电机了。
+<img alt="Arduino Uno" src="/images/quadcopter/Arduino%20Uno.jpg" />
+<img alt="Arduino IDE非常好用" src="/images/quadcopter/Arduino%20IDE.jpg" />
+Arduino的IDE非常友好。插上。File--Examples里面例子很全。而且十分顺利地正常运行。
+<a href="http://techvalleyprojects.blogspot.com/2012/06/arduino-control-escmotor-tutorial.html">Arduino控制ESC 实例</a>
+事实上电调(ESC)只需要PWM脉冲信号就够了。而Arduino的Servo库所封装的信号正式PWM脉冲信号。所以就可以用Servo封装好的对象就可以了。只要将电调(ESC)地线(GND)接到Arduino Digital的GND。ESC GND另一外侧的白线(我的是白色，看说明书，反正也只有三根)接一个板上带<code>~</code>符号的PWM的Digital接口接线就完成了。电调控制线剩下的中间一根据说是提供5V的电源。没试，不确定。
+<img alt="arduino esc首次转动" src="/images/quadcopter/arduino%20esc首次转动.jpg" />
+接线简单但由于对电调接受信号不了解还是折腾了好一会才让电机转了起来。一直盯着电调的说明书看。但说明书上没跟我说解锁(Arm)的概念。简单说来就是电调不是<code>motor.write(0);</code>输出0信号就是静止的。而是有个最小量程。并且不为0.因为0信号和没接线没信号是一样的。一般<code>motor.write(40);</code> 40就可以Arm了。也就是让电调知道自己能正常接收命令了。然后设置油门最小最大量程什么的比较烦。建议用串口控制Arduino发送PWM来模拟遥控器(或者你有遥控器接好也行)来对电调进行设置(参考说明书<a href="http://www.hobbywing.com/uploadfiles/sx/file/Manual/HW-01A-SW.pdf">好盈天行者20A手册</a>)
+这也是个神烦的事情。我一度想给电调刷BLHeli固件。但发觉不刷也能用就没冒这个风险了。(主要对焊工不自信，怕焊坏电调)
+喔。忘说另一个坑点。电调的信号接线是三根一起的杜邦母线。Arduino Uno上的接口。大部分全特么是母接口(孔)。而且Digital这边的GND只有一个。(我们后来买了块扩展板。扩展出多个GND VCC digital analog的接口。方便接线。)
+目前我是这么做的：
+把杜邦壳拆了。插根掰直的曲排针，你有指派针或者其他跳线之类就直接接上去就行了。
+<img alt="拆杜邦壳" src="/images/quadcopter/拆杜邦壳.jpg" />
+<img alt="掰直的曲排针" src="/images/quadcopter/掰直后.jpg" /></p>
 <blockquote>
 <p>Written with <a href="https://stackedit.io/">StackEdit</a>.</p>
 </blockquote>
