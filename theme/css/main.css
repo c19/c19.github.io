@@ -86,7 +86,7 @@ ol {
     position: fixed;
     left: 0px;
     top: 50px;
-    z-index: -1;
+    z-index: -99;
     /*width: 265px;*/
 } 
 
