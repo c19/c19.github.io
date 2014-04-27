@@ -184,6 +184,14 @@ Arduino的IDE非常友好。插上。File--Examples里面例子很全。而且�
 把杜邦壳拆了。插根掰直的曲排针，你有指派针或者其他跳线之类就直接接上去就行了。
 <img alt="拆杜邦壳" src="/images/quadcopter/拆杜邦壳.jpg" />
 <img alt="掰直的曲排针" src="/images/quadcopter/掰直后.jpg" /></p>
+<p>看了很多关于卡尔曼滤波的东西。Youtube上的教程比较易懂。但也只是对其大概思路和用处有了了解。下面图形是用<a href="https://github.com/TKJElectronics/Example-Sketch-for-IMU-including-Kalman-filter">别人的库</a>画出来的。Arduino代码写入到Arduino。Processing代码需要用Processing运行。</p>
+<p>![卡尔曼滤波][12]</p>
+<p>买了一堆针对针、孔对孔、孔对针的杜邦线以及传感器扩展板后。总算不用蛋疼的拆开杜邦壳接线了。于是我又把电调的杜邦壳给<strong>装了回去</strong>。
+又一个坑点，Arduino板和机架上的孔位完全对不上。。我们就把保护盖装上用扎带把Arduino绑上去了。。</p>
+<p>![扩展板][11]</p>
+<p>上周(2014-4-18)拿到场外测试了下电机和电池。用一块电池供两个电机运转。调到能刚好带起机架以及一块电池的功率。然后石头什么的压住看能运转多久。最后测试下来是28分钟。考虑到功率调的略高。估计下来空载是能够超过30分钟。但载重1kg可能要20到30分钟了。</p>
+<p><img alt="场外动力测试" src="/images/quadcopter/场外动力测试.jpg" /></p>
+<p>这周(2014-4-25)新加入的小伙伴<a href="http://www.renren.com/467312940">@袁炜鸿</a>第一次过来一起做。本来打算把MPU 6050接上调PID的。。结果传感器扩展板接上去再接MPU的时候正负接反。一缕青烟冒出。<strong>MPU烧坏了</strong>。好在MPU也不贵。正好我们换<strong>mpu 9150</strong>。除了加速度陀螺仪还有磁感(电子罗盘)。诡异的是。。mpu 9150价格到了7、80.mpu 6050只有十块不到。磁感这么贵？</p>
 <blockquote>
 <p>Written with <a href="https://stackedit.io/">StackEdit</a>.</p>
 </blockquote>
