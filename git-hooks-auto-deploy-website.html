@@ -82,6 +82,18 @@ git --git-dir<span class="o">=</span>/path/blog.git/ --work-tree<span class="o">
 <p>为什么不用rsync或者Capistrano？=。= 纯粹是因为懒。</p>
 <p>当我只需要一个简单得更新文件得时候，不想牵扯到更多东西，既然git写个hook可以搞定，以后还可以随意扩展，就不想增加复杂性了。</p>
         </div><!-- /.entry-content -->
+        <div class="comments">
+
+          <div id="disqus_thread"></div>
+          <script type="text/javascript">
+            var disqus_identifier = "git-hooks-auto-deploy-website.html";
+            (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = 'http://c19.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+            })();
+          </script>
+        </div>
 
       </article>
     </div>
@@ -112,5 +124,14 @@ git --git-dir<span class="o">=</span>/path/blog.git/ --work-tree<span class="o">
         var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
     })();
     </script>
+<script type="text/javascript">
+    var disqus_shortname = 'c19';
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = 'http://' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+</script>
 </body>
 </html>
