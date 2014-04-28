@@ -56,8 +56,9 @@
 
 	</ul>
 
-</div><!-- /.post-info -->          <p>前面用git得<code>post-receive</code>钩子实现了自动部署，很是舒畅，然后想着自动群发个邮件，项目组得人都能及时得知仓库更新、项目进度岂不是很好。</p>
-<p>我搜到得实现方式有用sendmail得，有用smtp的。但因为我很懒。已经用过web.py得sendmail.简洁到根本不想去搞其他配置。像这样：(其实用python得标准库也很简单。)</p>
+</div><!-- /.post-info -->          <p>前面用git得<code>post-receive</code>钩子实现了自动部署，很是舒畅，然后想着自动群发个邮件，项目组得人都能及时得知仓库更新、项目进度岂不是很好。
+
+我搜到得实现方式有用sendmail得，有用smtp的。但因为我很懒。已经用过web.py得sendmail.简洁到根本不想去搞其他配置。像这样：(其实用python得标准库也很简单。)</p>
 <div class="highlight"><pre><span class="n">import</span> <span class="n">web</span>
 <span class="n">web</span><span class="p">.</span><span class="n">config</span><span class="p">.</span><span class="n">smtp_server</span> <span class="o">=</span> <span class="err">&#39;</span><span class="n">smtp</span><span class="p">.</span><span class="n">gmail</span><span class="p">.</span><span class="n">com</span><span class="err">&#39;</span>
 <span class="n">web</span><span class="p">.</span><span class="n">config</span><span class="p">.</span><span class="n">smtp_port</span> <span class="o">=</span> <span class="mi">587</span>
@@ -137,6 +138,8 @@
 
 
 <p>其实，如果全部用python实现要舒服得多。。=。=</p>
+<p>好吧。真就有纯Python的实现。只需配置即可。
+<a href="https://github.com/mhagger/git-multimail">https://github.com/mhagger/git-multimail</a></p>
         </div><!-- /.entry-content -->
         <div class="comments">
 

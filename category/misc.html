@@ -53,149 +53,261 @@
 
 	</ul>
 
-</div><!-- /.post-info --><h1>四轴[四旋翼]飞行器搭建日志</h1>
-<h4>和小伙伴<a href="https://breeswish.org">@施闻轩</a>上了一个名为"微小飞行器制作"的课。本以为是教做四轴飞行器的，后来发现主要是做航模的,不过老师也鼓励我们做四轴。</h4>
-<h3>配置表</h3>
-<table>
-<thead>
-<tr>
-<th>物品</th>
-<th align="center">名称</th>
-<th align="center">单重</th>
-<th align="center">总重</th>
-<th align="center">个数</th>
-<th align="center">单价</th>
-<th align="center">总价</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>电机</td>
-<td align="center">郎宇 A2212 kv980</td>
-<td align="center">56</td>
-<td align="center">224</td>
-<td align="center">4</td>
-<td align="center">63</td>
-<td align="center">252</td>
-</tr>
-<tr>
-<td>电池</td>
-<td align="center">狮牌3S 5200mah30C</td>
-<td align="center">380</td>
-<td align="center">760</td>
-<td align="center">2</td>
-<td align="center">180</td>
-<td align="center">360</td>
-</tr>
-<tr>
-<td>电调</td>
-<td align="center">4X 好盈 天行者 20A</td>
-<td align="center">37</td>
-<td align="center">148</td>
-<td align="center">4</td>
-<td align="center">48</td>
-<td align="center">192</td>
-</tr>
-<tr>
-<td>机架</td>
-<td align="center">四轴飞行器450机架</td>
-<td align="center">282</td>
-<td align="center">282</td>
-<td align="center">1</td>
-<td align="center">55</td>
-<td align="center">55</td>
-</tr>
-<tr>
-<td>螺旋浆</td>
-<td align="center">4X 10*47</td>
-<td align="center">0</td>
-<td align="center">2</td>
-<td align="center">34.65</td>
-<td align="center">69.3</td>
-<td align="center"></td>
-</tr>
-<tr>
-<td>充电器</td>
-<td align="center"></td>
-<td align="center">1</td>
-<td align="center">38</td>
-<td align="center">38</td>
-<td align="center"></td>
-<td align="center"></td>
-</tr>
-<tr>
-<td>各类接线、接头</td>
-<td align="center">3.5mm香蕉头</td>
-<td align="center">5</td>
-<td align="center">1.1</td>
-<td align="center">5.5</td>
-<td align="center"></td>
-<td align="center"></td>
-</tr>
-<tr>
-<td></td>
-<td align="center">XT60 并联头</td>
-<td align="center">1</td>
-<td align="center">8</td>
-<td align="center">8</td>
-<td align="center"></td>
-<td align="center"></td>
-</tr>
-<tr>
-<td></td>
-<td align="center">XT60 公头线</td>
-<td align="center">1</td>
-<td align="center">5</td>
-<td align="center">5</td>
-<td align="center"></td>
-<td align="center"></td>
-</tr>
-<tr>
-<td>链接线扎带充电器等</td>
-<td align="center"></td>
-<td align="center"></td>
-<td align="center">1414</td>
-<td align="center"></td>
-<td align="center"></td>
-<td align="center">1130.8</td>
-</tr>
-</tbody>
-</table>
-<p>以上价格都没包括邮费。淘宝链接我就不给了。也不敢说自己买到得是比较好的。</p>
-<p>第一批配件，后面其实充电器、接线都是后来买的。目前买了三批：
-<img alt="配件" src="/images/quadcopter/all_parts.jpg" /></p>
-<p>然后买的电机的香蕉头是没焊上的。要自己焊。也有些是焊好的。其实没焊上去我们可以调整线的长度啥的。我当时没多想就急着焊上去了。_(:з」∠)_。然后电调一般是没焊的。焊接的时候固定好香蕉头，把焊锡融在槽里放满。在冷却前把电线铁芯塞进去等凝固就行了。不用把电线包皮也沾住。然后用热缩管套上热风枪或者电吹风吹一吹缩好就行了。上图：
-<img alt="香蕉头焊接2" src="/images/quadcopter/香蕉头焊接2.jpg" />
-寝室没台钳，用院里发的神书《软件精英》[从没看过]凑合。然后电烙铁也是个很破的。工作室的高级的头很细。能从香蕉头母头边缘的小孔插进去。很是方便。
-<img alt="香蕉头焊接" src="/images/quadcopter/香蕉头焊接.jpg" />
-谁公头谁母头其实随意。但似乎惯例是电机公头。电调母头。
-<img alt="电调电机香蕉头" src="/images/quadcopter/电调电机香蕉头.jpg" />
-电机和电调能链接后就可以拿Arduino控制电调(ESC)试试电机了。
-<img alt="Arduino Uno" src="/images/quadcopter/Arduino%20Uno.jpg" />
-<img alt="Arduino IDE非常好用" src="/images/quadcopter/Arduino%20IDE.jpg" />
-Arduino的IDE非常友好。插上。File--Examples里面例子很全。而且十分顺利地正常运行。
-<a href="http://techvalleyprojects.blogspot.com/2012/06/arduino-control-escmotor-tutorial.html">Arduino控制ESC 实例</a>
-事实上电调(ESC)只需要PWM脉冲信号就够了。而Arduino的Servo库所封装的信号正式PWM脉冲信号。所以就可以用Servo封装好的对象就可以了。只要将电调(ESC)地线(GND)接到Arduino Digital的GND。ESC GND另一外侧的白线(我的是白色，看说明书，反正也只有三根)接一个板上带<code>~</code>符号的PWM的Digital接口接线就完成了。电调控制线剩下的中间一根据说是提供5V的电源。没试，不确定。
-<img alt="arduino esc首次转动" src="/images/quadcopter/arduino%20esc首次转动.jpg" />
-接线简单但由于对电调接受信号不了解还是折腾了好一会才让电机转了起来。一直盯着电调的说明书看。但说明书上没跟我说解锁(Arm)的概念。简单说来就是电调不是<code>motor.write(0);</code>输出0信号就是静止的。而是有个最小量程。并且不为0.因为0信号和没接线没信号是一样的。一般<code>motor.write(40);</code> 40就可以Arm了。也就是让电调知道自己能正常接收命令了。然后设置油门最小最大量程什么的比较烦。建议用串口控制Arduino发送PWM来模拟遥控器(或者你有遥控器接好也行)来对电调进行设置(参考说明书<a href="http://www.hobbywing.com/uploadfiles/sx/file/Manual/HW-01A-SW.pdf">好盈天行者20A手册</a>)
-这也是个神烦的事情。我一度想给电调刷BLHeli固件。但发觉不刷也能用就没冒这个风险了。(主要对焊工不自信，怕焊坏电调)
-喔。忘说另一个坑点。电调的信号接线是三根一起的杜邦母线。Arduino Uno上的接口。大部分全特么是母接口(孔)。而且Digital这边的GND只有一个。(我们后来买了块扩展板。扩展出多个GND VCC digital analog的接口。方便接线。)
-目前我是这么做的：
-把杜邦壳拆了。插根掰直的曲排针，你有指派针或者其他跳线之类就直接接上去就行了。
-<img alt="拆杜邦壳" src="/images/quadcopter/拆杜邦壳.jpg" />
-<img alt="掰直的曲排针" src="/images/quadcopter/掰直后.jpg" /></p>
-<p>看了很多关于卡尔曼滤波的东西。Youtube上的教程比较易懂。但也只是对其大概思路和用处有了了解。下面图形是用<a href="https://github.com/TKJElectronics/Example-Sketch-for-IMU-including-Kalman-filter">别人的库</a>画出来的。Arduino代码写入到Arduino。Processing代码需要用Processing运行。</p>
-<p><img alt="卡尔曼滤波" src="/images/quadcopter/卡尔曼波形.jpg" /></p>
-<p>买了一堆针对针、孔对孔、孔对针的杜邦线以及传感器扩展板后。总算不用蛋疼的拆开杜邦壳接线了。于是我又把电调的杜邦壳给<strong>装了回去</strong>。
-又一个坑点，Arduino板和机架上的孔位完全对不上。。我们就把保护盖装上用扎带把Arduino绑上去了。。</p>
-<p><img alt="扩展板" src="/images/quadcopter/扩展板.jpg" /></p>
-<p>上周(2014-4-18)拿到场外测试了下电机和电池。用一块电池供两个电机运转。调到能刚好带起机架以及一块电池的功率。然后石头什么的压住看能运转多久。最后测试下来是28分钟。考虑到功率调的略高。估计下来空载是能够超过30分钟。但载重1kg可能要20到30分钟了。</p>
-<p><img alt="场外动力测试" src="/images/quadcopter/场外动力测试.jpg" /></p>
-<p>这周(2014-4-25)新加入的小伙伴<a href="http://www.renren.com/467312940">@袁炜鸿</a>第一次过来一起做。本来打算把MPU 6050接上调PID的。。结果传感器扩展板接上去再接MPU的时候正负接反。一缕青烟冒出。<strong>MPU烧坏了</strong>。好在MPU也不贵。正好我们换<strong>mpu 9150</strong>。除了加速度陀螺仪还有磁感(电子罗盘)。诡异的是。。mpu 9150价格到了7、80.mpu 6050只有十块不到。磁感这么贵？</p>
-<blockquote>
-<p>Written with <a href="https://stackedit.io/">StackEdit</a>.</p>
-</blockquote>
+</div><!-- /.post-info --><p>DIY四旋翼并尝试加上自动壁障的能力。实现无人递送。</p>
                     </article>
+                        <a href="http://caoyijun.com/quadcopter-build-log.html">more ...</a>
+                </div>
+            </aside><!-- /#featured -->
+            
+        
+        
+
+    
+            <aside id="featured">
+                <div class="body">
+                    <article>
+                        <h1 class="entry-title"><a href="http://caoyijun.com/Marriage-Compatibility-Checklist.html">婚前相容性检查表</a></h1>
+<div class="post-info">
+	<ul>
+        <li class="vcard author">
+                 by&nbsp;<a class="url fn" href="http://caoyijun.com/author/cao-yi-jun.html">曹逸君</a>
+        </li>
+        <li class="published" title="2014-01-30T16:04:58">
+          on&nbsp;四 30 一月 2014
+        </li>
+
+	</ul>
+
+</div><!-- /.post-info --><h1>婚前相容性检查表</h1>
+<h4>供检查双方对未来生活的期望是否相容。以免婚姻悲剧。</h4>
+
+                    </article>
+                        <a href="http://caoyijun.com/Marriage-Compatibility-Checklist.html">more ...</a>
+                </div>
+            </aside><!-- /#featured -->
+            
+        
+        
+
+    
+            <aside id="featured">
+                <div class="body">
+                    <article>
+                        <h1 class="entry-title"><a href="http://caoyijun.com/ssh-backdoor-a-simple-example.html">SSH Backdoor a simple example</a></h1>
+<div class="post-info">
+	<ul>
+        <li class="vcard author">
+                 by&nbsp;<a class="url fn" href="http://caoyijun.com/author/cao-yi-jun.html">曹逸君</a>
+        </li>
+        <li class="published" title="2013-12-30T21:49:33">
+          on&nbsp;一 30 十二月 2013
+        </li>
+
+	</ul>
+
+</div><!-- /.post-info --><h1>SSH Backdoor --- a simple example analysis</h1>
+<h4>Information security assignment by 曹逸君[1352872]</h4>
+<blockquote>
+<p>It's not a secret that there are dozens of ssh backdoor out there.<br />
+And it's fairly easy to write a simple one.<br />
+Usually they have two main functions. <br />
+<strong>Secret authentication</strong> and <strong>Password|RSA key collection</strong>   <br />
+
+                    </article>
+                        <a href="http://caoyijun.com/ssh-backdoor-a-simple-example.html">more ...</a>
+                </div>
+            </aside><!-- /#featured -->
+            
+        
+        
+
+    
+            <aside id="featured">
+                <div class="body">
+                    <article>
+                        <h1 class="entry-title"><a href="http://caoyijun.com/Fast-Fourier-Transform-to-change-sound-frequency.html">快速傅里叶变换--用于变调</a></h1>
+<div class="post-info">
+	<ul>
+        <li class="vcard author">
+                 by&nbsp;<a class="url fn" href="http://caoyijun.com/author/cao-yi-jun.html">曹逸君</a>
+        </li>
+        <li class="published" title="2013-12-22T22:15:42">
+          on&nbsp;日 22 十二月 2013
+        </li>
+
+	</ul>
+
+</div><!-- /.post-info --><p>用于交线性代数报告，线代的应用。</p>
+                    </article>
+                        <a href="http://caoyijun.com/Fast-Fourier-Transform-to-change-sound-frequency.html">more ...</a>
+                </div>
+            </aside><!-- /#featured -->
+            
+        
+        
+
+    
+            <aside id="featured">
+                <div class="body">
+                    <article>
+                        <h1 class="entry-title"><a href="http://caoyijun.com/solve-linear-equation-in-c.html">C语言解线性方程组</a></h1>
+<div class="post-info">
+	<ul>
+        <li class="vcard author">
+                 by&nbsp;<a class="url fn" href="http://caoyijun.com/author/cao-yi-jun.html">曹逸君</a>
+        </li>
+        <li class="published" title="2013-12-03T23:29:46">
+          on&nbsp;二 03 十二月 2013
+        </li>
+
+	</ul>
+
+</div><!-- /.post-info --><p>TUT，复旦CS的同鞋扔来个C语言作业。解线性方程组。<br />
+完成后，惊愕的发现，自己和题目给得答案一样。并且，和sage算出的千差万别。<br />
+我实在无法接受sage会算错。我和题目想错到一块也可能性不大。实在匪夷所思。<br />
+
+                    </article>
+                        <a href="http://caoyijun.com/solve-linear-equation-in-c.html">more ...</a>
+                </div>
+            </aside><!-- /#featured -->
+            
+        
+        
+
+    
+            <aside id="featured">
+                <div class="body">
+                    <article>
+                        <h1 class="entry-title"><a href="http://caoyijun.com/loving-mechanical-keyboard.html">loving mechanical keyboard</a></h1>
+<div class="post-info">
+	<ul>
+        <li class="vcard author">
+                 by&nbsp;<a class="url fn" href="http://caoyijun.com/author/cao-yi-jun.html">曹逸君</a>
+        </li>
+        <li class="published" title="2013-11-29T00:10:10">
+          on&nbsp;五 29 十一月 2013
+        </li>
+
+	</ul>
+
+</div><!-- /.post-info --><p>同学送了我个青轴。嗯。。既然用了机械键盘。</p>
+<p><code>还是全键操作吧。</code>
+
+                    </article>
+                        <a href="http://caoyijun.com/loving-mechanical-keyboard.html">more ...</a>
+                </div>
+            </aside><!-- /#featured -->
+            
+        
+        
+
+    
+            <aside id="featured">
+                <div class="body">
+                    <article>
+                        <h1 class="entry-title"><a href="http://caoyijun.com/first-bite-of-pycharm.html">初试Pycharm</a></h1>
+<div class="post-info">
+	<ul>
+        <li class="vcard author">
+                 by&nbsp;<a class="url fn" href="http://caoyijun.com/author/cao-yi-jun.html">曹逸君</a>
+        </li>
+        <li class="published" title="2013-11-22T12:04:59">
+          on&nbsp;五 22 十一月 2013
+        </li>
+
+	</ul>
+
+</div><!-- /.post-info --><p>以前听到Pycharm。发现是商业软件收费后就忽略它了。
+后来又看到吹捧Pycharm得文章，于是就试用了下。（无耻得找了注册码注册）
+那文章把Pycharm跟Eclipse比。的确是要好用不少。
+
+                    </article>
+                        <a href="http://caoyijun.com/first-bite-of-pycharm.html">more ...</a>
+                </div>
+            </aside><!-- /#featured -->
+            
+        
+        
+
+    
+            <aside id="featured">
+                <div class="body">
+                    <article>
+                        <h1 class="entry-title"><a href="http://caoyijun.com/tongji-university-electrictiy-balance-low-warner.html">同济电费过低提醒</a></h1>
+<div class="post-info">
+	<ul>
+        <li class="vcard author">
+                 by&nbsp;<a class="url fn" href="http://caoyijun.com/author/cao-yi-jun.html">曹逸君</a>
+        </li>
+        <li class="published" title="2013-11-19T22:47:29">
+          on&nbsp;二 19 十一月 2013
+        </li>
+
+	</ul>
+
+</div><!-- /.post-info --><p>这要从几天前宿舍突然断电说起。代码敲得正欢，卡擦。没电了。网也断了（路由断电）。</p>
+<p>坑爹呢这是，宿舍一伙人第一反映，没电费了，赶紧去交。交完发现，其实我们还有200Kwh剩余。
+
+                    </article>
+                        <a href="http://caoyijun.com/tongji-university-electrictiy-balance-low-warner.html">more ...</a>
+                </div>
+            </aside><!-- /#featured -->
+            
+        
+        
+
+    
+            <aside id="featured">
+                <div class="body">
+                    <article>
+                        <h1 class="entry-title"><a href="http://caoyijun.com/why-company-will-die-out.html">为什么公司必亡</a></h1>
+<div class="post-info">
+	<ul>
+        <li class="vcard author">
+                 by&nbsp;<a class="url fn" href="http://caoyijun.com/author/cao-yi-jun.html">曹逸君</a>
+        </li>
+        <li class="published" title="2013-11-12T16:50:51">
+          on&nbsp;二 12 十一月 2013
+        </li>
+
+	</ul>
+
+</div><!-- /.post-info --><p>一个游戏公司，一个网页游戏开发团队包括设计师需要30+人。
+他们用C++写业务逻辑，声称那样更稳定。
+
+                    </article>
+                        <a href="http://caoyijun.com/why-company-will-die-out.html">more ...</a>
+                </div>
+            </aside><!-- /#featured -->
+            
+        
+        
+
+    
+            <aside id="featured">
+                <div class="body">
+                    <article>
+                        <h1 class="entry-title"><a href="http://caoyijun.com/git-hooks-auto-email.html">git hooks 发送邮件</a></h1>
+<div class="post-info">
+	<ul>
+        <li class="vcard author">
+                 by&nbsp;<a class="url fn" href="http://caoyijun.com/author/cao-yi-jun.html">曹逸君</a>
+        </li>
+        <li class="published" title="2013-11-11T21:41:33">
+          on&nbsp;一 11 十一月 2013
+        </li>
+
+	</ul>
+
+</div><!-- /.post-info --><p>前面用git得<code>post-receive</code>钩子实现了自动部署，很是舒畅，然后想着自动群发个邮件，项目组得人都能及时得知仓库更新、项目进度岂不是很好。
+
+                    </article>
+                        <a href="http://caoyijun.com/git-hooks-auto-email.html">more ...</a>
+ 
+<div class="paginator">
+    <div class="navButton">Page 1 / 2</div>
+        <div class="navButton"><a href="http://caoyijun.com/category/misc2.html" >Next</a></div>
+</div>
                 </div>
             </aside><!-- /#featured -->
             
