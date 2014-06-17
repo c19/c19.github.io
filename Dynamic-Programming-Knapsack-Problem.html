@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <title>看的懂的动态规划解释</title>
+        <meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="shortcut icon" href="http://launchyard.com/images/favicon.png"/>
+        <!-- <link rel="shortcut icon" href="http://caoyijun.com/"/> -->
+        <link rel="stylesheet" href="http://caoyijun.com/theme/css/main.css" type="text/css" />
+
+        <!--[if IE]>
+                <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+
+        <!--[if lte IE 7]>
+                <link rel="stylesheet" type="text/css" media="all" href="http://caoyijun.com/css/ie.css"/>
+                <script src="http://caoyijun.com/js/IE8.js" type="text/javascript"></script><![endif]-->
+
+        <!--[if lt IE 7]>
+                <link rel="stylesheet" type="text/css" media="all" href="http://caoyijun.com/css/ie6.css"/><![endif]-->
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js" type="text/javascript"></script>
+
+
+</head>
+
+<body id="index" class="home">
+	
+  <!--      <header id="banner" class="body">
+                <h1><a href="http://caoyijun.com/"><img src="http://www.launchyard.com/images/logo.png" /></a></h1>
+        </header> -->
+<!-- /#banner -->
+            <!-- <a href="http://caoyijun.com/">曹逸君 Blog</a>
+            <br/><br/> -->
+        <div class="AvatarPad">
+            <img src="http://caoyijun.com/images/avatar.png" alt="avatar">
+        </div>
+
+<section id="content" >
+    <div class="body">
+      <article>
+        <header>
+          <h1 class="entry-title">
+            <a href="http://caoyijun.com/Dynamic-Programming-Knapsack-Problem.html" rel="bookmark"
+               title="Permalink to 看的懂的动态规划解释">看的懂的动态规划解释</a></h1>
+
+        </header>
+
+        <div class="entry-content">
+<div class="post-info">
+	<ul>
+        <li class="vcard author">
+                 by&nbsp;<a class="url fn" href="http://caoyijun.com/author/cao-yi-jun.html">曹逸君</a>
+        </li>
+        <li class="published" title="2014-06-17T23:12:00">
+          on&nbsp;二 17 六月 2014
+        </li>
+
+	</ul>
+
+</div><!-- /.post-info -->          <p>网上看到的中文对动态规划的解说以及样例让我很火大。不说清楚总体思路就跳到细节里。给的代码也是用尽没有说明的单字母缩写。不明所以的循环。
+而维基你懂得。你要看懂一篇，先得把里面专业名词，各种数学全了解遍。</p>
+<p>以0/1背包问题为例。先说明问题。【我就不用背景故事了。钻石还是砖头都无所谓】
+有N个物品。每个物品有两个属性。它所占的空间或着说重量weight.和它的价值value。
+和一个容器[背包]，背包有最大容量Capacity。求此背包能放下的东西的最大价值。</p>
+<p>先看下暴力搜索是怎么处理的，把能放进去的物品的每种放法全部穷举一遍。找出最大值。
+而贪心则是先放性价比最高的[value/weight最大]。再放其次。依次类推。</p>
+<p>动态规划，带着如此高端大气上档次的名字。其实很简单，是做出一张表，得到最大值。
+表如下：</p>
+<div class="highlight"><pre><span class="err">物品</span><span class="mi">1</span>   <span class="err">只有物品</span><span class="mi">1</span><span class="err">能达到的最大值</span>                  
+<span class="err">物品</span><span class="mi">2</span>   <span class="err">只有物品</span><span class="mi">1</span><span class="err">和物品</span><span class="mi">2</span><span class="err">能达到的最大值</span>                  
+<span class="err">物品</span><span class="mi">3</span>   <span class="err">有物品</span><span class="mi">1</span><span class="err">和物品</span><span class="mi">2</span><span class="err">和物品</span><span class="mi">3</span><span class="err">能达到的最大值</span>                   
+<span class="err">物品</span><span class="mi">4</span>   <span class="err">有物品</span><span class="mi">1</span><span class="err">、</span><span class="mi">2</span><span class="err">、</span><span class="mi">3</span><span class="err">、</span><span class="mi">4</span><span class="err">能达到的最大值</span>                 
+<span class="p">...</span>                     
+<span class="err">物品</span><span class="n">n</span>                     
+        <span class="err">背包容量为</span><span class="mi">1</span>  <span class="mi">2</span>   <span class="mi">3</span>   <span class="mi">4</span>   <span class="p">...</span> <span class="n">Capacity</span>
+</pre></div>
+
+
+<p>动态规划先把只有物品1在不同容量下能达到的最大价值列举出来。
+看具体例子，有以下四个物品。3h什么的是weight[或者说cost]。100€是价值(value)。</p>
+<div class="highlight"><pre><span class="n">A</span> <span class="mi">3</span><span class="n">h</span> <span class="mi">100</span><span class="err">€</span>
+<span class="n">B</span> <span class="mi">5</span><span class="n">h</span> <span class="mi">120</span><span class="err">€</span>
+<span class="n">C</span> <span class="mi">4</span><span class="n">h</span> <span class="mi">80</span><span class="err">€</span>
+<span class="n">D</span> <span class="mi">1</span><span class="n">h</span> <span class="mi">50</span><span class="err">€</span>
+</pre></div>
+
+
+<p>那么在计算第一行，只有A物品的情况后得到的表是这样子的：</p>
+<div class="highlight"><pre><span class="n">A</span>   <span class="mi">0</span>   <span class="mi">0</span>   <span class="mi">100</span> <span class="mi">100</span> <span class="mi">100</span> <span class="mi">100</span> <span class="mi">100</span> <span class="mi">100</span> 
+<span class="n">B</span>   <span class="mi">0</span>   <span class="mi">0</span>   <span class="mi">0</span>   <span class="mi">0</span>   <span class="mi">0</span>   <span class="mi">0</span>   <span class="mi">0</span>   <span class="mi">0</span>   
+<span class="n">C</span>   <span class="mi">0</span>   <span class="mi">0</span>   <span class="mi">0</span>   <span class="mi">0</span>   <span class="mi">0</span>   <span class="mi">0</span>   <span class="mi">0</span>   <span class="mi">0</span>   
+<span class="n">D</span>   <span class="mi">0</span>   <span class="mi">0</span>   <span class="mi">0</span>   <span class="mi">0</span>   <span class="mi">0</span>   <span class="mi">0</span>   <span class="mi">0</span>   <span class="mi">0</span>   
+<span class="err">容量</span> <span class="mi">1</span>   <span class="mi">2</span>   <span class="mi">3</span>   <span class="mi">4</span>   <span class="mi">5</span>   <span class="mi">6</span>   <span class="mi">7</span>   <span class="mi">8</span>
+</pre></div>
+
+
+<p>当然，程序里是没有第一列的ABCD和底下一行的容量的。那是我为了标注清楚加上去的。第一行。只有物品A。在容量为1和2时，放不下，故最大价值为0。容量3到8只能放A。最大价值为100。</p>
+<div class="highlight"><pre><span class="n">A</span>   <span class="mi">0</span>   <span class="mi">0</span>   <span class="mi">100</span> <span class="mi">100</span> <span class="mi">100</span> <span class="mi">100</span> <span class="mi">100</span> <span class="mi">100</span> 
+<span class="n">B</span>   <span class="mi">0</span>   <span class="mi">0</span>   <span class="mi">100</span> <span class="mi">100</span> <span class="mi">120</span> <span class="mi">120</span> <span class="mi">120</span> <span class="mi">220</span> 
+<span class="n">C</span>   <span class="mi">0</span>   <span class="mi">0</span>   <span class="mi">0</span>   <span class="mi">0</span>   <span class="mi">0</span>   <span class="mi">0</span>   <span class="mi">0</span>   <span class="mi">0</span>
+<span class="n">D</span>   <span class="mi">0</span>   <span class="mi">0</span>   <span class="mi">0</span>   <span class="mi">0</span>   <span class="mi">0</span>   <span class="mi">0</span>   <span class="mi">0</span>   <span class="mi">0</span>   
+<span class="err">容量</span> <span class="mi">1</span>   <span class="mi">2</span>   <span class="mi">3</span>   <span class="mi">4</span>   <span class="mi">5</span>   <span class="mi">6</span>   <span class="mi">7</span>   <span class="mi">8</span>
+</pre></div>
+
+
+<h3>注意，这里是动态规划的精华部分。</h3>
+<p>现在计算第二行。此时新加入物品B 5h 120€。
+[注意动态规划并不关心之前是几个物品，怎么放的。只要知道上一行(在没加此行新物品时)在不同容量下的最大价值即可。]。
+当容量是1到4时，是不可能放下物品B的。故跟没有物品B的最大价值一致。也就是跟上面一格值相同。
+当容量是<strong>5</strong>时，有几种选择。
+1.不放B，价值为上面一格，也就是100.
+2.放B，价值为: B的价值120  <strong>加上</strong> 在没有B、容量为0情况下的最大价值[也就是上一行第0列]，也就是0。得到120.
+当前容量5减掉B的重量(weight)5 得到的0。
+选择两种情况种大的，便是容量为5,新加B情况下的最大价值。</p>
+<p>我们再来看第二行最后一个220是如何得到的。[显然它是同时放了A和B，但重点是我们要理解动态规划是如何得到这个值的]
+此时计算的是容量为<strong>8</strong>,新加物品B 5h 120€。
+1.不放B，价值为上面一格，也就是100.
+2.放B，价值为:  B的价值120 <strong>加上</strong> 在没有B、容量为3情况下的最大价值[也就是上一行第3列]，也就是100。得到220.
+当前容量8减掉B的重量(weight)5 得到的3。
+为什么要加上没有B。容量为(当前容量减B重量)的值？因为这样子就可以得到把B放进去得到的最大值了。</p>
+<p>重复这一过程就能把整个表完成。而右下那个格子就是我们要求的情况。有n个物品。容量为Capacity所能达到的最大价值。
+贴一下中间过程。可以看着思索下。脑中模拟下。</p>
+<div class="highlight"><pre><span class="mi">0</span>   <span class="mi">0</span>   <span class="mi">0</span>   <span class="mi">0</span>   <span class="mi">0</span>   <span class="mi">0</span>   <span class="mi">0</span>   <span class="mi">0</span>   <span class="mi">0</span>   
+<span class="mi">0</span>   <span class="mi">0</span>   <span class="mi">0</span>   <span class="mi">100</span> <span class="mi">100</span> <span class="mi">100</span> <span class="mi">100</span> <span class="mi">100</span> <span class="mi">100</span> 
+<span class="mi">0</span>   <span class="mi">0</span>   <span class="mi">0</span>   <span class="mi">0</span>   <span class="mi">0</span>   <span class="mi">0</span>   <span class="mi">0</span>   <span class="mi">0</span>   <span class="mi">0</span>   
+<span class="mi">0</span>   <span class="mi">0</span>   <span class="mi">0</span>   <span class="mi">0</span>   <span class="mi">0</span>   <span class="mi">0</span>   <span class="mi">0</span>   <span class="mi">0</span>   <span class="mi">0</span>   
+<span class="mi">0</span>   <span class="mi">0</span>   <span class="mi">0</span>   <span class="mi">0</span>   <span class="mi">0</span>   <span class="mi">0</span>   <span class="mi">0</span>   <span class="mi">0</span>   <span class="mi">0</span>   
+
+<span class="mi">0</span>   <span class="mi">0</span>   <span class="mi">0</span>   <span class="mi">0</span>   <span class="mi">0</span>   <span class="mi">0</span>   <span class="mi">0</span>   <span class="mi">0</span>   <span class="mi">0</span>   
+<span class="mi">0</span>   <span class="mi">0</span>   <span class="mi">0</span>   <span class="mi">100</span> <span class="mi">100</span> <span class="mi">100</span> <span class="mi">100</span> <span class="mi">100</span> <span class="mi">100</span> 
+<span class="mi">0</span>   <span class="mi">0</span>   <span class="mi">0</span>   <span class="mi">100</span> <span class="mi">100</span> <span class="mi">120</span> <span class="mi">120</span> <span class="mi">120</span> <span class="mi">220</span> 
+<span class="mi">0</span>   <span class="mi">0</span>   <span class="mi">0</span>   <span class="mi">0</span>   <span class="mi">0</span>   <span class="mi">0</span>   <span class="mi">0</span>   <span class="mi">0</span>   <span class="mi">0</span>   
+<span class="mi">0</span>   <span class="mi">0</span>   <span class="mi">0</span>   <span class="mi">0</span>   <span class="mi">0</span>   <span class="mi">0</span>   <span class="mi">0</span>   <span class="mi">0</span>   <span class="mi">0</span>   
+
+<span class="mi">0</span>   <span class="mi">0</span>   <span class="mi">0</span>   <span class="mi">0</span>   <span class="mi">0</span>   <span class="mi">0</span>   <span class="mi">0</span>   <span class="mi">0</span>   <span class="mi">0</span>   
+<span class="mi">0</span>   <span class="mi">0</span>   <span class="mi">0</span>   <span class="mi">100</span> <span class="mi">100</span> <span class="mi">100</span> <span class="mi">100</span> <span class="mi">100</span> <span class="mi">100</span> 
+<span class="mi">0</span>   <span class="mi">0</span>   <span class="mi">0</span>   <span class="mi">100</span> <span class="mi">100</span> <span class="mi">120</span> <span class="mi">120</span> <span class="mi">120</span> <span class="mi">220</span> 
+<span class="mi">0</span>   <span class="mi">0</span>   <span class="mi">0</span>   <span class="mi">100</span> <span class="mi">100</span> <span class="mi">120</span> <span class="mi">120</span> <span class="mi">180</span> <span class="mi">220</span> 
+<span class="mi">0</span>   <span class="mi">0</span>   <span class="mi">0</span>   <span class="mi">0</span>   <span class="mi">0</span>   <span class="mi">0</span>   <span class="mi">0</span>   <span class="mi">0</span>   <span class="mi">0</span>   
+
+<span class="mi">0</span>   <span class="mi">0</span>   <span class="mi">0</span>   <span class="mi">0</span>   <span class="mi">0</span>   <span class="mi">0</span>   <span class="mi">0</span>   <span class="mi">0</span>   <span class="mi">0</span>   
+<span class="mi">0</span>   <span class="mi">0</span>   <span class="mi">0</span>   <span class="mi">100</span> <span class="mi">100</span> <span class="mi">100</span> <span class="mi">100</span> <span class="mi">100</span> <span class="mi">100</span> 
+<span class="mi">0</span>   <span class="mi">0</span>   <span class="mi">0</span>   <span class="mi">100</span> <span class="mi">100</span> <span class="mi">120</span> <span class="mi">120</span> <span class="mi">120</span> <span class="mi">220</span> 
+<span class="mi">0</span>   <span class="mi">0</span>   <span class="mi">0</span>   <span class="mi">100</span> <span class="mi">100</span> <span class="mi">120</span> <span class="mi">120</span> <span class="mi">180</span> <span class="mi">220</span> 
+<span class="mi">0</span>   <span class="mi">50</span>  <span class="mi">50</span>  <span class="mi">100</span> <span class="mi">150</span> <span class="mi">150</span> <span class="mi">170</span> <span class="mi">180</span> <span class="mi">230</span> 
+
+<span class="n">Cars</span> <span class="n">chosen</span> <span class="n">to</span> <span class="n">repair</span><span class="o">:</span>
+<span class="n">D</span> <span class="mi">1</span><span class="n">h</span> <span class="mi">50</span><span class="err">€</span>
+<span class="n">C</span> <span class="mi">4</span><span class="n">h</span> <span class="mi">80</span><span class="err">€</span>
+<span class="n">A</span> <span class="mi">3</span><span class="n">h</span> <span class="mi">100</span><span class="err">€</span>
+<span class="n">Total</span> <span class="n">revenue</span><span class="o">:</span>
+<span class="mi">230</span>
+</pre></div>
+
+
+<p>多出来的第一行0和第一列0是为了让下标符合题目的语义。容量1就是下标1.物品1就是下标1。
+关于代码见https://github.com/c19/java_exercise/tree/master/car_repair
+相信看懂后不看代码也能顺利写出动态规划。</p>
+<blockquote>
+<p>Written with <a href="https://stackedit.io/">StackEdit</a>.</p>
+</blockquote>
+        </div><!-- /.entry-content -->
+        <div class="comments">
+
+          <div id="disqus_thread"></div>
+          <script type="text/javascript">
+            var disqus_identifier = "Dynamic-Programming-Knapsack-Problem.html";
+            (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = 'http://c19.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+            })();
+          </script>
+        </div>
+
+      </article>
+    </div>
+</section>
+        <section id="extras" >
+       
+        
+        </section><!-- /#extras -->
+	
+        <footer id="contentinfo" >
+                <address id="about" class="vcard ">
+                Proudly powered by <a href="http://getpelican.com/" target="_blank">Pelican</a>, which takes
+                great advantage of <a href="http://python.org" target="_blank">Python</a>. &copy; <a class="url fn" href="http://launchyard.com">LaunchYard</a>
+		
+                </address><!-- /#about -->
+		
+
+                
+        </footer><!-- /#contentinfo -->
+
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-33228021-1', 'caoyijun.com');
+      ga('send', 'pageview');
+
+    </script>
+<script type="text/javascript">
+    var disqus_shortname = 'c19';
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = 'http://' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+</script>
+</body>
+</html>

@@ -61,7 +61,15 @@
 
 所谓hook就是.git/hooks目录下得各种脚本。根据名字分别在不同情况下由git调用。这里post-receives是接收push结束后触发。</p>
 <p><code>.git/hooks/post-receive</code></p>
-<div class="highlight"><pre><span class="c">#!/bin/sh</span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9</pre></div></td><td class="code"><div class="highlight"><pre><span class="c">#!/bin/sh</span>
 <span class="nb">echo</span> <span class="s1">&#39;auto deploy&#39;</span>
 git --git-dir<span class="o">=</span>/path/blog.git/ --work-tree<span class="o">=</span>/webroot/blog reset --hard
 <span class="nv">STAT</span><span class="o">=</span><span class="nv">$?</span>
@@ -71,7 +79,7 @@ git --git-dir<span class="o">=</span>/path/blog.git/ --work-tree<span class="o">
 <span class="k">    </span><span class="nb">echo</span> <span class="s2">&quot;=口= something went wrong. $STAT&quot;</span>
 <span class="k">fi</span>
 </pre></div>
-
+</td></tr></table>
 
 <p>说起来被shell脚本坑了一道。<code>[ $STAT -eq 0 ]</code>和<code>[$STAT -eq 0]</code>是不一样的。</p>
 <p>字符串比较和数字比较是不一样的。表达式还有圆括号、方框号、双圆括号、双方框号之分。</p>
