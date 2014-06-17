@@ -156,6 +156,22 @@
 <p>多出来的第一行0和第一列0是为了让下标符合题目的语义。容量1就是下标1.物品1就是下标1。</p>
 <p>关于代码见https://github.com/c19/java_exercise/tree/master/car_repair</p>
 <p>相信看懂后不看代码也能顺利写出动态规划。</p>
+<h2>误解与选法倒推</h2>
+<p>请务必牢记价值表的含义。</p>
+<p>动态规划在计算每个格子的时候，考虑的都只是那个格子的情况。这个格子的情况会不会被最终解引用。这个元素在最终解中到底会不会被加入。动态规划是不知道的。也不关心。</p>
+<p>动态规划的出表后所得到的只是能获得的<strong>最大价值</strong>。并不是选择方式。然而选择方式可以通过价值表倒推得到。</p>
+<div class="highlight"><pre><span class="mi">0</span>   <span class="mi">0</span>   <span class="mi">0</span>   <span class="mi">0</span>   <span class="mi">0</span>   <span class="mi">0</span>   <span class="mi">0</span>   <span class="mi">0</span>   <span class="mi">0</span>   
+<span class="mi">0</span>   <span class="mi">0</span>   <span class="mi">0</span>   <span class="mi">100</span> <span class="mi">100</span> <span class="mi">100</span> <span class="mi">100</span> <span class="mi">100</span> <span class="mi">100</span> 
+<span class="mi">0</span>   <span class="mi">0</span>   <span class="mi">0</span>   <span class="mi">100</span> <span class="mi">100</span> <span class="mi">120</span> <span class="mi">120</span> <span class="mi">120</span> <span class="mi">220</span> 
+<span class="mi">0</span>   <span class="mi">0</span>   <span class="mi">0</span>   <span class="mi">100</span> <span class="mi">100</span> <span class="mi">120</span> <span class="mi">120</span> <span class="mi">180</span> <span class="mi">220</span> 
+<span class="mi">0</span>   <span class="mi">50</span>  <span class="mi">50</span>  <span class="mi">100</span> <span class="mi">150</span> <span class="mi">150</span> <span class="mi">170</span> <span class="mi">180</span> <span class="mi">230</span> 
+</pre></div>
+
+
+<p>先查看右下角格子。跟它上方的格子比较，如果比上方的大。意味着：背包容量为8.有D物品比没有D物品的最大价值要大。也就是背包容量为8,有D物品的情况下，D物品被放入了。</p>
+<p>然后我们把D物品(D 1h 50€)的空间/重量减掉。剩余容量7。不包含D物品。查看C行，第7列。是180,大于它上方的120.同理说明C也被选中了。</p>
+<p>把C 4h 80€的重量减掉，剩余容量3.查看B行，第3列。是100。和它上方的100(A,3)相同。故B没有被选入。</p>
+<p>这时查看(A,3)100上方的格子，(因为B未选中，我们就可以移动到不包含B的情况了。)。是0.小于100.故A被选中了。</p>
 <blockquote>
 <p>Written with <a href="https://stackedit.io/">StackEdit</a>.</p>
 </blockquote>
