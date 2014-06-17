@@ -93,7 +93,8 @@
 </pre></div>
 
 
-<p>当然，程序里是没有第一列的ABCD和底下一行的容量的。那是我为了标注清楚加上去的。第一行。只有物品A。在容量为1和2时，放不下，故最大价值为0。容量3到8只能放A。最大价值为100。</p>
+<p>当然，程序里是没有第一列的ABCD和底下一行的容量的。那是我为了标注清楚加上去的。</p>
+<p>第一行。只有物品A。在容量为1和2时，放不下，故最大价值为0。容量3到8只能放A。最大价值为100。</p>
 <div class="highlight"><pre><span class="n">A</span>   <span class="mi">0</span>   <span class="mi">0</span>   <span class="mi">100</span> <span class="mi">100</span> <span class="mi">100</span> <span class="mi">100</span> <span class="mi">100</span> <span class="mi">100</span> 
 <span class="n">B</span>   <span class="mi">0</span>   <span class="mi">0</span>   <span class="mi">100</span> <span class="mi">100</span> <span class="mi">120</span> <span class="mi">120</span> <span class="mi">120</span> <span class="mi">220</span> 
 <span class="n">C</span>   <span class="mi">0</span>   <span class="mi">0</span>   <span class="mi">0</span>   <span class="mi">0</span>   <span class="mi">0</span>   <span class="mi">0</span>   <span class="mi">0</span>   <span class="mi">0</span>
@@ -103,19 +104,19 @@
 
 
 <h3>注意，这里是动态规划的精华部分。</h3>
-<p>现在计算第二行。此时新加入物品B 5h 120€。
-[注意动态规划并不关心之前是几个物品，怎么放的。只要知道上一行(在没加此行新物品时)在不同容量下的最大价值即可。]。
-当容量是1到4时，是不可能放下物品B的。故跟没有物品B的最大价值一致。也就是跟上面一格值相同。
-当容量是<strong>5</strong>时，有几种选择。
-1.不放B，价值为上面一格，也就是100.
-2.放B，价值为: B的价值120  <strong>加上</strong> 在没有B、容量为0情况下的最大价值[也就是上一行第0列]，也就是0。得到120.
-当前容量5减掉B的重量(weight)5 得到的0。
+<p>现在计算第二行。此时新加入物品B 5h 120€。</p>
+<p>[注意动态规划并不关心之前是几个物品，怎么放的。只要知道上一行(在没加此行新物品时)在不同容量下的最大价值即可。]。</p>
+<p>当容量是1到4时，是不可能放下物品B的。故跟没有物品B的最大价值一致。也就是跟上面一格值相同。
+当容量是<strong>5</strong>时，有几种选择。</p>
+<p>1.不放B，价值为上面一格，也就是100.</p>
+<p>2.放B，价值为: B的价值120  <strong>加上</strong> 在没有B、容量为0情况下的最大价值[也就是上一行第0列]，也就是0。得到120.</p>
+<p>当前容量5减掉B的重量(weight)5 得到的0。
 选择两种情况种大的，便是容量为5,新加B情况下的最大价值。</p>
-<p>我们再来看第二行最后一个220是如何得到的。[显然它是同时放了A和B，但重点是我们要理解动态规划是如何得到这个值的]
-此时计算的是容量为<strong>8</strong>,新加物品B 5h 120€。
-1.不放B，价值为上面一格，也就是100.
-2.放B，价值为:  B的价值120 <strong>加上</strong> 在没有B、容量为3情况下的最大价值[也就是上一行第3列]，也就是100。得到220.
-当前容量8减掉B的重量(weight)5 得到的3。
+<p>我们再来看第二行最后一个220是如何得到的。[显然它是同时放了A和B，但重点是我们要理解动态规划是如何得到这个值的]</p>
+<p>此时计算的是容量为<strong>8</strong>,新加物品B 5h 120€。</p>
+<p>1.不放B，价值为上面一格，也就是100.</p>
+<p>2.放B，价值为:  B的价值120 <strong>加上</strong> 在没有B、容量为3情况下的最大价值[也就是上一行第3列]，也就是100。得到220.</p>
+<p>当前容量8减掉B的重量(weight)5 得到的3。
 为什么要加上没有B。容量为(当前容量减B重量)的值？因为这样子就可以得到把B放进去得到的最大值了。</p>
 <p>重复这一过程就能把整个表完成。而右下那个格子就是我们要求的情况。有n个物品。容量为Capacity所能达到的最大价值。
 贴一下中间过程。可以看着思索下。脑中模拟下。</p>
@@ -152,9 +153,9 @@
 </pre></div>
 
 
-<p>多出来的第一行0和第一列0是为了让下标符合题目的语义。容量1就是下标1.物品1就是下标1。
-关于代码见https://github.com/c19/java_exercise/tree/master/car_repair
-相信看懂后不看代码也能顺利写出动态规划。</p>
+<p>多出来的第一行0和第一列0是为了让下标符合题目的语义。容量1就是下标1.物品1就是下标1。</p>
+<p>关于代码见https://github.com/c19/java_exercise/tree/master/car_repair</p>
+<p>相信看懂后不看代码也能顺利写出动态规划。</p>
 <blockquote>
 <p>Written with <a href="https://stackedit.io/">StackEdit</a>.</p>
 </blockquote>
