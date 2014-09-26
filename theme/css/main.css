@@ -180,9 +180,11 @@ aside, nav, article, figure {
 	display: block;
 }
 
+/* stupid thing ever
 article img{
     width: 100%;
 }
+*/
 /***** Layout *****/
 .body {
     clear: both;
