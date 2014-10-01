@@ -85,15 +85,15 @@
 <strong><code>tab键</code></strong> Q左边的那个键。在命令行下常用于补全命令。如上只需打出命令或目录的前几个字母，按下tab便会将其补全。连按两下则显示以这几个字母开头的命令、目录、文件等。
 Trick: <strong><code>cd $OLDPWD</code></strong> 回到上次目录</p>
 <h2>软件管理基本命令[包管理器]</h2>
-<p><em>nix的软件有一个统一的软件源。由发行版的维护方维护。及时更新软件、检查兼容性、安全性等等。而安装软件、管理软件版本以及依赖关系[nix下的软件经常会依赖于各种库或其他软件，手动去安装依赖包是件很费事费力痛苦的事情，于是就有了包管理器自动解决这些问题。]。
+<p>*nix的软件有一个统一的软件源。由发行版的维护方维护。及时更新软件、检查兼容性、安全性等等。而安装软件、管理软件版本以及依赖关系[nix下的软件经常会依赖于各种库或其他软件，手动去安装依赖包是件很费事费力痛苦的事情，于是就有了包管理器自动解决这些问题。]。
 Debian的包管理器是<code>apt</code>  Red-Hat的是<code>yum</code>，以下以<code>apt</code>为例。
 <code>apt-get update</code>  更新源的软件信息。这样才知道有什么新软件、新版本。
-Linux下管理软件是需要root权限的。在终端输入<code>sudo -s</code>以将此终端提升为root权限。或者在每条语句前加上<code>sudo</code> 注意sudo后有空格。
-<code>sudo -s</code>
-<code>apt-get install gcc g++</code>  安装或升级gcc和g++
-<code>apt-get remove gcc g++</code>  删除gcc和g++
-这里的<code>apt-get</code>  <code>install</code> <code>remove</code> <code>gcc</code>等都是可以通过tab补全的。
-Trick: </em><code>sudo !!</code>*  双感叹号是上次执行的命令。</p>
+Linux下管理软件是需要root权限的。在终端输入<code>sudo -s</code>以将此终端提升为root权限。或者在每条语句前加上<code>sudo</code> 注意sudo后有空格。</p>
+<p><code>sudo -s</code></p>
+<p><code>apt-get install gcc g++</code>  安装或升级gcc和g++</p>
+<p><code>apt-get remove gcc g++</code>  删除gcc和g++</p>
+<p>这里的<code>apt-get</code>  <code>install</code> <code>remove</code> <code>gcc</code>等都是可以通过tab补全的。
+Trick: <em><code>sudo !!</code></em>  双感叹号是上次执行的命令。</p>
 <p><img alt="apt_install_pip" src="http://caoyijun.com/images/linux/apt_install_pip.gif" /></p>
 <p>一般的软件都可以在终端中直接运行，就像命令一样。并且一般的命令行程序都会有<code>-V</code>或<code>--version</code>来得到版本信息。以及<code>-h</code>或<code>--help</code>获得帮助的参数。这是个约定俗成的习惯。查看更详细的手册使用<code>man 命令</code>。但其实第一反映是会去google搜索。</p>
 <blockquote>
