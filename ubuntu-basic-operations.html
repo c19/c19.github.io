@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <title>Ubuntu 基本操作</title>
+        <meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="shortcut icon" href="http://launchyard.com/images/favicon.png"/>
+        <!-- <link rel="shortcut icon" href="http://caoyijun.com/"/> -->
+        <link rel="stylesheet" href="http://caoyijun.com/theme/css/main.css" type="text/css" />
+
+        <!--[if IE]>
+                <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+
+        <!--[if lte IE 7]>
+                <link rel="stylesheet" type="text/css" media="all" href="http://caoyijun.com/css/ie.css"/>
+                <script src="http://caoyijun.com/js/IE8.js" type="text/javascript"></script><![endif]-->
+
+        <!--[if lt IE 7]>
+                <link rel="stylesheet" type="text/css" media="all" href="http://caoyijun.com/css/ie6.css"/><![endif]-->
+<!-- <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js" type="text/javascript"></script> -->
+
+
+</head>
+
+<body id="index" class="home">
+	
+  <!--      <header id="banner" class="body">
+                <h1><a href="http://caoyijun.com/"><img src="http://www.launchyard.com/images/logo.png" /></a></h1>
+        </header> -->
+<!-- /#banner -->
+            <!-- <a href="http://caoyijun.com/">曹逸君 Blog</a>
+            <br/><br/> -->
+        <div class="AvatarPad">
+            <!-- <img src="http://caoyijun.com/images/avatar.png" alt="avatar"> -->
+        </div>
+
+<section id="content" >
+    <div class="body">
+      <article>
+        <header>
+          <h1 class="entry-title">
+            <a href="http://caoyijun.com/ubuntu-basic-operations.html" rel="bookmark"
+               title="Permalink to Ubuntu 基本操作">Ubuntu 基本操作</a></h1>
+
+        </header>
+
+        <div class="entry-content">
+<div class="post-info">
+	<ul>
+        <li class="vcard author">
+                 by&nbsp;<a class="url fn" href="http://caoyijun.com/author/cao-yi-jun.html">曹逸君</a>
+        </li>
+        <li class="published" title="2014-10-02T00:51:00">
+          on&nbsp;四 02 十月 2014
+        </li>
+
+	</ul>
+
+</div><!-- /.post-info -->          <h1><strong>Ubuntu</strong> 基本操作</h1>
+<p>事实上接下去讲的这些命令<em>nix系统都通用。类Unix[Unix-like，也写做</em>nix]。包括了Linux、Unix的家族。Mac所使用的OS X是基于Unix的，所以也是Unix-like的操作系统。</p>
+<p>但如果是链接到一台服务器上基本就得纯命令行界面操作了[当然也可以用类似远程桌面的X-server转发]。</p>
+<h3>关于逼格</h3>
+<p>一般人看到看不懂，别人操作很溜的东西会觉得炫酷、逼格高。注意这是外行的看法，用久了之后就会开始觉得有些地方还是不爽，要是怎样怎样就好了。建议大家不要过多的追求逼格，任何东西方便好用是第一位的。</p>
+<h2>打开<strong>bash</strong></h2>
+<p>Ubuntu下通过快捷键<code>ctrl+alt+t</code>打开终端。
+或者通过Ubuntu左上角的类似于Windows的开始按钮点开Dashboard.输入terminal。其实只要输入ter就能搜索到"终端"</p>
+<p><img alt="dash_terminal" src="http://caoyijun.com/images/linux/dash_terminal.jpg" /></p>
+<p>打开后可以看到<code>用户名@主机名:当前目录$</code>的样子。如下，我的用户名是c19。主机名是Acer。当前目录是<code>~</code> 也就是<code>/home/c19</code>的缩写。</p>
+<p><img alt="bash" src="http://caoyijun.com/images/linux/bash.jpg" /></p>
+<h2>目录结构</h2>
+<p>类Unix系统中不存在windows的盘符概念。分区是通过/media/用户名/分区名 来访问的。Ubuntu中可以在文件管理器左侧看到。</p>
+<p><img alt="file_explorer" src="http://caoyijun.com/images/linux/file_explorer.jpg" /></p>
+<p>类Unix系统中所有目录起始于根目录 用<code>/</code>表示</p>
+<p><img alt="direcotries_structure" src="http://caoyijun.com/images/linux/direcotries_structure.jpg" /></p>
+<p>在文件管理其中按ctrl+l显示当前目录的绝对路径(可以理解为完整的路径)。
+也就是<code>/media/c19/B208769308765677/</code></p>
+<p><img alt="absolute path" src="http://caoyijun.com/images/linux/ctrl_l.jpg" /></p>
+<p>可以看到这是我windows的C盘。</p>
+<h2>目录基本命令</h2>
+<p>现在再在终端下访问这个windows的分区。打开终端[快捷键<code>Ctrl+Alt+T</code>]。</p>
+<p><img alt="bash_directory_operations" src="http://caoyijun.com/images/linux/bash_directory_operations.gif" /></p>
+<p><strong><code>pwd</code></strong> 显示当前目录的绝对路径 present working directory
+<strong><code>ls</code></strong> 列出当前目录下的文件和目录 [试试<code>ll</code>和<code>la</code> 以及 <code>ls -a</code>]
+<strong><code>cd 目录名</code></strong> 切换目录  change directory
+<strong><code>tab键</code></strong> Q左边的那个键。在命令行下常用于补全命令。如上只需打出命令或目录的前几个字母，按下tab便会将其补全。连按两下则显示以这几个字母开头的命令、目录、文件等。
+Trick: <strong><code>cd $OLDPWD</code></strong> 回到上次目录</p>
+<h2>软件管理基本命令[包管理器]</h2>
+<p><em>nix的软件有一个统一的软件源。由发行版的维护方维护。及时更新软件、检查兼容性、安全性等等。而安装软件、管理软件版本以及依赖关系[nix下的软件经常会依赖于各种库或其他软件，手动去安装依赖包是件很费事费力痛苦的事情，于是就有了包管理器自动解决这些问题。]。
+Debian的包管理器是<code>apt</code>  Red-Hat的是<code>yum</code>，以下以<code>apt</code>为例。
+<code>apt-get update</code>  更新源的软件信息。这样才知道有什么新软件、新版本。
+Linux下管理软件是需要root权限的。在终端输入<code>sudo -s</code>以将此终端提升为root权限。或者在每条语句前加上<code>sudo</code> 注意sudo后有空格。
+<code>sudo -s</code>
+<code>apt-get install gcc g++</code>  安装或升级gcc和g++
+<code>apt-get remove gcc g++</code>  删除gcc和g++
+这里的<code>apt-get</code>  <code>install</code> <code>remove</code> <code>gcc</code>等都是可以通过tab补全的。
+Trick: </em><code>sudo !!</code>*  双感叹号是上次执行的命令。</p>
+<p><img alt="apt_install_pip" src="http://caoyijun.com/images/linux/apt_install_pip.gif" /></p>
+<p>一般的软件都可以在终端中直接运行，就像命令一样。并且一般的命令行程序都会有<code>-V</code>或<code>--version</code>来得到版本信息。以及<code>-h</code>或<code>--help</code>获得帮助的参数。这是个约定俗成的习惯。查看更详细的手册使用<code>man 命令</code>。但其实第一反映是会去google搜索。</p>
+<blockquote>
+<p>Written with <a href="https://stackedit.io/">StackEdit</a>.</p>
+</blockquote>
+        </div><!-- /.entry-content -->
+        <div class="comments">
+
+          <div id="disqus_thread"></div>
+          <script type="text/javascript">
+            var disqus_identifier = "ubuntu-basic-operations.html";
+            (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = 'http://c19.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+            })();
+          </script>
+        </div>
+
+      </article>
+    </div>
+</section>
+        <section id="extras" >
+       
+        
+        </section><!-- /#extras -->
+	
+        <footer id="contentinfo" >
+                <address id="about" class="vcard ">
+                Proudly powered by <a href="http://getpelican.com/" target="_blank">Pelican</a>, which takes
+                great advantage of <a href="http://python.org" target="_blank">Python</a>. &copy; <a class="url fn" href="http://launchyard.com">LaunchYard</a>
+		
+                </address><!-- /#about -->
+		
+
+                
+        </footer><!-- /#contentinfo -->
+
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-33228021-1', 'caoyijun.com');
+      ga('send', 'pageview');
+
+    </script>
+<script type="text/javascript">
+    var disqus_shortname = 'c19';
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = 'http://' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+</script>
+</body>
+</html>
