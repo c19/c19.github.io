@@ -85,13 +85,15 @@ ol {
     font-size: 1.5em;
     position: fixed;
     left: 0px;
-    top: 50px;
+    top: 80px;
+    padding-left: 7%;
     z-index: -99;
     /*width: 265px;*/
 } 
 
 .AvatarPad img {
 	max-width: 100%;
+	border-radius: 50%;
 }
 
 /*.AvatarPad p {
