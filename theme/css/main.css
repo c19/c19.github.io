@@ -87,7 +87,7 @@ ol {
     left: 0px;
     top: 80px;
     padding-left: 7%;
-    z-index: -99;
+    /*z-index: -99;*/
     /*width: 265px;*/
 } 
 
