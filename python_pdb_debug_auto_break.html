@@ -121,7 +121,7 @@
 <p>更改 <code>/usr/local/lib/python2.7/dist-packages/</code> 需要root权限</p>
 </blockquote>
 <p>然后在你的项目里就可以方便的引用debug装饰器了.
-<code>from debug import debug</code></p>
+<code>from debug.debug import debug</code></p>
 <h3>其他信息</h3>
 <p>注意当你发布的时候他人的机器很可能没有debug这个package.
 要么去除debug代码.要么一起打包. 用于release的工具: <a href="https://pypi.python.org/pypi/mr.developer">mr.developer</a></p>
