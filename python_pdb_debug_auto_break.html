@@ -73,8 +73,9 @@
 </pre></div>
 
 
-<p>在python解释器运行的时候<code>pdb.set_trace()</code>会将代码中断,然后在pdb的交互界面中可以使用pdb的 <a href="https://docs.python.org/2/library/pdb.html#debugger-commands">交互命令</a> 进行</p>
-<p>输出对象 <code>pp obj.__dict__['some_property']</code>
+<p>在python解释器运行的时候<code>pdb.set_trace()</code>会将代码中断,然后在pdb的交互界面中可以使用pdb的 <a href="https://docs.python.org/2/library/pdb.html#debugger-commands">交互命令</a> 进行
+pdb中可以执行任意python代码,对已有对象进行的修改也会直接生效.
+输出对象 <code>pp obj.__dict__['some_property']</code>
 查看源码 <code>list</code> or <code>l</code>
 查看调用栈 <code>where</code> or <code>w</code>
 转到上级调用(step out) <code>up</code> or <code>u</code>
