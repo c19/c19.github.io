@@ -26,66 +26,7 @@
                     <a href="http://caoyijun.com/android-lock-graph-longest-path.html" rel="bookmark" title="Permanent Link to &quot;安卓九宫格的锁屏图案的最长长度&quot;">安卓九宫格的锁屏图案的最长长度</a>
                 </h2>
 
-                <div class="highlight"><pre><span class="nd">@requires_authorization</span>
-<span class="k">def</span> <span class="nf">somefunc</span><span class="p">(</span><span class="n">param1</span><span class="o">=</span><span class="s">&#39;&#39;</span><span class="p">,</span> <span class="n">param2</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
-    <span class="sd">&#39;&#39;&#39;A docstring&#39;&#39;&#39;</span>
-    <span class="k">if</span> <span class="n">param1</span> <span class="o">&gt;</span> <span class="n">param2</span><span class="p">:</span> <span class="c"># interesting</span>
-        <span class="k">print</span> <span class="s">&#39;Greater&#39;</span>
-    <span class="k">return</span> <span class="p">(</span><span class="n">param2</span> <span class="o">-</span> <span class="n">param1</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="ow">or</span> <span class="bp">None</span>
-
-<span class="k">class</span> <span class="nc">SomeClass</span><span class="p">:</span>
-    <span class="k">pass</span>
-
-<span class="o">&gt;&gt;&gt;</span> <span class="n">message</span> <span class="o">=</span> <span class="s">&#39;&#39;&#39;interpreter</span>
-<span class="s">... prompt&#39;&#39;&#39;</span>
-</pre></div>
-
-
-<div class="highlight"><pre><span class="cp">#include &lt;opencv2/opencv.hpp&gt;</span>
-<span class="cp">#include &lt;opencv2/highgui/highgui.hpp&gt;</span>
-<span class="cp">#include &lt;iostream&gt;</span>
-
-<span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
-<span class="k">using</span> <span class="k">namespace</span> <span class="n">cv</span><span class="p">;</span>
-
-<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> 
-<span class="p">{</span>
-    <span class="c1">//inicia lectura cámara izquierda y derecha</span>
-    <span class="n">VideoCapture</span> <span class="n">capIzquierda</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
-    <span class="n">VideoCapture</span> <span class="n">capDerecha</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
-     <span class="c1">//inicia una ventana para la cámara izquierda y derecha</span>
-    <span class="n">namedWindow</span><span class="p">(</span><span class="s">&quot;CAMARA IZQUIERDA&quot;</span><span class="p">,</span><span class="mi">1</span><span class="p">);</span>
-    <span class="n">namedWindow</span><span class="p">(</span><span class="s">&quot;CAMARA DERECHA&quot;</span><span class="p">,</span><span class="mi">1</span><span class="p">);</span>
-    <span class="k">while</span><span class="p">(</span><span class="n">key</span> <span class="o">!=</span><span class="mi">27</span><span class="p">)</span> <span class="c1">//genera un loop para ver todos los cuadros de la captura en vivo (finaliza presionando la tabla ESC)</span>
-    <span class="p">{</span>
-        <span class="c1">//crea una matriz para la captura en vivo de la cámara izquierda y derecha</span>
-        <span class="n">Mat</span> <span class="n">frameIzquierda</span><span class="p">;</span>
-        <span class="n">Mat</span> <span class="n">frameDerecha</span><span class="p">;</span>
-        <span class="n">try</span>
-        <span class="p">{</span>
-            <span class="c1">//asigna información de la lectura de la cámara izquierda y derecha</span>
-            <span class="n">capIzquierda</span> <span class="o">&gt;&gt;</span> <span class="n">frameIzquierda</span><span class="p">;</span> 
-            <span class="n">capDerecha</span> <span class="o">&gt;&gt;</span> <span class="n">frameDerecha</span><span class="p">;</span>
-        <span class="p">}</span>
-        <span class="k">catch</span><span class="p">(</span> <span class="n">Exception</span><span class="o">&amp;</span> <span class="n">e</span> <span class="p">)</span>
-        <span class="p">{</span>
-            <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;Se ha producido un error.&quot;</span> <span class="o">&lt;&lt;</span> <span class="n">e</span><span class="p">.</span><span class="n">err</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
-        <span class="p">}</span>
-        <span class="c1">//muestra en una ventana la captura en vivo de la cámara izquierda y derecha</span>
-        <span class="n">imshow</span><span class="p">(</span><span class="s">&quot;CAMARA IZQUIERDA&quot;</span><span class="p">,</span> <span class="n">frameIzquierda</span><span class="p">);</span> 
-        <span class="n">imshow</span><span class="p">(</span><span class="s">&quot;CAMARA DERECHA&quot;</span><span class="p">,</span> <span class="n">frameDerecha</span><span class="p">);</span>
-        <span class="c1">//realiza una captura de la cámara izquierda y derecha y las guarda</span>
-        <span class="n">imwrite</span><span class="p">(</span><span class="s">&quot;imagenIzquierda.png&quot;</span><span class="p">,</span> <span class="n">frameIzquierda</span><span class="p">);</span>
-        <span class="n">imwrite</span><span class="p">(</span><span class="s">&quot;imagenIzquierda.png&quot;</span><span class="p">,</span> <span class="n">frameDerecha</span><span class="p">);</span>
-
-        <span class="n">key</span> <span class="o">=</span> <span class="n">waitKey</span><span class="p">(</span><span class="mi">20</span><span class="p">);</span>
-    <span class="p">}</span>
-    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
-<span class="p">}</span>
-</pre></div>
-
-
-<p>题干很简单.求安卓九宫格的锁屏图案的最长长度.</p>
+                <p>题干很简单.求安卓九宫格的锁屏图案的最长长度.</p>
 <p>这里重新描述下九宫格锁屏图案规则.</p>
 <ol>
 <li>九宫格,3x3的方形点阵</li>
@@ -102,23 +43,23 @@
 <li>每个节点到其他所有节点的距离都固定且给出.[先忽略规则3.简化起见]</li>
 </ol>
 <h2>生成邻接矩阵</h2>
-<div class="highlight"><pre>[   [0.000, 1.000, 2.000, 1.000, 1.414, 2.236, 2.000, 2.236, 2.828],
-    [1.000, 0.000, 1.000, 1.414, 1.000, 1.414, 2.236, 2.000, 2.236],
-    [2.000, 1.000, 0.000, 2.236, 1.414, 1.000, 2.828, 2.236, 2.000],
-    [1.000, 1.414, 2.236, 0.000, 1.000, 2.000, 1.000, 1.414, 2.236],
-    [1.414, 1.000, 1.414, 1.000, 0.000, 1.000, 1.414, 1.000, 1.414],
-    [2.236, 1.414, 1.000, 2.000, 1.000, 0.000, 2.236, 1.414, 1.000],
-    [2.000, 2.236, 2.828, 1.000, 1.414, 2.236, 0.000, 1.000, 2.000],
-    [2.236, 2.000, 2.236, 1.414, 1.000, 1.414, 1.000, 0.000, 1.000],
-    [2.828, 2.236, 2.000, 2.236, 1.414, 1.000, 2.000, 1.000, 0.000]]
+<div class="highlight"><pre><span class="p">[</span>   <span class="p">[</span><span class="mf">0.000</span><span class="p">,</span> <span class="mf">1.000</span><span class="p">,</span> <span class="mf">2.000</span><span class="p">,</span> <span class="mf">1.000</span><span class="p">,</span> <span class="mf">1.414</span><span class="p">,</span> <span class="mf">2.236</span><span class="p">,</span> <span class="mf">2.000</span><span class="p">,</span> <span class="mf">2.236</span><span class="p">,</span> <span class="mf">2.828</span><span class="p">],</span>
+    <span class="p">[</span><span class="mf">1.000</span><span class="p">,</span> <span class="mf">0.000</span><span class="p">,</span> <span class="mf">1.000</span><span class="p">,</span> <span class="mf">1.414</span><span class="p">,</span> <span class="mf">1.000</span><span class="p">,</span> <span class="mf">1.414</span><span class="p">,</span> <span class="mf">2.236</span><span class="p">,</span> <span class="mf">2.000</span><span class="p">,</span> <span class="mf">2.236</span><span class="p">],</span>
+    <span class="p">[</span><span class="mf">2.000</span><span class="p">,</span> <span class="mf">1.000</span><span class="p">,</span> <span class="mf">0.000</span><span class="p">,</span> <span class="mf">2.236</span><span class="p">,</span> <span class="mf">1.414</span><span class="p">,</span> <span class="mf">1.000</span><span class="p">,</span> <span class="mf">2.828</span><span class="p">,</span> <span class="mf">2.236</span><span class="p">,</span> <span class="mf">2.000</span><span class="p">],</span>
+    <span class="p">[</span><span class="mf">1.000</span><span class="p">,</span> <span class="mf">1.414</span><span class="p">,</span> <span class="mf">2.236</span><span class="p">,</span> <span class="mf">0.000</span><span class="p">,</span> <span class="mf">1.000</span><span class="p">,</span> <span class="mf">2.000</span><span class="p">,</span> <span class="mf">1.000</span><span class="p">,</span> <span class="mf">1.414</span><span class="p">,</span> <span class="mf">2.236</span><span class="p">],</span>
+    <span class="p">[</span><span class="mf">1.414</span><span class="p">,</span> <span class="mf">1.000</span><span class="p">,</span> <span class="mf">1.414</span><span class="p">,</span> <span class="mf">1.000</span><span class="p">,</span> <span class="mf">0.000</span><span class="p">,</span> <span class="mf">1.000</span><span class="p">,</span> <span class="mf">1.414</span><span class="p">,</span> <span class="mf">1.000</span><span class="p">,</span> <span class="mf">1.414</span><span class="p">],</span>
+    <span class="p">[</span><span class="mf">2.236</span><span class="p">,</span> <span class="mf">1.414</span><span class="p">,</span> <span class="mf">1.000</span><span class="p">,</span> <span class="mf">2.000</span><span class="p">,</span> <span class="mf">1.000</span><span class="p">,</span> <span class="mf">0.000</span><span class="p">,</span> <span class="mf">2.236</span><span class="p">,</span> <span class="mf">1.414</span><span class="p">,</span> <span class="mf">1.000</span><span class="p">],</span>
+    <span class="p">[</span><span class="mf">2.000</span><span class="p">,</span> <span class="mf">2.236</span><span class="p">,</span> <span class="mf">2.828</span><span class="p">,</span> <span class="mf">1.000</span><span class="p">,</span> <span class="mf">1.414</span><span class="p">,</span> <span class="mf">2.236</span><span class="p">,</span> <span class="mf">0.000</span><span class="p">,</span> <span class="mf">1.000</span><span class="p">,</span> <span class="mf">2.000</span><span class="p">],</span>
+    <span class="p">[</span><span class="mf">2.236</span><span class="p">,</span> <span class="mf">2.000</span><span class="p">,</span> <span class="mf">2.236</span><span class="p">,</span> <span class="mf">1.414</span><span class="p">,</span> <span class="mf">1.000</span><span class="p">,</span> <span class="mf">1.414</span><span class="p">,</span> <span class="mf">1.000</span><span class="p">,</span> <span class="mf">0.000</span><span class="p">,</span> <span class="mf">1.000</span><span class="p">],</span>
+    <span class="p">[</span><span class="mf">2.828</span><span class="p">,</span> <span class="mf">2.236</span><span class="p">,</span> <span class="mf">2.000</span><span class="p">,</span> <span class="mf">2.236</span><span class="p">,</span> <span class="mf">1.414</span><span class="p">,</span> <span class="mf">1.000</span><span class="p">,</span> <span class="mf">2.000</span><span class="p">,</span> <span class="mf">1.000</span><span class="p">,</span> <span class="mf">0.000</span><span class="p">]]</span>
 </pre></div>
 
 
 <p>9x9的图看起来吃力.我们看张4x4的.</p>
-<div class="highlight"><pre>[   [0.000, 1.000, 1.000, 1.414],
-    [1.000, 0.000, 1.414, 1.000],
-    [1.000, 1.414, 0.000, 1.000],
-    [1.414, 1.000, 1.000, 0.000]]
+<div class="highlight"><pre><span class="p">[</span>   <span class="p">[</span><span class="mf">0.000</span><span class="p">,</span> <span class="mf">1.000</span><span class="p">,</span> <span class="mf">1.000</span><span class="p">,</span> <span class="mf">1.414</span><span class="p">],</span>
+    <span class="p">[</span><span class="mf">1.000</span><span class="p">,</span> <span class="mf">0.000</span><span class="p">,</span> <span class="mf">1.414</span><span class="p">,</span> <span class="mf">1.000</span><span class="p">],</span>
+    <span class="p">[</span><span class="mf">1.000</span><span class="p">,</span> <span class="mf">1.414</span><span class="p">,</span> <span class="mf">0.000</span><span class="p">,</span> <span class="mf">1.000</span><span class="p">],</span>
+    <span class="p">[</span><span class="mf">1.414</span><span class="p">,</span> <span class="mf">1.000</span><span class="p">,</span> <span class="mf">1.000</span><span class="p">,</span> <span class="mf">0.000</span><span class="p">]]</span>
 </pre></div>
 
 
