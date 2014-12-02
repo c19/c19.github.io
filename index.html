@@ -179,9 +179,9 @@ pdb中可以执行任意python代码,对已有对象进行的修改也会直接�
 
 <p>这里debug作为装饰器(decorator)使用.将目标函数进行<code>try..except</code>包裹,抛出异常时中断.
 使用:</p>
-<div class="highlight"><pre>@debug
-def func_to_debug(*arg, **kwarg):
-    ...
+<div class="highlight"><pre><span class="nd">@debug</span>
+<span class="k">def</span> <span class="nf">func_to_debug</span><span class="p">(</span><span class="o">*</span><span class="n">arg</span><span class="p">,</span> <span class="o">**</span><span class="n">kwarg</span><span class="p">):</span>
+    <span class="o">...</span>
 </pre></div>
 
 
@@ -910,5 +910,8 @@ Arduino的IDE非常友好。插上。File--Examples里面例子很全。而且�
         var pageTracker = _gat._getTracker("UA-33228021-1");
     pageTracker._trackPageview();
     } catch(err) {}</script>
+	<script type="text/javascript"
+		src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+	</script>
 </body>
 </html>

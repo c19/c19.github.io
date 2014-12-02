@@ -138,9 +138,9 @@ pdb中可以执行任意python代码,对已有对象进行的修改也会直接�
 
 &lt;p&gt;这里debug作为装饰器(decorator)使用.将目标函数进行&lt;code&gt;try..except&lt;/code&gt;包裹,抛出异常时中断.
 使用:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;@debug
-def func_to_debug(*arg, **kwarg):
-    ...
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nd"&gt;@debug&lt;/span&gt;
+&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;func_to_debug&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;arg&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="o"&gt;**&lt;/span&gt;&lt;span class="n"&gt;kwarg&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="o"&gt;...&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
