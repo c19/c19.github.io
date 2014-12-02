@@ -1,340 +1,914 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh">
 <head>
-        <title>曹逸君 Blog</title>
-        <meta charset="utf-8" />
-	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <link rel="shortcut icon" href="http://launchyard.com/images/favicon.png"/>
-        <!-- <link rel="shortcut icon" href="http://caoyijun.com/"/> -->
-        <link rel="stylesheet" href="http://caoyijun.com/theme/css/main.css" type="text/css" />
-
-        <!--[if IE]>
-                <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
-
-        <!--[if lte IE 7]>
-                <link rel="stylesheet" type="text/css" media="all" href="http://caoyijun.com/css/ie.css"/>
-                <script src="http://caoyijun.com/js/IE8.js" type="text/javascript"></script><![endif]-->
-
-        <!--[if lt IE 7]>
-                <link rel="stylesheet" type="text/css" media="all" href="http://caoyijun.com/css/ie6.css"/><![endif]-->
-<!-- <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js" type="text/javascript"></script> -->
-
-
+    <meta charset="utf-8" />
+    <title>曹逸君 Blog</title>
+    <link rel="shortcut icon" href="http://caoyijun.com/favicon.ico" />
+    <link rel="stylesheet" href="http://caoyijun.com/theme/css/screen.css" type="text/css" />
+    <link rel="stylesheet" href="http://caoyijun.com/theme/css/pygments.css" type="text/css" />
 </head>
-
-<body id="index" class="home">
-	
-  <!--      <header id="banner" class="body">
-                <h1><a href="http://caoyijun.com/"><img src="http://www.launchyard.com/images/logo.png" /></a></h1>
-        </header> -->
-<!-- /#banner -->
-            <!-- <a href="http://caoyijun.com/">曹逸君 Blog</a>
-            <br/><br/> -->
-        <div class="AvatarPad">
-            <a  href="http://caoyijun.com" >
-            <img src="http://caoyijun.com/images/avatar.jpg" alt="avatar">
-            </a>
+<body>
+    <header>
+        <nav>
+            <li class="selected"><a href="http://caoyijun.com">Home</a></li>
+            <li><a href="http://caoyijun.com/archives.html">Archives</a></li>
+        </nav>
+        <div class="header_box">
+            <h1><a href="http://caoyijun.com">曹逸君 Blog</a></h1>
         </div>
+    </header>
+    <div id="wrapper">
+        <div id="content">
+            <h4 class="date">12月 02, 2014</h4>
+            <article class="post">
+<h2 class="title">
+                    <a href="http://caoyijun.com/android-lock-graph-longest-path.html" rel="bookmark" title="Permanent Link to &quot;安卓九宫格的锁屏图案的最长长度&quot;">安卓九宫格的锁屏图案的最长长度</a>
+                </h2>
 
-        
-        
+                <p>题干很简单.求安卓九宫格的锁屏图案的最长长度.</p>
+<p>这里重新描述下九宫格锁屏图案规则.</p>
+<ol>
+<li>九宫格,3x3的方形点阵</li>
+<li>所有点只能经过一次</li>
+<li>点与点间连线是直线</li>
+<li>不能跨过未经过的点去链接,否则视为先链接中间点再链接对面点.</li>
+</ol>
+<p>有些锁屏要求至少链接4个点之类的.与本题无关.忽略.</p>
+<p>以有向图建立模型的描述为:</p>
+<ol>
+<li>3x3/9个节点.Id从0到8.</li>
+<li>起始点入度为0出度为1.截至点入度为1出度为0.</li>
+<li>除起始和截至点外,节点入度和出度均为1.[由于本题要链接所有9个节点]</li>
+<li>每个节点到其他所有节点的距离都固定且给出.[先忽略规则3.简化起见]</li>
+</ol>
+<h2>生成邻接矩阵</h2>
+<div class="highlight"><pre>[   [0.000, 1.000, 2.000, 1.000, 1.414, 2.236, 2.000, 2.236, 2.828],
+    [1.000, 0.000, 1.000, 1.414, 1.000, 1.414, 2.236, 2.000, 2.236],
+    [2.000, 1.000, 0.000, 2.236, 1.414, 1.000, 2.828, 2.236, 2.000],
+    [1.000, 1.414, 2.236, 0.000, 1.000, 2.000, 1.000, 1.414, 2.236],
+    [1.414, 1.000, 1.414, 1.000, 0.000, 1.000, 1.414, 1.000, 1.414],
+    [2.236, 1.414, 1.000, 2.000, 1.000, 0.000, 2.236, 1.414, 1.000],
+    [2.000, 2.236, 2.828, 1.000, 1.414, 2.236, 0.000, 1.000, 2.000],
+    [2.236, 2.000, 2.236, 1.414, 1.000, 1.414, 1.000, 0.000, 1.000],
+    [2.828, 2.236, 2.000, 2.236, 1.414, 1.000, 2.000, 1.000, 0.000]]
+</pre></div>
 
-    
-            <aside id="featured">
-                <div class="body">
-                    <article>
-                        <h1 class="entry-title"><a href="http://caoyijun.com/python_pdb_debug_auto_break.html">Python pdb 调试 自动异常中断</a></h1>
-<div class="post-info">
-	<ul>
-        <li class="vcard author">
-                 by&nbsp;<a class="url fn" href="http://caoyijun.com/author/cao-yi-jun.html">曹逸君</a>
-        </li>
-        <li class="published" title="2014-11-18T12:38:00">
-          on&nbsp;二 18 十一月 2014
-        </li>
 
-	</ul>
+<p>9x9的图看起来吃力.我们看张4x4的.</p>
+<div class="highlight"><pre>[   [0.000, 1.000, 1.000, 1.414],
+    [1.000, 0.000, 1.414, 1.000],
+    [1.000, 1.414, 0.000, 1.000],
+    [1.414, 1.000, 1.000, 0.000]]
+</pre></div>
 
-</div><!-- /.post-info --><p>方便的pdb调试</p>
-                    </article>
-                        <a href="http://caoyijun.com/python_pdb_debug_auto_break.html">more ...</a>
+
+<p>graph[i][j] 代表的就是节点i到节点j的距离.</p>
+<p>所以第一行就是节点0到各个节点的距离.由于我们在求最长距离.故将自己到自己的距离设为0.以免选到自己到自己的路径.</p>
+<p>在不考虑规则3的情况下.这是个类似于N皇后的问题.</p>
+<p>注意这里贪心算法并不能保证给出最优解.[虽然在4宫格的情况下可以.]</p>
+<p>使用回朔算法.</p>
+<h2>求解大致过程:</h2>
+<blockquote>
+<ol>
+<li>给定起始节点0.</li>
+<li>将第0列设为0[起始节点不能到达.]</li>
+<li>分别考虑第0行所有非0值.[复制当前邻接矩阵]
+        3.1 选取节点1作为下一个节点. graph[0][1]非零,将graph[0][1]加到长度记录中.
+        3.2 将第0行以及第1列设为0.因为节点0不能再出发.节点1不能再到达.
+        3.3 重复此过程直至邻接矩阵全部为0[所有节点都已访问.]</li>
+<li>保存当前最优解.</li>
+</ol>
+</blockquote>
+<h2>不考虑规则3的解</h2>
+<p>我闷直接看得到的解吧.
+从1出发:</p>
+<p><img alt="solution1_unrestricted.png" src="http://caoyijun.com/images/android_lock/solution1_unrestricted.png" /></p>
+<p>这里直接穿过4从6到达2. 4是最后访问的.</p>
+<p>如果没有规则3.我们还可以把所有距离取负值[或者修改松弛过程使得松弛后距离变长]的Dijkstra算法来更快的求解.</p>
+<p>由于规则3的存在.使用更通用的回朔算法.</p>
+<p>下面增加规则3.
+使用一个额外的access_graph来控制是否可以访问.</p>
+<div class="highlight"><pre>access_graph = [[1 for _ in range(9)] for _ in range(9)]
+breaks =    {   1: [(0, 2)],
+                3: [(0, 6)],
+                5: [(2, 6)],
+                7: [(6, 8)],
+                4: [(0, 8), (1, 7), (2, 6), (3, 5)]
+                }
+for i,j in flaten(breaks.values()):
+    access_graph[i][j] = 0
+    access_graph[j][i] = 0
+</pre></div>
+
+
+<p>并且当1 3 5 7 4这些节点被链接后将根据breaks使被阻拦的点可以访问.</p>
+<h2>考虑规则3后的最终解</h2>
+<p><img alt="best_solution.png" src="http://caoyijun.com/images/android_lock/best_solution.png" /></p>
+<p>这就是最终的解.
+长度为17.779271744364845 </p>
+<p>$$\sqrt { 2 } +\sqrt { 8 } +\sqrt { 5 } +2+\sqrt { 5 } +\sqrt { 8 } +\sqrt { 5 } +2$$</p>
+<p><code>[(4, 8), (8, 0), (0, 7), (7, 1), (1, 6), (6, 2), (2, 3), (3, 5)]</code>
+从4开始.到5结束.</p>
+<h3>后话</h3>
+<p>相关问题: 
+<a href="http://www.guokr.com/article/49408/">安卓九宫格密码有多少种组合？--知乎</a></p>
+<p><a href="http://www.guokr.com/article/49408/">智能手机的密码总共有多少种--果壳--Matrix67</a></p>
+<p>关于动态图最长/短路径.请搜索<code>Dynamic Algorithms Maintaining Shortest Paths</code> </p>
+<p>刚刚看到个小盆友说自己没流量于是只好玩锁屏界面.发现说连线不重复交点最多只有7个..真是naive.</p>
+<p><img alt="most_intersects.png" src="http://caoyijun.com/images/android_lock/most_intersects.png" /></p>
+<p>随手画一个就有12个交点.[我感觉应该是交点最多的了.没验证]</p>
+<blockquote>
+<p>Written with <a href="https://stackedit.io/">StackEdit</a>.</p>
+</blockquote>
+
+                <div class="clear"></div>
+                <div class="info">
+                    <a href="http://caoyijun.com/android-lock-graph-longest-path.html">posted at 00:14</a>
                 </div>
-            </aside><!-- /#featured -->
-            
-        
-        
 
-    
-            <aside id="featured">
-                <div class="body">
-                    <article>
-                        <h1 class="entry-title"><a href="http://caoyijun.com/general-knowlege.html">常识大补习</a></h1>
-<div class="post-info">
-	<ul>
-        <li class="vcard author">
-                 by&nbsp;<a class="url fn" href="http://caoyijun.com/author/cao-yi-jun.html">曹逸君</a>
-        </li>
-        <li class="published" title="2014-10-12T01:42:00">
-          on&nbsp;日 12 十月 2014
-        </li>
+            </article>
+            <div class="clear"></div>
+            <h4 class="date">11月 18, 2014</h4>
+            <article class="post">
+<h2 class="title">
+                    <a href="http://caoyijun.com/python_pdb_debug_auto_break.html" rel="bookmark" title="Permanent Link to &quot;Python pdb 调试 自动异常中断&quot;">Python pdb 调试 自动异常中断</a>
+                </h2>
 
-	</ul>
+                <h1>Python pdb 调试 自动异常中断</h1>
+<p>我通常不愿意跑pydev或者pycharm这类庞大的IDE. 个人认为IDE提供的最有价值的功能是方便的调试. Python自带一个调试库<code>pdb</code>.</p>
+<h3>pdb常规用法</h3>
+<p>你可能已经在这样使用pdb</p>
+<div class="highlight"><pre><span class="kn">import</span> <span class="nn">pdb</span>
 
-</div><!-- /.post-info --><p>尝试用最简单明了的语言解释常见名词.(本文为谷歌营全员学习计划Linux教学的一部分)</p>
-                    </article>
-                        <a href="http://caoyijun.com/general-knowlege.html">more ...</a>
+<span class="k">def</span> <span class="nf">func_to_debug</span><span class="p">(</span><span class="o">*</span><span class="n">arg</span><span class="p">,</span> <span class="o">**</span><span class="n">kwarg</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;doc&quot;&quot;&quot;</span>
+    <span class="o">...</span>
+    <span class="n">pdb</span><span class="o">.</span><span class="n">set_trace</span><span class="p">()</span>
+    <span class="c">#Suspicious code</span>
+    <span class="o">...</span>
+</pre></div>
+
+
+<p>在python解释器运行的时候<code>pdb.set_trace()</code>会将代码中断,然后在pdb的交互界面中可以使用pdb的 <a href="https://docs.python.org/2/library/pdb.html#debugger-commands">交互命令</a> 进行
+pdb中可以执行任意python代码,对已有对象进行的修改也会直接生效.
+输出对象 <code>pp obj.__dict__['some_property']</code>
+查看源码 <code>list</code> or <code>l</code>
+查看调用栈 <code>where</code> or <code>w</code>
+转到上级调用(step out) <code>up</code> or <code>u</code>
+转到下级调用(step in)   <code>down</code> or <code>d</code>
+退出pdb <code>quit</code> or <code>q</code></p>
+<blockquote>
+<p>注意因为列表(<code>list</code>)和列出源码的命令<code>list</code>冲突.所以使用列表需要用 <code>__builtins__.list</code></p>
+</blockquote>
+<p>但代码抛出异常时我们还需要加入<code>pdb.set_trace()</code> 然后再次运行代码去debug. 这种动作重复十几次之后你就会感到厌烦. 事实上是可以做到抛出异常时自动进入pdb的. 在上层调用<code>try..except</code> 来捕获异常并中断即可. 敲<code>try..except</code> 调好再去掉十几次之后你就会感到厌烦.于是我们做成一个装饰器(decorator).</p>
+<h3>扔出异常时自动中断</h3>
+<p>准备代码:</p>
+<div class="highlight"><pre><span class="kn">import</span> <span class="nn">pdb</span><span class="o">,</span> <span class="nn">traceback</span><span class="o">,</span> <span class="nn">sys</span>
+
+<span class="k">def</span> <span class="nf">debug</span><span class="p">(</span><span class="n">func</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">wrap</span><span class="p">(</span><span class="o">*</span><span class="n">arg</span><span class="p">,</span> <span class="o">**</span><span class="n">kwarg</span><span class="p">):</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">func</span><span class="p">(</span><span class="o">*</span><span class="n">arg</span><span class="p">,</span> <span class="o">**</span><span class="n">kwarg</span><span class="p">)</span>
+        <span class="k">except</span><span class="p">:</span>
+            <span class="nb">type</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="n">tb</span> <span class="o">=</span> <span class="n">sys</span><span class="o">.</span><span class="n">exc_info</span><span class="p">()</span>
+            <span class="n">traceback</span><span class="o">.</span><span class="n">print_exc</span><span class="p">()</span>
+            <span class="n">pdb</span><span class="o">.</span><span class="n">post_mortem</span><span class="p">(</span><span class="n">tb</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">wrap</span>
+</pre></div>
+
+
+<p>这里debug作为装饰器(decorator)使用.将目标函数进行<code>try..except</code>包裹,抛出异常时中断.
+使用:</p>
+<div class="highlight"><pre>@debug
+def func_to_debug(*arg, **kwarg):
+    ...
+</pre></div>
+
+
+<p>这样抛出异常就直接进入到pdb中断.无需重新运行代码(set up).
+添加/去除调试也更加方便.(注释掉<code>@debug</code>)</p>
+<h3>作为package方便引用</h3>
+<p>当把debug装饰器代码复制十几次之后,你会感到厌烦.
+于是我们在python库目录(<code>Linux: /usr/local/lib/python2.7/dist-packages/</code>)里新建目录<code>debug</code> </p>
+<p>把debug脚本放进去<code>debug.py</code> </p>
+<p>再在里面建立一个空的<code>__init__.py</code> 
+文件来告诉python这是个package.</p>
+<p>最后再<code>chown -R</code>改变整个目录的所有者避免权限问题.</p>
+<blockquote>
+<p>更改 <code>/usr/local/lib/python2.7/dist-packages/</code> 需要root权限</p>
+</blockquote>
+<p>然后在你的项目里就可以方便的引用debug装饰器了.
+<code>from debug.debug import debug</code></p>
+<h3>其他信息</h3>
+<p>注意当你发布的时候他人的机器很可能没有debug这个package.
+要么去除debug代码.要么一起打包. 用于release的工具: <a href="https://pypi.python.org/pypi/mr.developer">mr.developer</a></p>
+<p>其他pdb替代品.(第三方库,需要安装)</p>
+<blockquote>
+<ul>
+<li>ipdb (pip install ipdb) - like ipython (autocomplete, colors etc).</li>
+<li>pudb (pip install pudb) - curses based (gui-like), good at browsing sourcecode.</li>
+<li>pdb++ (pip install pdbpp) - autocomplete, colors, extra commands etc.</li>
+</ul>
+</blockquote>
+<p><a href="http://blog.ionelmc.ro/2013/06/05/python-debugging-tools/">更多调试工具</a>
+<a href="http://blog.ionelmc.ro/2013/06/08/python-profiling-tools/?PageSpeed=noscript">图形化分析工具</a></p>
+<blockquote>
+<p>Written with <a href="https://stackedit.io/">StackEdit</a>.</p>
+</blockquote>
+
+                <div class="clear"></div>
+                <div class="info">
+                    <a href="http://caoyijun.com/python_pdb_debug_auto_break.html">posted at 12:38</a>
                 </div>
-            </aside><!-- /#featured -->
-            
-        
-        
 
-    
-            <aside id="featured">
-                <div class="body">
-                    <article>
-                        <h1 class="entry-title"><a href="http://caoyijun.com/ubuntu-basic-operations.html">Ubuntu 基本操作</a></h1>
-<div class="post-info">
-	<ul>
-        <li class="vcard author">
-                 by&nbsp;<a class="url fn" href="http://caoyijun.com/author/cao-yi-jun.html">曹逸君</a>
-        </li>
-        <li class="published" title="2014-10-02T00:51:00">
-          on&nbsp;四 02 十月 2014
-        </li>
+            </article>
+            <div class="clear"></div>
+            <h4 class="date">10月 12, 2014</h4>
+            <article class="post">
+<h2 class="title">
+                    <a href="http://caoyijun.com/general-knowlege.html" rel="bookmark" title="Permanent Link to &quot;常识大补习&quot;">常识大补习</a>
+                </h2>
 
-	</ul>
+                <h1>常识大补习</h1>
+<p>尝试用最简单明了的语言解释常见名词.(作为谷歌营全员学习计划Linux教学的一部分.真的有大二SE学生问出内存是什么.服务器是什么这种问题.)</p>
+<h2>硬件</h2>
+<p>拆开台式机或笔记本可以看到以下零件:</p>
+<h3>主板</h3>
+<p>把芯片\电路板放到一起的板子</p>
+<h3><strong>CPU</strong></h3>
+<p>用来运算的,通常上面有个风扇给它降温.和金属散热片之间一般涂硅胶用于导热.</p>
+<h3>硬盘</h3>
+<p>用来储存所有文件的.包括操作系统\应用程序\你的文档\电影\照片\音乐</p>
+<h3>内存</h3>
+<p>程序运行时储存数据的部件.跟硬盘的区别是内存读写快上百倍.写C时声明变量如int i; 或是malloc函数.都是向系统要内存来存放数据.</p>
+<h2>软件</h2>
+<p>扣扣\迅雷\浏览器都是软件.有时也称作应用程序.应用程序特指给用户用的.区别于看不到的数据库软件\Web Server等软件.</p>
+<h3>操作系统</h3>
+<p>用来管理其他程序以及硬件的程序.开机也就是启动操作系统.</p>
+<h3>虚拟机</h3>
+<p>像运行QQ一样运行若干个其他操作系统.典型虚拟机软件:Virtualbox</p>
+<h2>服务器</h2>
+<p>服务器有时候指在机房躺着的那台机器.[硬件].它除了性能更强外与我们用的电脑没有本质区别.由于功能主要用于提供服务,所以叫做服务器.一般是没有显示器的.通过远程控制软件进行管理.win中一般为自带的"远程桌面",*nix中一般为ssh.
+也有时候指在机器上运行的服务性软件.像提供网页给我们看的Web Server.代表性的为Nginx.保存我们各种数据[帐号\密码\发的说说\游戏的装备\淘宝下的订单\给的评论]的数据库.典型代表为MySQL\MongoDB.</p>
+<p>服务器一般不自己买硬件组装.而是更简单快速廉价的租用专业团队提供的虚拟服务器(VPS),断电\散热\网络等等都不用我们操心.只管付钱用就好.由于是虚拟机,可以不改动硬件就能更改它的配置.[增加带宽\内存\CPU核心.]</p>
+<h3>云计算/云存储/云服务</h3>
+<p>所谓云,就是指把很多机子连起来做成一个集群.这些机子可以动态的给他们分配任务.国庆7天某游戏APP很火爆,那么就自动的多分配一些机子帮助分担压力.平时闲下来又可以给其他应用使用,提高了效率和灵活程度.总体运算/存储能力还可以通过增减机子来灵活调整.并且,这些改动完全不影响在上面运行的应用.应用不需要改一行代码.典型代表:亚马逊云服务Amazon Web Services (AWS)\谷歌APP Egine\阿里云.
+云存储也是一样的.把诸多文件分散到一大批机子里(集群).增强稳定性和可用率.
+云服务就是把这些技术出租给开发者使用的服务.</p>
+<h3>大数据</h3>
+<p>顾名思义,就是有大量的数据,从而可以统计上发现一些规律.
+经典的例子是有了每个顾客的购物数据后发现啤酒和尿布经常被一起买.然后超市据此把啤酒和尿布放到一起进一步提高销量.
+更诡异的例子是发现下雨的时候面包卖的好,晴天三明治买的好.其中的因果难以考证,但,也没必要考证,知道晴天做多少三明治,雨天做多少面包马上就能提高利润.
+还有个例子是谷歌通过人们的搜索请求以及人们的地理位置信息发现流感的发源地.原因是人们感冒了会去谷歌上搜相应的症状\办法.
+大数据大概就是大量样本消除随机因素.加多维度数据找出关联.
+还有利用Twitter的推文来预测奥巴马是否当选的.SNS数据预测苏格兰公投结果的.各种数据(包括人们下的赌注\球队\球员历史数据)综合预测世界杯结果的.</p>
+<h3>人工智能</h3>
+<p>一个/类算法是否称得上人工智能没有绝对标准.我们人认为它做到了人类才能做到的事就说它是人工智能.图灵测试就是基于这个定义.图灵测试大意就是当一个AI成功的让人类误以为他是人类,那么就说这个AI达到了人类的智能.[很想在这里说个题外话,有句话说"我知道我自己是有思维的,但其他人我就不能确定了.",你们感受下.].</p>
+<p>目前比较强的AI有无人驾驶汽车.12年Andrew ng团队的神经网络在看了一千万张youtube视频中的图片后,有了猫的概念.并能分辨2000多种物品.几乎将正确率提高了一倍.这里提供点关键字供你们搜索.[神经网络, 深度学习].
+如果说基于概率统计等数学方法的算法仍然像算法的话.神经网络则更像生物的大脑.对于人工智能感兴趣的同学可以看看&lt;How to Create a Mind&gt;</p>
+<h3>获取知识的途径</h3>
+<p>这个应该说过无数遍了.有问题\有不懂的概念\名词.先搜一下.看看大概是个什么玩意.如果搜出来的解释中又有很多不懂的概念\名词.再继续搜这些名词.直到你满足为止.
+只要你大的概念有了.以后再有新的名词出现就可以很快归类到某个大概念之下了.而概念有了,碰到问题也不至于束手无策.至少知道大概需要哪些信息/知识.这个过程比较困难.但对于有兴趣有好奇心的人来说是个充满乐趣的过程.[你找别人帮忙解决问题,比如装个机什么的,他可能也没装过,但他如果有启动盘\系统\分区的概念的话,搜个教程依样画葫芦是很简单的一件事.而你找他帮忙自己什么都不用管.就错过了一次知道这些概念\学会装机的机会.更重要的是概念的缺失.]
+举个例子.编译自己写的程序时编译器报错,[很多人这个时候就不知道怎么办了,找人帮忙就说一句出错了.这种时候我都有想打人的冲动.],这特么又没几个单词.就算一个个翻译搞清楚怎么回事也要不了十分钟.如果函数\编译的概念没有还能顺便知道这些概念.见到报错只知道关掉再试几次的那是用户.作为开发人员你需要把问题都搞清楚.</p>
+<div class="highlight"><pre><span class="nx">hello</span><span class="p">.</span><span class="nx">c</span><span class="o">:</span> <span class="nx">In</span> <span class="kd">function</span> <span class="err">‘</span><span class="nx">main</span><span class="err">’</span><span class="o">:</span>
+<span class="nx">hello</span><span class="p">.</span><span class="nx">c</span><span class="o">:</span><span class="mi">15</span><span class="o">:</span><span class="mi">2</span><span class="o">:</span> <span class="nx">error</span><span class="o">:</span> <span class="err">‘</span><span class="k">for</span><span class="err">’</span> <span class="nx">loop</span> <span class="nx">initial</span> <span class="nx">declarations</span> <span class="nx">are</span> <span class="nx">only</span> <span class="nx">allowed</span> <span class="k">in</span> <span class="nx">C99</span> <span class="nx">mode</span>
+  <span class="k">for</span> <span class="p">(</span><span class="kr">int</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">count</span><span class="p">;</span> <span class="o">++</span><span class="nx">i</span><span class="p">)</span>
+  <span class="o">^</span>
+<span class="nx">hello</span><span class="p">.</span><span class="nx">c</span><span class="o">:</span><span class="mi">15</span><span class="o">:</span><span class="mi">2</span><span class="o">:</span> <span class="nx">note</span><span class="o">:</span> <span class="nx">use</span> <span class="nx">option</span> <span class="o">-</span><span class="nx">std</span><span class="o">=</span><span class="nx">c99</span> <span class="nx">or</span> <span class="o">-</span><span class="nx">std</span><span class="o">=</span><span class="nx">gnu99</span> <span class="nx">to</span> <span class="nx">compile</span> <span class="nx">your</span> <span class="nx">code</span>
+</pre></div>
 
-</div><!-- /.post-info --><p>bash、目录结构及命令、包管理器及命令(本文为谷歌营全员学习计划Linux教学的一部分)</p>
-                    </article>
-                        <a href="http://caoyijun.com/ubuntu-basic-operations.html">more ...</a>
+
+<p>这个错误是说当前编译的规范是不支持在for循环内声明变量的.需要添加-std=c99选项改为C99规范.
+而一个学弟给我截图的编译错误则更是让人迷醉.
+<img alt="" src="http://caoyijun.com/images/general_knowledge/compile_error.jpg" /></p>
+<p>1.英文很重要.多看多查就会了.</p>
+<p>2.对于普通用户.要竭力减少他犯错的机会.比如这时候提示他保存文件.</p>
+<blockquote>
+<p>tips:
+<a href="http://stackoverflow.com" title="http://stackoverflow.com">http://stackoverflow.com</a> 基本上你碰到的各种错误\问题.都可以在上面找到已有的回答.大都非常的高质量. 相比之下中文问答社区则质量奇差.</p>
+</blockquote>
+
+                <div class="clear"></div>
+                <div class="info">
+                    <a href="http://caoyijun.com/general-knowlege.html">posted at 01:42</a>
                 </div>
-            </aside><!-- /#featured -->
-            
-        
-        
 
-    
-            <aside id="featured">
-                <div class="body">
-                    <article>
-                        <h1 class="entry-title"><a href="http://caoyijun.com/unix-like-shell-bash-terminal-commandline-explain.html">shell bash 终端 命令行 名词解释</a></h1>
-<div class="post-info">
-	<ul>
-        <li class="vcard author">
-                 by&nbsp;<a class="url fn" href="http://caoyijun.com/author/cao-yi-jun.html">曹逸君</a>
-        </li>
-        <li class="published" title="2014-10-02T00:51:00">
-          on&nbsp;四 02 十月 2014
-        </li>
+            </article>
+            <div class="clear"></div>
+            <h4 class="date">10月 02, 2014</h4>
+            <article class="post">
+<h2 class="title">
+                    <a href="http://caoyijun.com/ubuntu-basic-operations.html" rel="bookmark" title="Permanent Link to &quot;Ubuntu 基本操作&quot;">Ubuntu 基本操作</a>
+                </h2>
 
-	</ul>
+                <h1><strong>Ubuntu</strong> 基本操作</h1>
+<p>(本文为谷歌营全员学习计划Linux教学的一部分)</p>
+<p>事实上接下去讲的这些命令<em>nix系统都通用。类Unix[Unix-like，也写做</em>nix]。包括了Linux、Unix的家族。Mac所使用的OS X是基于Unix的，所以也是Unix-like的操作系统。</p>
+<p>但如果是链接到一台服务器上基本就得纯命令行界面操作了[当然也可以用类似远程桌面的X-server转发]。</p>
+<h3>关于逼格</h3>
+<p>一般人看到看不懂，别人操作很溜的东西会觉得炫酷、逼格高。注意这是外行的看法，用久了之后就会开始觉得有些地方还是不爽，要是怎样怎样就好了。建议大家不要过多的追求逼格，任何东西方便好用是第一位的。</p>
+<h2>打开<strong>bash</strong></h2>
+<p>Ubuntu下通过快捷键<code>ctrl+alt+t</code>打开终端。
+或者通过Ubuntu左上角的类似于Windows的开始按钮点开Dashboard.输入terminal。其实只要输入ter就能搜索到"终端"</p>
+<p><img alt="dash_terminal" src="http://caoyijun.com/images/linux/dash_terminal.jpg" /></p>
+<p>打开后可以看到<code>用户名@主机名:当前目录$</code>的样子。如下，我的用户名是c19。主机名是Acer。当前目录是<code>~</code> 也就是<code>/home/c19</code>的缩写。</p>
+<p><img alt="bash" src="http://caoyijun.com/images/linux/bash.jpg" /></p>
+<h2>目录结构</h2>
+<p>类Unix系统中不存在windows的盘符概念。分区是通过/media/用户名/分区名 来访问的。Ubuntu中可以在文件管理器左侧看到。</p>
+<p><img alt="file_explorer" src="http://caoyijun.com/images/linux/file_explorer.jpg" /></p>
+<p>类Unix系统中所有目录起始于根目录 用<code>/</code>表示</p>
+<p><img alt="direcotries_structure" src="http://caoyijun.com/images/linux/direcotries_structure.jpg" /></p>
+<p>在文件管理其中按ctrl+l显示当前目录的绝对路径(可以理解为完整的路径)。
+也就是<code>/media/c19/B208769308765677/</code></p>
+<p><img alt="absolute path" src="http://caoyijun.com/images/linux/ctrl_l.jpg" /></p>
+<p>可以看到这是我windows的C盘。</p>
+<h2>目录基本命令</h2>
+<p>现在再在终端下访问这个windows的分区。打开终端[快捷键<code>Ctrl+Alt+T</code>]。</p>
+<p><img alt="bash_directory_operations" src="http://caoyijun.com/images/linux/bash_directory_operations.gif" /></p>
+<p><strong><code>pwd</code></strong> 显示当前目录的绝对路径 present working directory
+<strong><code>ls</code></strong> 列出当前目录下的文件和目录 [试试<code>ll</code>和<code>la</code> 以及 <code>ls -a</code>]
+<strong><code>cd 目录名</code></strong> 切换目录  change directory
+<strong><code>tab键</code></strong> Q左边的那个键。在命令行下常用于补全命令。如上只需打出命令或目录的前几个字母，按下tab便会将其补全。连按两下则显示以这几个字母开头的命令、目录、文件等。
+Trick: <strong><code>cd $OLDPWD</code></strong> 回到上次目录</p>
+<h2>软件管理基本命令[包管理器]</h2>
+<p>*nix的软件有一个统一的软件源。由发行版的维护方维护。及时更新软件、检查兼容性、安全性等等。而安装软件、管理软件版本以及依赖关系[nix下的软件经常会依赖于各种库或其他软件，手动去安装依赖包是件很费事费力痛苦的事情，于是就有了包管理器自动解决这些问题。]。
+Debian的包管理器是<code>apt</code>  Red-Hat的是<code>yum</code>，以下以<code>apt</code>为例。
+<code>apt-get update</code>  更新源的软件信息。这样才知道有什么新软件、新版本。
+Linux下管理软件是需要root权限的。在终端输入<code>sudo -s</code>以将此终端提升为root权限。或者在每条语句前加上<code>sudo</code> 注意sudo后有空格。</p>
+<p><code>sudo -s</code></p>
+<p><code>apt-get install gcc g++</code>  安装或升级gcc和g++</p>
+<p><code>apt-get remove gcc g++</code>  删除gcc和g++</p>
+<p>这里的<code>apt-get</code>  <code>install</code> <code>remove</code> <code>gcc</code>等都是可以通过tab补全的。
+Trick: <em><code>sudo !!</code></em>  双感叹号是上次执行的命令。</p>
+<p><img alt="apt_install_pip" src="http://caoyijun.com/images/linux/apt_install_pip.gif" /></p>
+<p>一般的软件都可以在终端中直接运行，就像命令一样。并且一般的命令行程序都会有<code>-V</code>或<code>--version</code>来得到版本信息。以及<code>-h</code>或<code>--help</code>获得帮助的参数。这是个约定俗成的习惯。查看更详细的手册使用<code>man 命令</code>。但其实第一反映是会去google搜索。</p>
+<blockquote>
+<p>Written with <a href="https://stackedit.io/">StackEdit</a>.</p>
+</blockquote>
 
-</div><!-- /.post-info --><p>这几个名词本来是不同/不同层次的东西。但经常被混淆。(本文为谷歌营全员学习计划Linux教学的一部分)</p>
-                    </article>
-                        <a href="http://caoyijun.com/unix-like-shell-bash-terminal-commandline-explain.html">more ...</a>
+                <div class="clear"></div>
+                <div class="info">
+                    <a href="http://caoyijun.com/ubuntu-basic-operations.html">posted at 00:51</a>
                 </div>
-            </aside><!-- /#featured -->
-            
-        
-        
 
-    
-            <aside id="featured">
-                <div class="body">
-                    <article>
-                        <h1 class="entry-title"><a href="http://caoyijun.com/linux-introduction-2-history.html">Linux 历史简介</a></h1>
-<div class="post-info">
-	<ul>
-        <li class="vcard author">
-                 by&nbsp;<a class="url fn" href="http://caoyijun.com/author/cao-yi-jun.html">曹逸君</a>
-        </li>
-        <li class="published" title="2014-09-28T00:56:00">
-          on&nbsp;日 28 九月 2014
-        </li>
+            </article>
+            <div class="clear"></div>
+            <article class="post">
+<h2 class="title">
+                    <a href="http://caoyijun.com/unix-like-shell-bash-terminal-commandline-explain.html" rel="bookmark" title="Permanent Link to &quot;shell bash 终端 命令行 名词解释&quot;">shell bash 终端 命令行 名词解释</a>
+                </h2>
 
-	</ul>
+                <h1>&lt;<strong>shell</strong> <strong>bash</strong> 终端 命令行&gt; 名词解释</h1>
+<p>(本文为谷歌营全员学习计划Linux教学的一部分)</p>
+<h3>shell bash 终端 命令行</h3>
+<p>这几个名词本来是不同/不同层次的东西。但经常被混淆。</p>
+<h4><strong>shell</strong></h4>
+<p>在图形界面出现之前人们用电脑都是在这么一个黑底白字的界面里敲命令，然后它返回结果的。这个界面其实也是个程序，这<strong>种</strong>程序被称为shell。</p>
+<p><img alt="linux_0.01" src="http://caoyijun.com/images/linux/linux_0.01.jpg" /></p>
+<p>更广义一点，用来调用其他程序的程序称为shell。比如远程控制软件，你可以通过它执行任意程序/指令。会被称为shell。</p>
+<h4><strong>bash</strong></h4>
+<p>早期Unix的一个shell。目前Linux和OS X都将它作为默认shell。[当然bash也是更新到现在，一成不变肯定是要被淘汰的。]</p>
+<h4><strong>终端(Terminal)</strong></h4>
+<p>90年代及以前的时候大家用的电脑通常不是一台完整的电脑。而是有屏幕和键盘。然后链接到共用的主机上使用主机运行程序的。也有自己电脑有一定运算储存能力但比较弱，而且没联网。需要运行比较大的程序或想上网时链接到主机上操作主机。用来操作主机的设备就叫终端。到后来这种用主机的方式逐渐消失。终端一词的含义就变为了用于操作自己电脑的那个shell了。</p>
+<h4><strong>命令行(Command Line)</strong></h4>
+<p>也称命令提示符(Command Line Interpreter/Promote)
+所有文字界面的程序都可以称为命令行。比如mysql、mongo。但由于windows的shell <code>cmd.exe</code> 被windows称为命令行，习惯于windows的人会用命令行来代指终端。另外<code>cmd.exe</code> 不是dos。只是长得和dos的shell像。</p>
+<h4><strong>控制台(console)</strong></h4>
+<p>还有个名词叫控制台(console)，这个词是在windows下指运行在黑框框里的命令行程序。一般C/C++没写图形的程序都是这种控制台程序(感觉怪怪的，大家叫它命令行程序比较多。)。</p>
+<blockquote>
+<p>Written with <a href="https://stackedit.io/">StackEdit</a>.</p>
+</blockquote>
 
-</div><!-- /.post-info --><p>关于Linux的起源以及Linus的故事。(本文为谷歌营全员学习计划Linux教学的一部分)</p>
-                    </article>
-                        <a href="http://caoyijun.com/linux-introduction-2-history.html">more ...</a>
+                <div class="clear"></div>
+                <div class="info">
+                    <a href="http://caoyijun.com/unix-like-shell-bash-terminal-commandline-explain.html">posted at 00:51</a>
                 </div>
-            </aside><!-- /#featured -->
-            
-        
-        
 
-    
-            <aside id="featured">
-                <div class="body">
-                    <article>
-                        <h1 class="entry-title"><a href="http://caoyijun.com/linux-introduction.html">Linux 常识普及</a></h1>
-<div class="post-info">
-	<ul>
-        <li class="vcard author">
-                 by&nbsp;<a class="url fn" href="http://caoyijun.com/author/cao-yi-jun.html">曹逸君</a>
-        </li>
-        <li class="published" title="2014-09-27T00:33:00">
-          on&nbsp;六 27 九月 2014
-        </li>
+            </article>
+            <div class="clear"></div>
+            <h4 class="date"> 9月 28, 2014</h4>
+            <article class="post">
+<h2 class="title">
+                    <a href="http://caoyijun.com/linux-introduction-2-history.html" rel="bookmark" title="Permanent Link to &quot;Linux 历史简介&quot;">Linux 历史简介</a>
+                </h2>
 
-	</ul>
+                <h1>Linux 历史简介</h1>
+<h5>关于Linux的起源以及Linus的故事。</h5>
+<p>(本文为谷歌营全员学习计划Linux教学的一部分)</p>
+<p>关于Linux的详细历史可以看<code>&lt;Just for Fun&gt;</code> Linus自传。</p>
+<h3>起因</h3>
+<p>大概是1991年，芬兰大学生Linus Torvalds同学觉得Unix太特么贵了。自己买不起，自己从小就倒腾各种电子产品，敲代码，就自己动手花了几个月仿照Unix写了个操作系统。</p>
+<p>并通过邮件列表和BBS发布了出去。由于十分的不完善，Linus同学把它标记为0.01版。</p>
+<h3>一开始长这样。</h3>
+<p><img alt="linux_0.01" src="http://caoyijun.com/images/linux/linux_0.01.jpg" /></p>
+<p>早期所有操作系统的界面都是这幅样子。你输入一个命令进去。比如ls，回车。它就返回当前目录下所有文件。</p>
+<p><img alt="linux_0.01_commands" src="http://caoyijun.com/images/linux/linux_0.01_commands.jpg" /></p>
+<p>这些都是0.01所支持的命令。其实就是一个个小程序。</p>
+<p>whoami 这个很有意思，返回当前的用户名。【比较严谨的黑客电影里有时会出现这个命令 
+$whoami
+root
+root是Linux自带的最高权限用户】</p>
+<h3>*nix系统设计理念</h3>
+<p>这种一个个小程序只做一小部分事情，然后通过组合来完成更复杂事情的思想是C语言创始人Dennis Ritchie，在贝尔实验室经历过一次想做大而全操作系统的失败后所做的Unix建立的思想。</p>
+<p>*nix中让每个程序相互合作的方式是标准输入输出和<strong>管道</strong>。</p>
+<p>比如查看当前进程的命令是ps，但我想找出某个进程的信息，就可以通过grep[类似于搜索的命令]来搜索。像这样：
+<code>ps -ef|grep python</code></p>
+<h3>Linux快速的发展</h3>
+<p>恩，回到正题，Linus同学的Linux 0.01 虽然是抄袭Unix，也很不完善，但是它诸多碉堡的地方比如支持多线程。当时大家用的Minix【Unix的一支】一次只能运行一个程序，并且，任何程序出错，整个操作系统都会崩溃得重启。</p>
+<p>Linus本来以为这个自己做的小项目只会维持几个月。但外界热情的反馈和Linux的快速成长都让他停不下来。</p>
+<p>到了1992年，Linux已经比Minix更受欢迎。这搞得Minix作者很不爽，在网上跟Linus吵嘴架，后来Linus吵最架的能力逐年高升，经常在邮件列表里爆别人菊花。</p>
+<p>后面的发展我就不细说了。基本上是Unix在打官司、微软和苹果搞起图形，IBM由于硬件厂商体质操作系统层面由微软靠商业操作占领PC端，Mac封闭式体系占有率不及微软[主要初期不兼容当时巨头IBM的PC]，Linux成为全球最大开源合作项目，由于图形界面发展慢。不得PC端。占领了大块服务器份额。</p>
+<h3>开源的思想</h3>
+<p><code>开源通常意味着 1.使用它不用付费或受任何其他限制。 2.你可以得到它的源码，并做任意更改。重新发布。 所以你也可以找个发行版改个名字重新发布。当然这种程度的改动只会被其他人嘲笑而不会有人去使用它。</code></p>
+<p>开源也有多种不同的协议版本。Linux所使用的GPL最狠。除了可以对程序+源码想干嘛干嘛外，如果你写的程序中含有使用GPL协议的代码，你的程序也必须使用GPL协议。</p>
+<p><img alt="gpl_mit.jpg" src="http://caoyijun.com/images/linux/gpl_mit.jpg" /></p>
+<p>不必详细记住。知道GPL最严格。MIT最最随意即可</p>
+<p>正是由于开源的自由主义理念，才得以让Linux在全球最顶尖的Coders&amp;Hackers维护更新下茁壮成长，发展出庞大的家族以及走在业界最前列。比如OS X上一个版本Mavericks新加的内存压缩技术。在这四年前Linux中就出现了。还有更碉堡的CPU、内存热插拔。</p>
+<p>至今Linux的内核仍在以每天都有新代码提交的速度更新。https://github.com/torvalds/linux [注：linux内核是后来迁入github的。linux的历史可要比github早好多。事实上git就是Linux们为了方便如此大规模的协同开发而开发的。]</p>
+<blockquote>
+<p>Written with <a href="https://stackedit.io/">StackEdit</a>.</p>
+</blockquote>
 
-</div><!-- /.post-info --><p>本文旨在给不知道的Linux的人提供基本的概念。(本文为谷歌营全员学习计划Linux教学的一部分)</p>
-                    </article>
-                        <a href="http://caoyijun.com/linux-introduction.html">more ...</a>
+                <div class="clear"></div>
+                <div class="info">
+                    <a href="http://caoyijun.com/linux-introduction-2-history.html">posted at 00:56</a>
                 </div>
-            </aside><!-- /#featured -->
-            
-        
-        
 
-    
-            <aside id="featured">
-                <div class="body">
-                    <article>
-                        <h1 class="entry-title"><a href="http://caoyijun.com/Dynamic-Programming-Knapsack-Problem.html">看的懂的动态规划解释(动态规划求解0/1背包问题)</a></h1>
-<div class="post-info">
-	<ul>
-        <li class="vcard author">
-                 by&nbsp;<a class="url fn" href="http://caoyijun.com/author/cao-yi-jun.html">曹逸君</a>
-        </li>
-        <li class="published" title="2014-06-17T23:12:00">
-          on&nbsp;二 17 六月 2014
-        </li>
+            </article>
+            <div class="clear"></div>
+            <h4 class="date"> 9月 27, 2014</h4>
+            <article class="post">
+<h2 class="title">
+                    <a href="http://caoyijun.com/linux-introduction.html" rel="bookmark" title="Permanent Link to &quot;Linux 常识普及&quot;">Linux 常识普及</a>
+                </h2>
 
-	</ul>
+                <h1>Linux 常识普及</h1>
+<p>(本文为谷歌营全员学习计划Linux教学的一部分)</p>
+<h5>本文旨在给不知道的Linux的人提供基本的概念。</h5>
+<h3>Linux 是个操作系统内核</h3>
+<h4>什么是操作系统内核？</h4>
+<p>内核提供操作系统最重要和基本的功能，管理文件系统、管理内存、进程、以及硬件设备</p>
+<h4>什么是发行版</h4>
+<p>Windows的版本更新是内核和外壳[外壳这个很不专业的词别拿出去用]一起的。xp=&gt;win7=&gt;win8，感受不到内核和外壳的差别。
+而Linux活跃的发行版本就有十几个。用的内核都是Linux[版本可能不同]。
+发行版本的概念可以类比下windows用来做定价区分并无实质差别的家庭版、专业版、旗舰版。
+两大发行版：</p>
+<p><img alt="Debian" src="data:image/png;base64,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" /></p>
+<p><img alt="redhat" src="data:image/jpeg;base64,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" /></p>
+<p>基于Debian的发行版中知名度比较高的当数Ubuntu,Ubuntu由于背后canonical公司的更新维护，友好的桌面环境/图形界面，已经成为用户数最多的Linux桌面系统了。</p>
+<p><img alt="Ubuntu" src="https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcTwcrhDx5UHEF_btq2_xRFl5I6wm1JOXrc5inmLmQGDT559wHey" /></p>
+<p>基于RedHat，并移除了商业闭源软件的CentOS占据了大量服务器的份额。</p>
+<p><img width="363" height="139" src="data:image/jpeg;base64,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"></img></p>
+<h4>什么是桌面环境？</h4>
+<p>你可以理解为管理图形界面的程序，其实还包括与之相关的一些软件。</p>
+<h4>发行版之间有什么区别？</h4>
+<p>大支之间[Debian、Redhat、Slackware]一般包管理[即软件管理]不同。
+其他比如Lubuntu就把Ubuntu的一些自带软件更换了一下、桌面环境从gnome换成Lxde。gobuntu作为谷歌定制的系统。增进了安全性。去掉了一些可能产生漏洞的软件。还有之前国内炒的"国产操作系统"，也只是拿Linux内核做了个发行版。[或者直接改的别的发行版？]</p>
+<h4>为什么有这么多发行版？/什么是开源？</h4>
+<p>因为Linux从一开始就是开源的。
+开源通常意味着
+1.使用它不用付费或受任何其他限制。
+2.你可以得到它的源码，并做任意更改。重新发布。
+所以你也可以找个发行版改个名字重新发布。当然这种程度的改动只会被其他人嘲笑而不会有人去使用它。</p>
+<h3>为什么用Linux/用Linux干嘛</h3>
+<h4>适宜的编程环境&amp;熟悉服务器所用的系统</h4>
+<p>刚用Linux的时候我因为没扣扣、迅雷而痛苦。如果你是为了提升逼格[像我当初那样]，请做好用webqq/开虚拟机跑QQ迅雷/用网页云播的心里准备。
+Linux应用面很广，从手表到超级计算机到服务器以及桌面系统都有。一般多指服务器和桌面系统，因为这两个接触的人群更多一点。
+我们一般用Linux除了提升逼格外很重要的是有个更适宜的编程环境，以及熟悉服务器所用的系统。便于维护服务器[更新个nginx、写个监测脚本发警报邮件之类的]。
+一般装自己PC上推荐Ubuntu。桌面环境友好，易于上手。而服务器方面使用Ubuntu的比例正在上涨。毕竟相比CentOS，Ubuntu更新更快，软件源更新。</p>
+<blockquote>
+<p>Written with <a href="https://stackedit.io/">StackEdit</a>.</p>
+</blockquote>
 
-</div><!-- /.post-info --><p>用动态规划解0/1背包问题时看了很多文章，深感被坑。故写此篇。</p>
-                    </article>
-                        <a href="http://caoyijun.com/Dynamic-Programming-Knapsack-Problem.html">more ...</a>
+                <div class="clear"></div>
+                <div class="info">
+                    <a href="http://caoyijun.com/linux-introduction.html">posted at 00:33</a>
                 </div>
-            </aside><!-- /#featured -->
-            
-        
-        
 
-    
-            <aside id="featured">
-                <div class="body">
-                    <article>
-                        <h1 class="entry-title"><a href="http://caoyijun.com/quadcopter-build-log.html">Quadcopter build log</a></h1>
-<div class="post-info">
-	<ul>
-        <li class="vcard author">
-                 by&nbsp;<a class="url fn" href="http://caoyijun.com/author/cao-yi-jun.html">曹逸君</a>
-        </li>
-        <li class="published" title="2014-04-11T00:56:51">
-          on&nbsp;五 11 四月 2014
-        </li>
+            </article>
+            <div class="clear"></div>
+            <h4 class="date"> 6月 17, 2014</h4>
+            <article class="post">
+<h2 class="title">
+                    <a href="http://caoyijun.com/Dynamic-Programming-Knapsack-Problem.html" rel="bookmark" title="Permanent Link to &quot;看的懂的动态规划解释(动态规划求解0/1背包问题)&quot;">看的懂的动态规划解释(动态规划求解0/1背包问题)</a>
+                </h2>
 
-	</ul>
+                <p>网上看到的中文对动态规划的解说以及样例让我很火大。不说清楚总体思路就跳到细节里。给的代码也是用尽没有说明的单字母缩写。不明所以的循环。
+而维基你懂得。你要看懂一篇，先得把里面专业名词，各种数学全了解遍。</p>
+<p>以0/1背包问题为例。先说明问题。【我就不用背景故事了。钻石还是砖头都无所谓】
+有N个物品。每个物品有两个属性。它所占的空间或着说重量weight.和它的价值value。
+和一个容器[背包]，背包有最大容量Capacity。求此背包能放下的东西的最大价值。</p>
+<p>先看下暴力搜索是怎么处理的，把能放进去的物品的每种放法全部穷举一遍。找出最大值。
+而贪心则是先放性价比最高的[value/weight最大]。再放其次。依次类推。</p>
+<p>动态规划，带着如此高端大气上档次的名字。其实很简单，是做出一张表，得到最大值。
+表如下：</p>
+<div class="highlight"><pre>物品1   只有物品1能达到的最大值                  
+物品2   只有物品1和物品2能达到的最大值                  
+物品3   有物品1和物品2和物品3能达到的最大值                   
+物品4   有物品1、2、3、4能达到的最大值                 
+...                     
+物品n                     
+        背包容量为1  2   3   4   ... Capacity
+</pre></div>
 
-</div><!-- /.post-info --><p>DIY四旋翼并尝试加上自动壁障的能力。实现无人递送。</p>
-                    </article>
-                        <a href="http://caoyijun.com/quadcopter-build-log.html">more ...</a>
+
+<p>动态规划先把只有物品1在不同容量下能达到的最大价值列举出来。
+看具体例子，有以下四个物品。3h什么的是weight[或者说cost]。100€是价值(value)。</p>
+<div class="highlight"><pre>A 3h 100€
+B 5h 120€
+C 4h 80€
+D 1h 50€
+</pre></div>
+
+
+<p>那么在计算第一行，只有A物品的情况后得到的表是这样子的：</p>
+<div class="highlight"><pre>A   0   0   100 100 100 100 100 100 
+B   0   0   0   0   0   0   0   0   
+C   0   0   0   0   0   0   0   0   
+D   0   0   0   0   0   0   0   0   
+容量 1   2   3   4   5   6   7   8
+</pre></div>
+
+
+<p>当然，程序里是没有第一列的ABCD和底下一行的容量的。那是我为了标注清楚加上去的。</p>
+<p>第一行。只有物品A。在容量为1和2时，放不下，故最大价值为0。容量3到8只能放A。最大价值为100。</p>
+<div class="highlight"><pre>A   0   0   100 100 100 100 100 100 
+B   0   0   100 100 120 120 120 220 
+C   0   0   0   0   0   0   0   0
+D   0   0   0   0   0   0   0   0   
+容量 1   2   3   4   5   6   7   8
+</pre></div>
+
+
+<h3>注意，这里是动态规划的精华部分。</h3>
+<p>现在计算第二行。此时新加入物品B 5h 120€。</p>
+<p>[注意动态规划并不关心之前是几个物品，怎么放的。只要知道上一行(在没加此行新物品时)在不同容量下的最大价值即可。]。</p>
+<p>当容量是1到4时，是不可能放下物品B的。故跟没有物品B的最大价值一致。也就是跟上面一格值相同。
+当容量是<strong>5</strong>时，有几种选择。</p>
+<p>1.不放B，价值为上面一格，也就是100.</p>
+<p>2.放B，价值为: B的价值120  <strong>加上</strong> 在没有B、容量为0情况下的最大价值[也就是上一行第0列]，也就是0。得到120.</p>
+<p>当前容量5减掉B的重量(weight)5 得到的0。
+选择两种情况种大的，便是容量为5,新加B情况下的最大价值。</p>
+<p>我们再来看第二行最后一个220是如何得到的。[显然它是同时放了A和B，但重点是我们要理解动态规划是如何得到这个值的]</p>
+<p>此时计算的是容量为<strong>8</strong>,新加物品B 5h 120€。</p>
+<p>1.不放B，价值为上面一格，也就是100.</p>
+<p>2.放B，价值为:  B的价值120 <strong>加上</strong> 在没有B、容量为3情况下的最大价值[也就是上一行第3列]，也就是100。得到220.</p>
+<p>当前容量8减掉B的重量(weight)5 得到的3。
+为什么要加上没有B。容量为(当前容量减B重量)的值？因为这样子就可以得到把B放进去得到的最大值了。</p>
+<p>重复这一过程就能把整个表完成。而右下那个格子就是我们要求的情况。有n个物品。容量为Capacity所能达到的最大价值。
+贴一下中间过程。可以看着思索下。脑中模拟下。</p>
+<div class="highlight"><pre>0   0   0   0   0   0   0   0   0   
+0   0   0   100 100 100 100 100 100 
+0   0   0   0   0   0   0   0   0   
+0   0   0   0   0   0   0   0   0   
+0   0   0   0   0   0   0   0   0   
+
+0   0   0   0   0   0   0   0   0   
+0   0   0   100 100 100 100 100 100 
+0   0   0   100 100 120 120 120 220 
+0   0   0   0   0   0   0   0   0   
+0   0   0   0   0   0   0   0   0   
+
+0   0   0   0   0   0   0   0   0   
+0   0   0   100 100 100 100 100 100 
+0   0   0   100 100 120 120 120 220 
+0   0   0   100 100 120 120 180 220 
+0   0   0   0   0   0   0   0   0   
+
+0   0   0   0   0   0   0   0   0   
+0   0   0   100 100 100 100 100 100 
+0   0   0   100 100 120 120 120 220 
+0   0   0   100 100 120 120 180 220 
+0   50  50  100 150 150 170 180 230 
+
+Cars chosen to repair:
+D 1h 50€
+C 4h 80€
+A 3h 100€
+Total revenue:
+230
+</pre></div>
+
+
+<p>多出来的第一行0和第一列0是为了让下标符合题目的语义。容量1就是下标1.物品1就是下标1。</p>
+<p>关于代码见https://github.com/c19/java_exercise/tree/master/car_repair</p>
+<p>相信看懂后不看代码也能顺利写出动态规划。</p>
+<h2>误解与选法倒推</h2>
+<p>请务必牢记价值表的含义。</p>
+<p>动态规划在计算每个格子的时候，考虑的都只是那个格子的情况。这个格子的情况会不会被最终解引用。这个元素在最终解中到底会不会被加入。动态规划是不知道的。也不关心。</p>
+<p>动态规划的出表后所得到的只是能获得的<strong>最大价值</strong>。并不是选择方式。然而选择方式可以通过价值表倒推得到。</p>
+<div class="highlight"><pre>0   0   0   0   0   0   0   0   0   
+0   0   0   100 100 100 100 100 100 
+0   0   0   100 100 120 120 120 220 
+0   0   0   100 100 120 120 180 220 
+0   50  50  100 150 150 170 180 230 
+</pre></div>
+
+
+<p>先查看右下角格子。跟它上方的格子比较，如果比上方的大。意味着：背包容量为8.有D物品比没有D物品的最大价值要大。也就是背包容量为8,有D物品的情况下，D物品被放入了。</p>
+<p>然后我们把D物品(D 1h 50€)的空间/重量减掉。剩余容量7。不包含D物品。查看C行，第7列。是180,大于它上方的120.同理说明C也被选中了。</p>
+<p>把C 4h 80€的重量减掉，剩余容量3.查看B行，第3列。是100。和它上方的100(A,3)相同。故B没有被选入。</p>
+<p>这时查看(A,3)100上方的格子，(因为B未选中，我们就可以移动到不包含B的情况了。)。是0.小于100.故A被选中了。</p>
+<blockquote>
+<p>Written with <a href="https://stackedit.io/">StackEdit</a>.</p>
+</blockquote>
+
+                <div class="clear"></div>
+                <div class="info">
+                    <a href="http://caoyijun.com/Dynamic-Programming-Knapsack-Problem.html">posted at 23:12</a>
                 </div>
-            </aside><!-- /#featured -->
-            
-        
-        
 
-    
-            <aside id="featured">
-                <div class="body">
-                    <article>
-                        <h1 class="entry-title"><a href="http://caoyijun.com/Marriage-Compatibility-Checklist.html">婚前相容性检查表</a></h1>
-<div class="post-info">
-	<ul>
-        <li class="vcard author">
-                 by&nbsp;<a class="url fn" href="http://caoyijun.com/author/cao-yi-jun.html">曹逸君</a>
-        </li>
-        <li class="published" title="2014-01-30T16:04:58">
-          on&nbsp;四 30 一月 2014
-        </li>
+            </article>
+            <div class="clear"></div>
+            <h4 class="date"> 4月 11, 2014</h4>
+            <article class="post">
+<h2 class="title">
+                    <a href="http://caoyijun.com/quadcopter-build-log.html" rel="bookmark" title="Permanent Link to &quot;Quadcopter build log&quot;">Quadcopter build log</a>
+                </h2>
 
-	</ul>
+                <h1>四轴[四旋翼]飞行器搭建日志</h1>
+<h4>和小伙伴<a href="https://breeswish.org">@施闻轩</a>上了一个名为"微小飞行器制作"的课。本以为是教做四轴飞行器的，后来发现主要是做航模的,不过老师也鼓励我们做四轴。</h4>
+<h3>配置表</h3>
+<table>
+<thead>
+<tr>
+<th>物品</th>
+<th align="center">名称</th>
+<th align="center">单重</th>
+<th align="center">总重</th>
+<th align="center">个数</th>
+<th align="center">单价</th>
+<th align="center">总价</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>电机</td>
+<td align="center">郎宇 A2212 kv980</td>
+<td align="center">56</td>
+<td align="center">224</td>
+<td align="center">4</td>
+<td align="center">63</td>
+<td align="center">252</td>
+</tr>
+<tr>
+<td>电池</td>
+<td align="center">狮牌3S 5200mah30C</td>
+<td align="center">380</td>
+<td align="center">760</td>
+<td align="center">2</td>
+<td align="center">180</td>
+<td align="center">360</td>
+</tr>
+<tr>
+<td>电调</td>
+<td align="center">4X 好盈 天行者 20A</td>
+<td align="center">37</td>
+<td align="center">148</td>
+<td align="center">4</td>
+<td align="center">48</td>
+<td align="center">192</td>
+</tr>
+<tr>
+<td>机架</td>
+<td align="center">四轴飞行器450机架</td>
+<td align="center">282</td>
+<td align="center">282</td>
+<td align="center">1</td>
+<td align="center">55</td>
+<td align="center">55</td>
+</tr>
+<tr>
+<td>螺旋浆</td>
+<td align="center">4X 10*47</td>
+<td align="center">0</td>
+<td align="center">2</td>
+<td align="center">34.65</td>
+<td align="center">69.3</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td>充电器</td>
+<td align="center"></td>
+<td align="center">1</td>
+<td align="center">38</td>
+<td align="center">38</td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td>各类接线、接头</td>
+<td align="center">3.5mm香蕉头</td>
+<td align="center">5</td>
+<td align="center">1.1</td>
+<td align="center">5.5</td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td></td>
+<td align="center">XT60 并联头</td>
+<td align="center">1</td>
+<td align="center">8</td>
+<td align="center">8</td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td></td>
+<td align="center">XT60 公头线</td>
+<td align="center">1</td>
+<td align="center">5</td>
+<td align="center">5</td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td>链接线扎带充电器等</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center">1414</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center">1130.8</td>
+</tr>
+</tbody>
+</table>
+<p>以上价格都没包括邮费。淘宝链接我就不给了。也不敢说自己买到得是比较好的。</p>
+<p>第一批配件，后面其实充电器、接线都是后来买的。目前买了三批：
+<img alt="配件" src="/images/quadcopter/all_parts.jpg" /></p>
+<p>然后买的电机的香蕉头是没焊上的。要自己焊。也有些是焊好的。其实没焊上去我们可以调整线的长度啥的。我当时没多想就急着焊上去了。_(:з」∠)_。然后电调一般是没焊的。焊接的时候固定好香蕉头，把焊锡融在槽里放满。在冷却前把电线铁芯塞进去等凝固就行了。不用把电线包皮也沾住。然后用热缩管套上热风枪或者电吹风吹一吹缩好就行了。上图：
+<img alt="香蕉头焊接2" src="/images/quadcopter/香蕉头焊接2.jpg" />
+寝室没台钳，用院里发的神书《软件精英》[从没看过]凑合。然后电烙铁也是个很破的。工作室的高级的头很细。能从香蕉头母头边缘的小孔插进去。很是方便。
+<img alt="香蕉头焊接" src="/images/quadcopter/香蕉头焊接.jpg" />
+谁公头谁母头其实随意。但似乎惯例是电机公头。电调母头。
+<img alt="电调电机香蕉头" src="/images/quadcopter/电调电机香蕉头.jpg" />
+电机和电调能链接后就可以拿Arduino控制电调(ESC)试试电机了。
+<img alt="Arduino Uno" src="/images/quadcopter/Arduino%20Uno.jpg" />
+<img alt="Arduino IDE非常好用" src="/images/quadcopter/Arduino%20IDE.jpg" />
+Arduino的IDE非常友好。插上。File--Examples里面例子很全。而且十分顺利地正常运行。
+<a href="http://techvalleyprojects.blogspot.com/2012/06/arduino-control-escmotor-tutorial.html">Arduino控制ESC 实例</a>
+事实上电调(ESC)只需要PWM脉冲信号就够了。而Arduino的Servo库所封装的信号正式PWM脉冲信号。所以就可以用Servo封装好的对象就可以了。只要将电调(ESC)地线(GND)接到Arduino Digital的GND。ESC GND另一外侧的白线(我的是白色，看说明书，反正也只有三根)接一个板上带<code>~</code>符号的PWM的Digital接口接线就完成了。电调控制线剩下的中间一根据说是提供5V的电源。没试，不确定。
+<img alt="arduino esc首次转动" src="/images/quadcopter/arduino%20esc首次转动.jpg" />
+接线简单但由于对电调接受信号不了解还是折腾了好一会才让电机转了起来。一直盯着电调的说明书看。但说明书上没跟我说解锁(Arm)的概念。简单说来就是电调不是<code>motor.write(0);</code>输出0信号就是静止的。而是有个最小量程。并且不为0.因为0信号和没接线没信号是一样的。一般<code>motor.write(40);</code> 40就可以Arm了。也就是让电调知道自己能正常接收命令了。然后设置油门最小最大量程什么的比较烦。建议用串口控制Arduino发送PWM来模拟遥控器(或者你有遥控器接好也行)来对电调进行设置(参考说明书<a href="http://www.hobbywing.com/uploadfiles/sx/file/Manual/HW-01A-SW.pdf">好盈天行者20A手册</a>)
+这也是个神烦的事情。我一度想给电调刷BLHeli固件。但发觉不刷也能用就没冒这个风险了。(主要对焊工不自信，怕焊坏电调)
+喔。忘说另一个坑点。电调的信号接线是三根一起的杜邦母线。Arduino Uno上的接口。大部分全特么是母接口(孔)。而且Digital这边的GND只有一个。(我们后来买了块扩展板。扩展出多个GND VCC digital analog的接口。方便接线。)
+目前我是这么做的：
+把杜邦壳拆了。插根掰直的曲排针，你有指派针或者其他跳线之类就直接接上去就行了。
+<img alt="拆杜邦壳" src="/images/quadcopter/拆杜邦壳.jpg" />
+<img alt="掰直的曲排针" src="/images/quadcopter/掰直后.jpg" /></p>
+<p>看了很多关于卡尔曼滤波的东西。Youtube上的教程比较易懂。但也只是对其大概思路和用处有了了解。下面图形是用<a href="https://github.com/TKJElectronics/Example-Sketch-for-IMU-including-Kalman-filter">别人的库</a>画出来的。Arduino代码写入到Arduino。Processing代码需要用Processing运行。</p>
+<p><img alt="卡尔曼滤波" src="/images/quadcopter/卡尔曼波形.jpg" /></p>
+<p>买了一堆针对针、孔对孔、孔对针的杜邦线以及传感器扩展板后。总算不用蛋疼的拆开杜邦壳接线了。于是我又把电调的杜邦壳给<strong>装了回去</strong>。
+又一个坑点，Arduino板和机架上的孔位完全对不上。。我们就把保护盖装上用扎带把Arduino绑上去了。。</p>
+<p><img alt="扩展板" src="/images/quadcopter/扩展板.jpg" /></p>
+<p>上周(2014-4-18)拿到场外测试了下电机和电池。用一块电池供两个电机运转。调到能刚好带起机架以及一块电池的功率。然后石头什么的压住看能运转多久。最后测试下来是28分钟。考虑到功率调的略高。估计下来空载是能够超过30分钟。但载重1kg可能要20到30分钟了。</p>
+<p><img alt="场外动力测试" src="/images/quadcopter/场外动力测试.jpg" /></p>
+<p>这周(2014-4-25)新加入的小伙伴<a href="http://www.renren.com/467312940">@袁炜鸿</a>第一次过来一起做。本来打算把MPU 6050接上调PID的。。结果传感器扩展板接上去再接MPU的时候正负接反。一缕青烟冒出。<strong>MPU烧坏了</strong>。好在MPU也不贵。正好我们换<strong>mpu 9150</strong>。除了加速度陀螺仪还有磁感(电子罗盘)。诡异的是。。mpu 9150价格到了7、80.mpu 6050只有十块不到。磁感这么贵？</p>
+<blockquote>
+<p>Written with <a href="https://stackedit.io/">StackEdit</a>.</p>
+</blockquote>
 
-</div><!-- /.post-info --><h1>婚前相容性检查表</h1>
+                <div class="clear"></div>
+                <div class="info">
+                    <a href="http://caoyijun.com/quadcopter-build-log.html">posted at 00:56</a>
+                </div>
+
+            </article>
+            <div class="clear"></div>
+            <h4 class="date"> 1月 30, 2014</h4>
+            <article class="post">
+<h2 class="title">
+                    <a href="http://caoyijun.com/Marriage-Compatibility-Checklist.html" rel="bookmark" title="Permanent Link to &quot;婚前相容性检查表&quot;">婚前相容性检查表</a>
+                </h2>
+
+                <h1>婚前相容性检查表</h1>
 <h4>供检查双方对未来生活的期望是否相容。以免婚姻悲剧。</h4>
 
-                    </article>
-                        <a href="http://caoyijun.com/Marriage-Compatibility-Checklist.html">more ...</a>
-                </div>
-            </aside><!-- /#featured -->
-            
-        
-        
 
-    
-            <aside id="featured">
-                <div class="body">
-                    <article>
-                        <h1 class="entry-title"><a href="http://caoyijun.com/ssh-backdoor-a-simple-example.html">SSH Backdoor a simple example</a></h1>
-<div class="post-info">
-	<ul>
-        <li class="vcard author">
-                 by&nbsp;<a class="url fn" href="http://caoyijun.com/author/cao-yi-jun.html">曹逸君</a>
-        </li>
-        <li class="published" title="2013-12-30T21:49:33">
-          on&nbsp;一 30 十二月 2013
-        </li>
-
-	</ul>
-
-</div><!-- /.post-info --><h1>SSH Backdoor --- a simple example analysis</h1>
-<h4>Information security assignment by 曹逸君[1352872]</h4>
+<h2>经济</h2>
+<h4>期望的收入水平</h4>
+<p><br>
+<br>
+<br></p>
+<h4>计划的消费分配</h4>
+<p><br>
+<br>
+<br></p>
+<h4>资产与资金配比</h4>
+<p><br>
+<br>
+<br></p>
+<h2>生活</h2>
+<h4>住在哪儿</h4>
+<p><br>
+<br>
+<br></p>
+<h4>哪些人</h4>
+<p><br>
+<br>
+<br></p>
+<h4>住什么</h4>
+<p><br>
+<br>
+<br></p>
+<h2>职业</h2>
+<h4>各自职业领域</h4>
+<p><br>
+<br>
+<br></p>
+<h4>职业态度</h4>
+<p><br>
+<br>
+<br></p>
+<h2>性生活</h2>
+<h4>对婚外情态度及协定</h4>
+<p><br>
+<br>
+<br></p>
+<h4>对婚外性生活态度及协定</h4>
+<p><br>
+<br>
+<br></p>
+<h2>下一代</h2>
+<h4>什么时候生小孩</h4>
+<p><br>
+<br>
+<br></p>
+<h4>几个，男女</h4>
+<p><br>
+<br>
+<br></p>
+<h4>谁来带，怎么带</h4>
+<p><br>
+<br>
+<br></p>
+<h3>教育理念</h3>
+<h4>父母的权利与义务</h4>
+<p><br>
+<br>
+<br></p>
+<h4>孩子的权利与义务</h4>
+<p><br>
+<br>
+<br></p>
 <blockquote>
-<p>It's not a secret that there are dozens of ssh backdoor out there.<br />
-And it's fairly easy to write a simple one.<br />
-Usually they have two main functions. <br />
-<strong>Secret authentication</strong> and <strong>Password|RSA key collection</strong>   <br />
+<p>例题
+1.孩子不肯吃饭、睡觉。要玩。采取什么措施。
+2.孩子在外面玩，不肯回家。怎么办。
+3.孩子有了男\女盆友，对象你们喜欢怎么办。不喜欢怎么办。孩子不告诉你们怎么办。
+4.孩子的幼儿时期、幼儿园、小学、中学、大学上不上，怎么过。
+5.对孩子成家立业的走向做不做干预。多少干预。</p>
+</blockquote>
+<h2>老一辈</h2>
+<h3>父母养老</h3>
+<p><br>
+<br>
+<br></p>
+<h3>父母权利与义务</h3>
+<p><br>
+<br>
+<br></p>
+<blockquote>
+<p>例题
+父母想/不想带孙子/女。怎么办。</p>
+</blockquote>
+<h2>人生态度与理想</h2>
+<blockquote>
+<p>Written with <a href="https://stackedit.io/">StackEdit</a>.</p>
+</blockquote>
 
-                    </article>
-                        <a href="http://caoyijun.com/ssh-backdoor-a-simple-example.html">more ...</a>
- 
-<div class="paginator">
-    <div class="navButton">Page 1 / 2</div>
-        <div class="navButton"><a href="http://caoyijun.com/index2.html" >Next</a></div>
-</div>
+                <div class="clear"></div>
+                <div class="info">
+                    <a href="http://caoyijun.com/Marriage-Compatibility-Checklist.html">posted at 16:04</a>
                 </div>
-            </aside><!-- /#featured -->
-            
-        
-        <section id="extras" >
-       
-        
-        </section><!-- /#extras -->
-	
-        <footer id="contentinfo" >
-                <address id="about" class="vcard ">
-                Proudly powered by <a href="http://getpelican.com/" target="_blank">Pelican</a>, which takes
-                great advantage of <a href="http://python.org" target="_blank">Python</a>. &copy; <a class="url fn" href="http://launchyard.com">LaunchYard</a>
-		
-                </address><!-- /#about -->
-		
 
-                
-        </footer><!-- /#contentinfo -->
+            </article>
+            <div class="clear"></div>
+                <div class="clear"></div>
+                <div class="pages">
+                    <a href="http://caoyijun.com/index2.html" class="next_page">Next&nbsp;&rarr;</a>
+                    <span>Page 1 of 2</span>
+                </div>
 
-    <script>
-      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-      ga('create', 'UA-33228021-1', 'caoyijun.com');
-      ga('send', 'pageview');
-
+            <div class="clear"></div>
+            <footer>
+                <p>
+                <a href="https://github.com/jody-frankowski/blue-penguin">Blue Penguin</a> Theme
+                &middot;
+                Powered by <a href="http://getpelican.com">Pelican</a>
+            </footer>
+        </div>
+        <div class="clear"></div>
+    </div>
+    <script type="text/javascript">
+    var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+    document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
     </script>
-<script type="text/javascript">
-    var disqus_shortname = 'c19';
-    (function () {
-        var s = document.createElement('script'); s.async = true;
-        s.type = 'text/javascript';
-        s.src = 'http://' + disqus_shortname + '.disqus.com/count.js';
-        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
-    }());
-</script>
+    <script type="text/javascript">
+    try {
+        var pageTracker = _gat._getTracker("UA-33228021-1");
+    pageTracker._trackPageview();
+    } catch(err) {}</script>
 </body>
 </html>

@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+      <meta charset="utf-8" />
+    <title>曹逸君 Blog &middot; 安卓九宫格的锁屏图案的最长长度</title>
+    <link rel="shortcut icon" href="http://caoyijun.com/favicon.ico" />
+    <link rel="stylesheet" href="http://caoyijun.com/theme/css/screen.css" type="text/css" />
+    <link rel="stylesheet" href="http://caoyijun.com/theme/css/pygments.css" type="text/css" />
+
+
+
+</head>
+<body>
+    <header>
+        <nav>
+            <li><a href="http://caoyijun.com">Home</a></li>
+            <li><a href="http://caoyijun.com/archives.html">Archives</a></li>
+        </nav>
+        <div class="header_box">
+            <h1><a href="http://caoyijun.com">曹逸君 Blog</a></h1>
+        </div>
+    </header>
+    <div id="wrapper">
+        <div id="content">
+            <h4 class="date">12月 02, 2014</h4>
+            <article class="post">
+<h2 class="title">
+                    <a href="http://caoyijun.com/android-lock-graph-longest-path.html" rel="bookmark" title="Permanent Link to &quot;安卓九宫格的锁屏图案的最长长度&quot;">安卓九宫格的锁屏图案的最长长度</a>
+                </h2>
+
+                <p>题干很简单.求安卓九宫格的锁屏图案的最长长度.</p>
+<p>这里重新描述下九宫格锁屏图案规则.</p>
+<ol>
+<li>九宫格,3x3的方形点阵</li>
+<li>所有点只能经过一次</li>
+<li>点与点间连线是直线</li>
+<li>不能跨过未经过的点去链接,否则视为先链接中间点再链接对面点.</li>
+</ol>
+<p>有些锁屏要求至少链接4个点之类的.与本题无关.忽略.</p>
+<p>以有向图建立模型的描述为:</p>
+<ol>
+<li>3x3/9个节点.Id从0到8.</li>
+<li>起始点入度为0出度为1.截至点入度为1出度为0.</li>
+<li>除起始和截至点外,节点入度和出度均为1.[由于本题要链接所有9个节点]</li>
+<li>每个节点到其他所有节点的距离都固定且给出.[先忽略规则3.简化起见]</li>
+</ol>
+<h2>生成邻接矩阵</h2>
+<div class="highlight"><pre>[   [0.000, 1.000, 2.000, 1.000, 1.414, 2.236, 2.000, 2.236, 2.828],
+    [1.000, 0.000, 1.000, 1.414, 1.000, 1.414, 2.236, 2.000, 2.236],
+    [2.000, 1.000, 0.000, 2.236, 1.414, 1.000, 2.828, 2.236, 2.000],
+    [1.000, 1.414, 2.236, 0.000, 1.000, 2.000, 1.000, 1.414, 2.236],
+    [1.414, 1.000, 1.414, 1.000, 0.000, 1.000, 1.414, 1.000, 1.414],
+    [2.236, 1.414, 1.000, 2.000, 1.000, 0.000, 2.236, 1.414, 1.000],
+    [2.000, 2.236, 2.828, 1.000, 1.414, 2.236, 0.000, 1.000, 2.000],
+    [2.236, 2.000, 2.236, 1.414, 1.000, 1.414, 1.000, 0.000, 1.000],
+    [2.828, 2.236, 2.000, 2.236, 1.414, 1.000, 2.000, 1.000, 0.000]]
+</pre></div>
+
+
+<p>9x9的图看起来吃力.我们看张4x4的.</p>
+<div class="highlight"><pre>[   [0.000, 1.000, 1.000, 1.414],
+    [1.000, 0.000, 1.414, 1.000],
+    [1.000, 1.414, 0.000, 1.000],
+    [1.414, 1.000, 1.000, 0.000]]
+</pre></div>
+
+
+<p>graph[i][j] 代表的就是节点i到节点j的距离.</p>
+<p>所以第一行就是节点0到各个节点的距离.由于我们在求最长距离.故将自己到自己的距离设为0.以免选到自己到自己的路径.</p>
+<p>在不考虑规则3的情况下.这是个类似于N皇后的问题.</p>
+<p>注意这里贪心算法并不能保证给出最优解.[虽然在4宫格的情况下可以.]</p>
+<p>使用回朔算法.</p>
+<h2>求解大致过程:</h2>
+<blockquote>
+<ol>
+<li>给定起始节点0.</li>
+<li>将第0列设为0[起始节点不能到达.]</li>
+<li>分别考虑第0行所有非0值.[复制当前邻接矩阵]
+        3.1 选取节点1作为下一个节点. graph[0][1]非零,将graph[0][1]加到长度记录中.
+        3.2 将第0行以及第1列设为0.因为节点0不能再出发.节点1不能再到达.
+        3.3 重复此过程直至邻接矩阵全部为0[所有节点都已访问.]</li>
+<li>保存当前最优解.</li>
+</ol>
+</blockquote>
+<h2>不考虑规则3的解</h2>
+<p>我闷直接看得到的解吧.
+从1出发:</p>
+<p><img alt="solution1_unrestricted.png" src="http://caoyijun.com/images/android_lock/solution1_unrestricted.png" /></p>
+<p>这里直接穿过4从6到达2. 4是最后访问的.</p>
+<p>如果没有规则3.我们还可以把所有距离取负值[或者修改松弛过程使得松弛后距离变长]的Dijkstra算法来更快的求解.</p>
+<p>由于规则3的存在.使用更通用的回朔算法.</p>
+<p>下面增加规则3.
+使用一个额外的access_graph来控制是否可以访问.</p>
+<div class="highlight"><pre>access_graph = [[1 for _ in range(9)] for _ in range(9)]
+breaks =    {   1: [(0, 2)],
+                3: [(0, 6)],
+                5: [(2, 6)],
+                7: [(6, 8)],
+                4: [(0, 8), (1, 7), (2, 6), (3, 5)]
+                }
+for i,j in flaten(breaks.values()):
+    access_graph[i][j] = 0
+    access_graph[j][i] = 0
+</pre></div>
+
+
+<p>并且当1 3 5 7 4这些节点被链接后将根据breaks使被阻拦的点可以访问.</p>
+<h2>考虑规则3后的最终解</h2>
+<p><img alt="best_solution.png" src="http://caoyijun.com/images/android_lock/best_solution.png" /></p>
+<p>这就是最终的解.
+长度为17.779271744364845 </p>
+<p>$$\sqrt { 2 } +\sqrt { 8 } +\sqrt { 5 } +2+\sqrt { 5 } +\sqrt { 8 } +\sqrt { 5 } +2$$</p>
+<p><code>[(4, 8), (8, 0), (0, 7), (7, 1), (1, 6), (6, 2), (2, 3), (3, 5)]</code>
+从4开始.到5结束.</p>
+<h3>后话</h3>
+<p>相关问题: 
+<a href="http://www.guokr.com/article/49408/">安卓九宫格密码有多少种组合？--知乎</a></p>
+<p><a href="http://www.guokr.com/article/49408/">智能手机的密码总共有多少种--果壳--Matrix67</a></p>
+<p>关于动态图最长/短路径.请搜索<code>Dynamic Algorithms Maintaining Shortest Paths</code> </p>
+<p>刚刚看到个小盆友说自己没流量于是只好玩锁屏界面.发现说连线不重复交点最多只有7个..真是naive.</p>
+<p><img alt="most_intersects.png" src="http://caoyijun.com/images/android_lock/most_intersects.png" /></p>
+<p>随手画一个就有12个交点.[我感觉应该是交点最多的了.没验证]</p>
+<blockquote>
+<p>Written with <a href="https://stackedit.io/">StackEdit</a>.</p>
+</blockquote>
+
+                <div class="clear"></div>
+                <div class="info">
+                    <a href="http://caoyijun.com/android-lock-graph-longest-path.html">posted at 00:14</a>
+                </div>
+
+            </article>
+            <div class="clear"></div>
+            <div class="clear"></div>
+            <footer>
+                <p>
+                <a href="https://github.com/jody-frankowski/blue-penguin">Blue Penguin</a> Theme
+                &middot;
+                Powered by <a href="http://getpelican.com">Pelican</a>
+            </footer>
+        </div>
+        <div class="clear"></div>
+    </div>
+    <script type="text/javascript">
+    var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+    document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+    </script>
+    <script type="text/javascript">
+    try {
+        var pageTracker = _gat._getTracker("UA-33228021-1");
+    pageTracker._trackPageview();
+    } catch(err) {}</script>
+</body>
+</html>
