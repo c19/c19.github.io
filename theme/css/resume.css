@@ -57,7 +57,7 @@ h1 a:hover {
 
 /* Avatar */
 .AvatarPad {
-	position: absolute;
+	position: fixed;
 	top: 16%;
 	left: 6%;
 }
