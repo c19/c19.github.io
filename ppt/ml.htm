@@ -1,0 +1,313 @@
+<!--
+    Powered By nodePPT - This is probably the best web presentation tool so far!
+    version: 0.9.8-3
+    site: https://github.com/ksky521/nodePPT
+-->
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>机器学习与神经网络 - By 曹逸君</title>
+    <link rel="stylesheet" media="all" href="./css/nodeppt2.0.css">
+    <link rel="stylesheet" media="only screen and (max-device-width: 480px)" href="./css/phone.css">
+    <link rel="stylesheet" media="print" href="./css/pdf.css">
+    <link rel="stylesheet" href="./js/highlight/styles/monokai_sublime.css">
+    <link rel="stylesheet" href="./css/font-awesome.css">
+</head>
+<body>
+<div class="slides">
+    <slides id="container">
+        <slide class="slide"><section class="slide-wrapper"><article class="flexbox vcenter">
+<h1>机器学习与神经网络</h1>
+<h2>分享者：曹逸君</h2>
+
+</article></section></slide>
+<slide class="slide"><section class="slide-wrapper"><article class="flexbox vcenter">
+<h1>从贝叶斯说起</h1>
+<h2>begin with bayes</h2>
+<h2>$$P(A|B)=\frac { P(A\cap B) }{ P(B) } =\frac { P(B|A)\cdot P(A) }{ P(B) }$$</h2>
+
+</article></section></slide>
+<slide class="slide"><section class="slide-wrapper"><article class="flexbox vcenter">
+<h1>简单得令人尴尬</h1>
+<h2>Embarrassedly Simple</h2>
+
+</article></section></slide>
+<slide class="slide"><section class="slide-wrapper"><article class="flexbox vcenter">
+<h1>基本上就是数数</h1>
+<h2>Basically you just Counts</h2>
+
+</article></section></slide>
+<slide class="slide"><section class="slide-wrapper"><article class="flexbox vcenter">
+<h1>垃圾邮件过滤</h1>
+<h2>Spam Filter</h2>
+
+</article></section></slide>
+<slide class="slide"><section class="slide-wrapper"><article class="flexbox vcenter">
+<h1>朴素贝叶斯</h1>
+<h2>Naive Bayes</h2>
+
+</article></section></slide>
+<slide class="slide"><section class="slide-wrapper"><article class="flexbox vcenter">
+<h1>马尔科夫链</h1>
+<h2>Markov Chain</h2>
+
+</article></section></slide>
+<slide class="slide"><section class="slide-wrapper"><article class="flexbox vcenter">
+<h1>自然语言生成</h1>
+<h2>Natural Language Generator</h2>
+
+</article></section></slide>
+<slide class="slide"><section class="slide-wrapper"><article class="flexbox vcenter">
+<h1>贝叶斯的局限</h1>
+<h2>Limits of Bayes</h2>
+
+</article></section></slide>
+<slide class="slide"><section class="slide-wrapper"><article class="flexbox vcenter">
+<h1>无法捕捉输入间关系</h1>
+<h2>Unable capture relations between input</h2>
+
+</article></section></slide>
+<slide class="slide"><section class="slide-wrapper"><article class="flexbox vcenter">
+<h1>需要大量的数据</h1>
+<h2>Quadratic increase with feature dimensions</h2>
+
+</article></section></slide>
+<slide class="slide"><section class="slide-wrapper"><article class="flexbox vcenter">
+<h1>神经网络</h1>
+<h2>Neural Network</h2>
+
+</article></section></slide>
+<slide class="slide"><section class="slide-wrapper"><article>
+<p><img src="./img/one.png" alt=""></p>
+
+</article></section></slide>
+<slide class="slide"><section class="slide-wrapper"><article>
+<p><img src="./img/neural.png" alt=""></p>
+
+</article></section></slide>
+<slide class="slide"><section class="slide-wrapper"><article>
+<p>$$
+    \begin{pmatrix}
+        x_0 &amp; x_1 &amp; x_2 &amp; x_3 &amp; \cdots &amp; x_n \\
+    \end{pmatrix}
+    \cdot
+    \begin{pmatrix}
+        w_{0,1} &amp; w_{0,2} \\
+        w_{1,1} &amp; w_{1,2} \\
+        w_{2,1} &amp; w_{2,2} \\
+        w_{3,1} &amp; w_{3,2} \\
+        \vdots &amp; \vdots \\
+        w_{n,1} &amp; w_{n,2} \\
+    \end{pmatrix}
+    =
+    \begin{pmatrix}
+        z_1 &amp; z_2 \\
+    \end{pmatrix}
+$$</p>
+
+</article></section></slide>
+<slide class="slide"><section class="slide-wrapper"><article>
+<p>$$
+    \begin{pmatrix}
+        a_1 &amp; a_2
+    \end{pmatrix}
+        =
+    \begin{pmatrix}
+        sigmoid(z_1) &amp; sigmoid(z_2)
+    \end{pmatrix}
+$$</p>
+<p>$$
+    sigmoid(t) = \frac{1}{1+e^{-t}}
+$$
+<img src="./img/sigmoid.png" alt=""></p>
+
+</article></section></slide>
+<slide class="slide"><section class="slide-wrapper"><article class="flexbox vcenter">
+<h1>异或函数</h1>
+<h2>XOR</h2>
+<p>$$ \quad X \quad \quad Y \\ \begin{eqnarray} 0\quad 0 &amp; = &amp; 0 \\ 0\quad 1 &amp; = &amp; 1 \\ 1\quad 0 &amp; = &amp; 1 \\ 1\quad 1 &amp; = &amp; 0 \end{eqnarray} $$</p>
+
+</article></section></slide>
+<slide class="slide"><section class="slide-wrapper"><article>
+<p><img src="./img/xor.png" alt=""></p>
+<p><img src="./img/xor2.jpg" alt=""></p>
+
+</article></section></slide>
+<slide class="slide"><section class="slide-wrapper"><article class="flexbox vcenter">
+<h1>代价函数</h1>
+<h2>Cost Function</h2>
+<p>$$
+    J(\Theta )=\frac { 1 }{ m } \left[ \sum _{ i=1 }^{ m }{ \sum _{ k=1 }^{ K }{ { y }_{ k }^{ (i) }log({ h }_{ \Theta  }({ x }^{ (i) }))_{ k }+(1-{ y }^{ (i) })(1-(h_{ \Theta  }(x^{ (i) }))_{ k }) }  }  \right] \\ +\frac { \lambda  }{ 2m } \sum _{ l=1 }^{ L-1 }{ \sum _{ i=1 }^{ s_{ l } }{ \sum _{ j=1 }^{ s_{ l }+1 }{ (\Theta _{ ij }^{ (l) })^{ 2 } }  }  } 
+$$</p>
+
+</article></section></slide>
+<slide class="slide"><section class="slide-wrapper"><article class="flexbox vcenter">
+<h1>Gradient Descent</h1>
+<h2>梯度下降</h2>
+<p><img src="./img/gradientdescent.png" alt=""></p>
+
+</article></section></slide>
+<slide class="slide"><section class="slide-wrapper"><article class="flexbox vcenter">
+<h1>BackPropagation</h1>
+<h2>反向传播算法</h2>
+<p><img src="./img/bp.png" alt=""></p>
+
+</article></section></slide>
+<slide class="slide"><section class="slide-wrapper"><article>
+<p><img src="./img/Deep-Learning-Big.png" alt=""></p>
+
+</article></section></slide>
+<slide class="slide"><section class="slide-wrapper"><article>
+<p><img src="./img/deep.png" alt=""></p>
+
+</article></section></slide>
+<slide class="slide"><section class="slide-wrapper"><article>
+<p><img src="./img/cat.png" alt=""></p>
+
+</article></section></slide>
+<slide class="slide"><section class="slide-wrapper"><article class="flexbox vcenter">
+<h1>十亿链接</h1>
+<h2>1 billion connections</h2>
+
+</article></section></slide>
+<slide class="slide"><section class="slide-wrapper"><article class="flexbox vcenter">
+<h1>一千万200x200像素图片</h1>
+<h2>10 million 200x200 pixel images</h2>
+
+</article></section></slide>
+<slide class="slide"><section class="slide-wrapper"><article class="flexbox vcenter">
+<h1>一千台机器(一万六千颗核心)</h1>
+<h2>1,000 machines (16,000 cores)</h2>
+
+</article></section></slide>
+<slide class="slide"><section class="slide-wrapper"><article class="flexbox vcenter">
+<h1>跑了三天</h1>
+<h2>three days</h2>
+
+</article></section></slide>
+<slide class="slide"><section class="slide-wrapper"><article class="flexbox vcenter">
+<h1>维度的祝福与诅咒</h1>
+<h2>The Bless and Curse of Dimensionality</h2>
+
+</article></section></slide>
+<slide class="slide"><section class="slide-wrapper"><article class="flexbox vcenter">
+<h1>主成分分析</h1>
+<h2>Principal Component Analysis (PCA)</h2>
+<p><img src="./img/pca.png" alt=""></p>
+
+</article></section></slide>
+<slide class="slide"><section class="slide-wrapper"><article class="flexbox vcenter">
+<h1>自动编码器</h1>
+<h2>AutoEncoder</h2>
+<p><img src="./img/neural.png" alt=""></p>
+
+</article></section></slide>
+<slide class="slide"><section class="slide-wrapper"><article class="flexbox vcenter">
+<h1>聚类算法</h1>
+<h2>Clustering Algorithms</h2>
+<ul>
+<li>K值平均   K-means</li>
+<li>邻近算法  K nearest neighbours</li>
+<li>谱聚类    Spectral Clustering</li>
+<li>密度峰    Density Peak</li>
+</ul>
+
+</article></section></slide>
+<slide class="slide"><section class="slide-wrapper"><article class="flexbox vcenter">
+<h1>一些资料</h1>
+<h2>Futher Reading</h2>
+<p><a href="https://www.coursera.org/course/ml" target="_blank">Coursera 机器学习</a>
+<a href="http://deeplearning.net/tutorial/" target="_blank">深度学习社区</a>
+<a href="http://ufldl.stanford.edu/wiki/index.php/UFLDL_Tutorial" target="_blank">非监督学习与深度学习</a>
+<a href="colah.github.io" target="_blank">colah.github.io</a></p>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        extensions: ["tex2jax.js"],
+        jax: ["input/TeX", "output/HTML-CSS"],
+        tex2jax: {
+            inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+            displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+            processEscapes: true
+        },
+        TeX: {Macros:
+        {subscript:['_{#1}',1],superscript:['^{#1}',1]}
+    },
+        "HTML-CSS": { availableFonts: ["TeX"] }
+    });
+</script><script type="text/javascript"
+        src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+</article></section></slide>
+        <slide class="slide thank-you-slide segue nobackground">
+            <article class="flexbox vleft auto-fadein">
+                <h2>Q &amp; A</h2>
+                <h3>&lt;Thank You!&gt;</h3>
+            </article>
+        </slide>
+        <slide class="slide logoslide dark nobackground">
+            <article class="flexbox vcenter">
+              <h2 style="color: white;">Powered By nodePPT v0.9.8-3</h2>
+            </article>
+          </slide>
+        <div class="slideTip" id="tip"></div>
+    </slides>
+</div>
+<canvas id="drawBoard" class="draw-board" width="900" height="700"></canvas>
+<div class="progress"><span id="progress"></span></div>
+<div id="_buttons">
+    <div class="_btn-box" id="_btn-box" style="display:none;">
+        <button class="fa fa-arrow-circle-left" id="_btn-prev"></button>
+        <button class="fa fa-arrow-circle-right" id="_btn-next"></button>
+        <button class="fa fa-paint-brush" id="_btn-brush"></button>
+        <button class="fa fa-compress" id="_btn-overview" data-toggle="fa fa-expand"></button>
+    </div>
+    <button class="fa fa-bars" id="_btn-bar"  data-toggle="fa fa-close"></button>
+</div>
+<script src="./js/mixjs/lib/mix.0.3.0.min.js"></script>
+<script>
+var base = location.protocol + '//' + location.host;
+
+var path = location.pathname.split('/').filter(function(v){
+    return !!v;
+});
+path.pop();
+path = path.join('/');
+MixJS.config({
+    baseURL: [ base, path, 'js'].join('/')+'/'
+});
+
+</script>
+<script src="./js/mixjs/lib/event/broadcast.js"></script>
+<script src="./js/nodeppt.js"></script>
+<script>
+Slide.init({
+    containerID: 'container',
+    drawBoardID: 'drawBoard',
+    slideClass: '.slide',
+    buildClass: '.build',
+    progressID: 'progress',
+    transition: 'cards',
+    width: 1100,
+    dir: './',
+    
+    //打开下面的注释就开启postMessage方式
+    //访问网址127.0.0.1:8080/ppt/demo#client
+    control:{
+        type: 'postMessage',
+        args:{
+            isControl:  false
+        }
+    },
+    
+    tipID: 'tip'
+});
+MixJS.loadJS('highlight/hljs-0.8.js',function(){
+    hljs.tabReplace = '  ';
+    hljs.initHighlightingOnLoad();
+});
+</script>
+<script src="./js/demo.js"></script>
+<link rel="stylesheet" href="./css/demo.css">
+</body>
+</html>
