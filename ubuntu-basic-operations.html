@@ -3,9 +3,9 @@
 <head>
       <meta charset="utf-8" />
     <title>曹逸君 Blog &middot; Ubuntu 基本操作</title>
-    <link rel="shortcut icon" href="http://caoyijun.com/favicon.ico" />
-    <link rel="stylesheet" href="http://caoyijun.com/theme/css/screen.css" type="text/css" />
-    <link rel="stylesheet" href="http://caoyijun.com/theme/css/pygments.css" type="text/css" />
+    <link rel="shortcut icon" href="//favicon.ico" />
+    <link rel="stylesheet" href="//theme/css/screen.css" type="text/css" />
+    <link rel="stylesheet" href="//theme/css/pygments.css" type="text/css" />
 
 
 
@@ -13,11 +13,11 @@
 <body>
     <header>
         <nav>
-            <li><a href="http://caoyijun.com">Home</a></li>
-            <li><a href="http://caoyijun.com/archives.html">Archives</a></li>
+            <li><a href="/">Home</a></li>
+            <li><a href="//archives.html">Archives</a></li>
         </nav>
         <div class="header_box">
-            <h1><a href="http://caoyijun.com">曹逸君 Blog</a></h1>
+            <h1><a href="/">曹逸君 Blog</a></h1>
         </div>
     </header>
     <div id="wrapper">
@@ -25,7 +25,7 @@
             <h4 class="date">10月 02, 2014</h4>
             <article class="post">
 <h2 class="title">
-                    <a href="http://caoyijun.com/ubuntu-basic-operations.html" rel="bookmark" title="Permanent Link to &quot;Ubuntu 基本操作&quot;">Ubuntu 基本操作</a>
+                    <a href="//ubuntu-basic-operations.html" rel="bookmark" title="Permanent Link to &quot;Ubuntu 基本操作&quot;">Ubuntu 基本操作</a>
                 </h2>
 
                 <h1><strong>Ubuntu</strong> 基本操作</h1>
@@ -37,21 +37,21 @@
 <h2>打开<strong>bash</strong></h2>
 <p>Ubuntu下通过快捷键<code>ctrl+alt+t</code>打开终端。
 或者通过Ubuntu左上角的类似于Windows的开始按钮点开Dashboard.输入terminal。其实只要输入ter就能搜索到"终端"</p>
-<p><img alt="dash_terminal" src="http://caoyijun.com/images/linux/dash_terminal.jpg" /></p>
+<p><img alt="dash_terminal" src="//images/linux/dash_terminal.jpg" /></p>
 <p>打开后可以看到<code>用户名@主机名:当前目录$</code>的样子。如下，我的用户名是c19。主机名是Acer。当前目录是<code>~</code> 也就是<code>/home/c19</code>的缩写。</p>
-<p><img alt="bash" src="http://caoyijun.com/images/linux/bash.jpg" /></p>
+<p><img alt="bash" src="//images/linux/bash.jpg" /></p>
 <h2>目录结构</h2>
 <p>类Unix系统中不存在windows的盘符概念。分区是通过/media/用户名/分区名 来访问的。Ubuntu中可以在文件管理器左侧看到。</p>
-<p><img alt="file_explorer" src="http://caoyijun.com/images/linux/file_explorer.jpg" /></p>
+<p><img alt="file_explorer" src="//images/linux/file_explorer.jpg" /></p>
 <p>类Unix系统中所有目录起始于根目录 用<code>/</code>表示</p>
-<p><img alt="direcotries_structure" src="http://caoyijun.com/images/linux/direcotries_structure.jpg" /></p>
+<p><img alt="direcotries_structure" src="//images/linux/direcotries_structure.jpg" /></p>
 <p>在文件管理其中按ctrl+l显示当前目录的绝对路径(可以理解为完整的路径)。
 也就是<code>/media/c19/B208769308765677/</code></p>
-<p><img alt="absolute path" src="http://caoyijun.com/images/linux/ctrl_l.jpg" /></p>
+<p><img alt="absolute path" src="//images/linux/ctrl_l.jpg" /></p>
 <p>可以看到这是我windows的C盘。</p>
 <h2>目录基本命令</h2>
 <p>现在再在终端下访问这个windows的分区。打开终端[快捷键<code>Ctrl+Alt+T</code>]。</p>
-<p><img alt="bash_directory_operations" src="http://caoyijun.com/images/linux/bash_directory_operations.gif" /></p>
+<p><img alt="bash_directory_operations" src="//images/linux/bash_directory_operations.gif" /></p>
 <p><strong><code>pwd</code></strong> 显示当前目录的绝对路径 present working directory
 <strong><code>ls</code></strong> 列出当前目录下的文件和目录 [试试<code>ll</code>和<code>la</code> 以及 <code>ls -a</code>]
 <strong><code>cd 目录名</code></strong> 切换目录  change directory
@@ -67,7 +67,7 @@ Linux下管理软件是需要root权限的。在终端输入<code>sudo -s</code>
 <p><code>apt-get remove gcc g++</code>  删除gcc和g++</p>
 <p>这里的<code>apt-get</code>  <code>install</code> <code>remove</code> <code>gcc</code>等都是可以通过tab补全的。
 Trick: <em><code>sudo !!</code></em>  双感叹号是上次执行的命令。</p>
-<p><img alt="apt_install_pip" src="http://caoyijun.com/images/linux/apt_install_pip.gif" /></p>
+<p><img alt="apt_install_pip" src="//images/linux/apt_install_pip.gif" /></p>
 <p>一般的软件都可以在终端中直接运行，就像命令一样。并且一般的命令行程序都会有<code>-V</code>或<code>--version</code>来得到版本信息。以及<code>-h</code>或<code>--help</code>获得帮助的参数。这是个约定俗成的习惯。查看更详细的手册使用<code>man 命令</code>。但其实第一反映是会去google搜索。</p>
 <blockquote>
 <p>Written with <a href="https://stackedit.io/">StackEdit</a>.</p>
@@ -75,7 +75,7 @@ Trick: <em><code>sudo !!</code></em>  双感叹号是上次执行的命令。</p
 
                 <div class="clear"></div>
                 <div class="info">
-                    <a href="http://caoyijun.com/ubuntu-basic-operations.html">posted at 00:51</a>
+                    <a href="//ubuntu-basic-operations.html">posted at 00:51</a>
                 </div>
 
             </article>

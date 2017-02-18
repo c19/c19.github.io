@@ -3,9 +3,9 @@
 <head>
       <meta charset="utf-8" />
     <title>曹逸君 Blog &middot; 安卓九宫格的锁屏图案的最长长度</title>
-    <link rel="shortcut icon" href="http://caoyijun.com/favicon.ico" />
-    <link rel="stylesheet" href="http://caoyijun.com/theme/css/screen.css" type="text/css" />
-    <link rel="stylesheet" href="http://caoyijun.com/theme/css/pygments.css" type="text/css" />
+    <link rel="shortcut icon" href="//favicon.ico" />
+    <link rel="stylesheet" href="//theme/css/screen.css" type="text/css" />
+    <link rel="stylesheet" href="//theme/css/pygments.css" type="text/css" />
 
 
 
@@ -13,11 +13,11 @@
 <body>
     <header>
         <nav>
-            <li><a href="http://caoyijun.com">Home</a></li>
-            <li><a href="http://caoyijun.com/archives.html">Archives</a></li>
+            <li><a href="/">Home</a></li>
+            <li><a href="//archives.html">Archives</a></li>
         </nav>
         <div class="header_box">
-            <h1><a href="http://caoyijun.com">曹逸君 Blog</a></h1>
+            <h1><a href="/">曹逸君 Blog</a></h1>
         </div>
     </header>
     <div id="wrapper">
@@ -25,7 +25,7 @@
             <h4 class="date">12月 02, 2014</h4>
             <article class="post">
 <h2 class="title">
-                    <a href="http://caoyijun.com/android-lock-graph-longest-path.html" rel="bookmark" title="Permanent Link to &quot;安卓九宫格的锁屏图案的最长长度&quot;">安卓九宫格的锁屏图案的最长长度</a>
+                    <a href="//android-lock-graph-longest-path.html" rel="bookmark" title="Permanent Link to &quot;安卓九宫格的锁屏图案的最长长度&quot;">安卓九宫格的锁屏图案的最长长度</a>
                 </h2>
 
                 <p>题干很简单.求安卓九宫格的锁屏图案的最长长度.</p>
@@ -85,7 +85,7 @@
 <h2>不考虑规则3的解</h2>
 <p>我闷直接看得到的解吧.
 从1出发:</p>
-<p><img alt="solution1_unrestricted.png" src="http://caoyijun.com/images/android_lock/solution1_unrestricted.png" /></p>
+<p><img alt="solution1_unrestricted.png" src="//images/android_lock/solution1_unrestricted.png" /></p>
 <p>这里直接穿过4从6到达2. 4是最后访问的.</p>
 <p>如果没有规则3.我们还可以把所有距离取负值[或者修改松弛过程使得松弛后距离变长]的Dijkstra算法来更快的求解.</p>
 <p>由于规则3的存在.使用更通用的回朔算法.</p>
@@ -106,7 +106,7 @@
 
 <p>并且当1 3 5 7 4这些节点被链接后将根据breaks使被阻拦的点可以访问.</p>
 <h2>考虑规则3后的最终解</h2>
-<p><img alt="best_solution.png" src="http://caoyijun.com/images/android_lock/best_solution.png" /></p>
+<p><img alt="best_solution.png" src="//images/android_lock/best_solution.png" /></p>
 <p>这就是最终的解.
 长度为17.779271744364845 </p>
 <p>$$\sqrt { 2 } +\sqrt { 8 } +\sqrt { 5 } +2+\sqrt { 5 } +\sqrt { 8 } +\sqrt { 5 } +2$$</p>
@@ -118,7 +118,7 @@
 <p><a href="http://www.guokr.com/article/49408/">智能手机的密码总共有多少种--果壳--Matrix67</a></p>
 <p>关于动态图最长/短路径.请搜索<code>Dynamic Algorithms Maintaining Shortest Paths</code> </p>
 <p>刚刚看到个小盆友说自己没流量于是只好玩锁屏界面.发现说连线不重复交点最多只有7个..真是naive.</p>
-<p><img alt="most_intersects.png" src="http://caoyijun.com/images/android_lock/most_intersects.png" /></p>
+<p><img alt="most_intersects.png" src="//images/android_lock/most_intersects.png" /></p>
 <p>随手画一个就有12个交点.[我感觉应该是交点最多的了.没验证]</p>
 <blockquote>
 <p>Written with <a href="https://stackedit.io/">StackEdit</a>.</p>
@@ -126,7 +126,7 @@
 
                 <div class="clear"></div>
                 <div class="info">
-                    <a href="http://caoyijun.com/android-lock-graph-longest-path.html">posted at 00:14</a>
+                    <a href="//android-lock-graph-longest-path.html">posted at 00:14</a>
                 </div>
 
             </article>

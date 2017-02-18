@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>曹逸君 Blog</title><link href="http://caoyijun.com/" rel="alternate"></link><link href="http://caoyijun.com/feeds/cao-yi-jun.atom.xml" rel="self"></link><id>http://caoyijun.com/</id><updated>2014-12-28T11:49:33+08:00</updated><entry><title>机器学习与神经网络</title><link href="http://caoyijun.com/machine-learning-and-neural-network.html" rel="alternate"></link><updated>2014-12-28T11:49:33+08:00</updated><author><name>曹逸君</name></author><id>tag:caoyijun.com,2014-12-28:machine-learning-and-neural-network.html</id><summary type="html">&lt;p&gt;此为在公司的技术分享.
-&lt;a href="./ppt/ml.htm"&gt;PPT&lt;/a&gt;&lt;/p&gt;</summary></entry><entry><title>安卓九宫格的锁屏图案的最长长度</title><link href="http://caoyijun.com/android-lock-graph-longest-path.html" rel="alternate"></link><updated>2014-12-02T00:14:21+08:00</updated><author><name>曹逸君</name></author><id>tag:caoyijun.com,2014-12-02:android-lock-graph-longest-path.html</id><summary type="html">&lt;p&gt;题干很简单.求安卓九宫格的锁屏图案的最长长度.&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>曹逸君 Blog</title><link href="//" rel="alternate"></link><link href="//feeds/cao-yi-jun.atom.xml" rel="self"></link><id>//</id><updated>2014-12-28T11:49:33+08:00</updated><entry><title>机器学习与神经网络</title><link href="//machine-learning-and-neural-network.html" rel="alternate"></link><updated>2014-12-28T11:49:33+08:00</updated><author><name>曹逸君</name></author><id>tag:caoyijun.com,2014-12-28:machine-learning-and-neural-network.html</id><summary type="html">&lt;p&gt;此为在公司的技术分享.
+&lt;a href="./ppt/ml.htm"&gt;PPT&lt;/a&gt;&lt;/p&gt;</summary></entry><entry><title>安卓九宫格的锁屏图案的最长长度</title><link href="//android-lock-graph-longest-path.html" rel="alternate"></link><updated>2014-12-02T00:14:21+08:00</updated><author><name>曹逸君</name></author><id>tag:caoyijun.com,2014-12-02:android-lock-graph-longest-path.html</id><summary type="html">&lt;p&gt;题干很简单.求安卓九宫格的锁屏图案的最长长度.&lt;/p&gt;
 &lt;p&gt;这里重新描述下九宫格锁屏图案规则.&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;九宫格,3x3的方形点阵&lt;/li&gt;
@@ -57,7 +57,7 @@
 &lt;h2&gt;不考虑规则3的解&lt;/h2&gt;
 &lt;p&gt;我闷直接看得到的解吧.
 从1出发:&lt;/p&gt;
-&lt;p&gt;&lt;img alt="solution1_unrestricted.png" src="http://caoyijun.com/images/android_lock/solution1_unrestricted.png" /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="solution1_unrestricted.png" src="//images/android_lock/solution1_unrestricted.png" /&gt;&lt;/p&gt;
 &lt;p&gt;这里直接穿过4从6到达2. 4是最后访问的.&lt;/p&gt;
 &lt;p&gt;如果没有规则3.我们还可以把所有距离取负值[或者修改松弛过程使得松弛后距离变长]的Dijkstra算法来更快的求解.&lt;/p&gt;
 &lt;p&gt;由于规则3的存在.使用更通用的回朔算法.&lt;/p&gt;
@@ -78,7 +78,7 @@
 
 &lt;p&gt;并且当1 3 5 7 4这些节点被链接后将根据breaks使被阻拦的点可以访问.&lt;/p&gt;
 &lt;h2&gt;考虑规则3后的最终解&lt;/h2&gt;
-&lt;p&gt;&lt;img alt="best_solution.png" src="http://caoyijun.com/images/android_lock/best_solution.png" /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="best_solution.png" src="//images/android_lock/best_solution.png" /&gt;&lt;/p&gt;
 &lt;p&gt;这就是最终的解.
 长度为17.779271744364845 &lt;/p&gt;
 &lt;p&gt;$$\sqrt { 2 } +\sqrt { 8 } +\sqrt { 5 } +2+\sqrt { 5 } +\sqrt { 8 } +\sqrt { 5 } +2$$&lt;/p&gt;
@@ -90,11 +90,11 @@
 &lt;p&gt;&lt;a href="http://www.guokr.com/article/49408/"&gt;智能手机的密码总共有多少种--果壳--Matrix67&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;关于动态图最长/短路径.请搜索&lt;code&gt;Dynamic Algorithms Maintaining Shortest Paths&lt;/code&gt; &lt;/p&gt;
 &lt;p&gt;刚刚看到个小盆友说自己没流量于是只好玩锁屏界面.发现说连线不重复交点最多只有7个..真是naive.&lt;/p&gt;
-&lt;p&gt;&lt;img alt="most_intersects.png" src="http://caoyijun.com/images/android_lock/most_intersects.png" /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="most_intersects.png" src="//images/android_lock/most_intersects.png" /&gt;&lt;/p&gt;
 &lt;p&gt;随手画一个就有12个交点.[我感觉应该是交点最多的了.没验证]&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;Written with &lt;a href="https://stackedit.io/"&gt;StackEdit&lt;/a&gt;.&lt;/p&gt;
-&lt;/blockquote&gt;</summary></entry><entry><title>Python pdb 调试 自动异常中断</title><link href="http://caoyijun.com/python_pdb_debug_auto_break.html" rel="alternate"></link><updated>2014-11-18T12:38:00+08:00</updated><author><name>曹逸君</name></author><id>tag:caoyijun.com,2014-11-18:python_pdb_debug_auto_break.html</id><summary type="html">&lt;h1&gt;Python pdb 调试 自动异常中断&lt;/h1&gt;
+&lt;/blockquote&gt;</summary></entry><entry><title>Python pdb 调试 自动异常中断</title><link href="//python_pdb_debug_auto_break.html" rel="alternate"></link><updated>2014-11-18T12:38:00+08:00</updated><author><name>曹逸君</name></author><id>tag:caoyijun.com,2014-11-18:python_pdb_debug_auto_break.html</id><summary type="html">&lt;h1&gt;Python pdb 调试 自动异常中断&lt;/h1&gt;
 &lt;p&gt;我通常不愿意跑pydev或者pycharm这类庞大的IDE. 个人认为IDE提供的最有价值的功能是方便的调试. Python自带一个调试库&lt;code&gt;pdb&lt;/code&gt;.&lt;/p&gt;
 &lt;h3&gt;pdb常规用法&lt;/h3&gt;
 &lt;p&gt;你可能已经在这样使用pdb&lt;/p&gt;
@@ -174,7 +174,7 @@ pdb中可以执行任意python代码,对已有对象进行的修改也会直接�
 &lt;a href="http://blog.ionelmc.ro/2013/06/08/python-profiling-tools/?PageSpeed=noscript"&gt;图形化分析工具&lt;/a&gt;&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;Written with &lt;a href="https://stackedit.io/"&gt;StackEdit&lt;/a&gt;.&lt;/p&gt;
-&lt;/blockquote&gt;</summary></entry><entry><title>常识大补习</title><link href="http://caoyijun.com/general-knowlege.html" rel="alternate"></link><updated>2014-10-12T01:42:00+08:00</updated><author><name>曹逸君</name></author><id>tag:caoyijun.com,2014-10-12:general-knowlege.html</id><summary type="html">&lt;h1&gt;常识大补习&lt;/h1&gt;
+&lt;/blockquote&gt;</summary></entry><entry><title>常识大补习</title><link href="//general-knowlege.html" rel="alternate"></link><updated>2014-10-12T01:42:00+08:00</updated><author><name>曹逸君</name></author><id>tag:caoyijun.com,2014-10-12:general-knowlege.html</id><summary type="html">&lt;h1&gt;常识大补习&lt;/h1&gt;
 &lt;p&gt;尝试用最简单明了的语言解释常见名词.(作为谷歌营全员学习计划Linux教学的一部分.真的有大二SE学生问出内存是什么.服务器是什么这种问题.)&lt;/p&gt;
 &lt;h2&gt;硬件&lt;/h2&gt;
 &lt;p&gt;拆开台式机或笔记本可以看到以下零件:&lt;/p&gt;
@@ -225,13 +225,13 @@ pdb中可以执行任意python代码,对已有对象进行的修改也会直接�
 
 &lt;p&gt;这个错误是说当前编译的规范是不支持在for循环内声明变量的.需要添加-std=c99选项改为C99规范.
 而一个学弟给我截图的编译错误则更是让人迷醉.
-&lt;img alt="" src="http://caoyijun.com/images/general_knowledge/compile_error.jpg" /&gt;&lt;/p&gt;
+&lt;img alt="" src="//images/general_knowledge/compile_error.jpg" /&gt;&lt;/p&gt;
 &lt;p&gt;1.英文很重要.多看多查就会了.&lt;/p&gt;
 &lt;p&gt;2.对于普通用户.要竭力减少他犯错的机会.比如这时候提示他保存文件.&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;tips:
 &lt;a href="http://stackoverflow.com" title="http://stackoverflow.com"&gt;http://stackoverflow.com&lt;/a&gt; 基本上你碰到的各种错误\问题.都可以在上面找到已有的回答.大都非常的高质量. 相比之下中文问答社区则质量奇差.&lt;/p&gt;
-&lt;/blockquote&gt;</summary></entry><entry><title>Ubuntu 基本操作</title><link href="http://caoyijun.com/ubuntu-basic-operations.html" rel="alternate"></link><updated>2014-10-02T00:51:00+08:00</updated><author><name>曹逸君</name></author><id>tag:caoyijun.com,2014-10-02:ubuntu-basic-operations.html</id><summary type="html">&lt;h1&gt;&lt;strong&gt;Ubuntu&lt;/strong&gt; 基本操作&lt;/h1&gt;
+&lt;/blockquote&gt;</summary></entry><entry><title>Ubuntu 基本操作</title><link href="//ubuntu-basic-operations.html" rel="alternate"></link><updated>2014-10-02T00:51:00+08:00</updated><author><name>曹逸君</name></author><id>tag:caoyijun.com,2014-10-02:ubuntu-basic-operations.html</id><summary type="html">&lt;h1&gt;&lt;strong&gt;Ubuntu&lt;/strong&gt; 基本操作&lt;/h1&gt;
 &lt;p&gt;(本文为谷歌营全员学习计划Linux教学的一部分)&lt;/p&gt;
 &lt;p&gt;事实上接下去讲的这些命令&lt;em&gt;nix系统都通用。类Unix[Unix-like，也写做&lt;/em&gt;nix]。包括了Linux、Unix的家族。Mac所使用的OS X是基于Unix的，所以也是Unix-like的操作系统。&lt;/p&gt;
 &lt;p&gt;但如果是链接到一台服务器上基本就得纯命令行界面操作了[当然也可以用类似远程桌面的X-server转发]。&lt;/p&gt;
@@ -240,21 +240,21 @@ pdb中可以执行任意python代码,对已有对象进行的修改也会直接�
 &lt;h2&gt;打开&lt;strong&gt;bash&lt;/strong&gt;&lt;/h2&gt;
 &lt;p&gt;Ubuntu下通过快捷键&lt;code&gt;ctrl+alt+t&lt;/code&gt;打开终端。
 或者通过Ubuntu左上角的类似于Windows的开始按钮点开Dashboard.输入terminal。其实只要输入ter就能搜索到"终端"&lt;/p&gt;
-&lt;p&gt;&lt;img alt="dash_terminal" src="http://caoyijun.com/images/linux/dash_terminal.jpg" /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="dash_terminal" src="//images/linux/dash_terminal.jpg" /&gt;&lt;/p&gt;
 &lt;p&gt;打开后可以看到&lt;code&gt;用户名@主机名:当前目录$&lt;/code&gt;的样子。如下，我的用户名是c19。主机名是Acer。当前目录是&lt;code&gt;~&lt;/code&gt; 也就是&lt;code&gt;/home/c19&lt;/code&gt;的缩写。&lt;/p&gt;
-&lt;p&gt;&lt;img alt="bash" src="http://caoyijun.com/images/linux/bash.jpg" /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="bash" src="//images/linux/bash.jpg" /&gt;&lt;/p&gt;
 &lt;h2&gt;目录结构&lt;/h2&gt;
 &lt;p&gt;类Unix系统中不存在windows的盘符概念。分区是通过/media/用户名/分区名 来访问的。Ubuntu中可以在文件管理器左侧看到。&lt;/p&gt;
-&lt;p&gt;&lt;img alt="file_explorer" src="http://caoyijun.com/images/linux/file_explorer.jpg" /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="file_explorer" src="//images/linux/file_explorer.jpg" /&gt;&lt;/p&gt;
 &lt;p&gt;类Unix系统中所有目录起始于根目录 用&lt;code&gt;/&lt;/code&gt;表示&lt;/p&gt;
-&lt;p&gt;&lt;img alt="direcotries_structure" src="http://caoyijun.com/images/linux/direcotries_structure.jpg" /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="direcotries_structure" src="//images/linux/direcotries_structure.jpg" /&gt;&lt;/p&gt;
 &lt;p&gt;在文件管理其中按ctrl+l显示当前目录的绝对路径(可以理解为完整的路径)。
 也就是&lt;code&gt;/media/c19/B208769308765677/&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img alt="absolute path" src="http://caoyijun.com/images/linux/ctrl_l.jpg" /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="absolute path" src="//images/linux/ctrl_l.jpg" /&gt;&lt;/p&gt;
 &lt;p&gt;可以看到这是我windows的C盘。&lt;/p&gt;
 &lt;h2&gt;目录基本命令&lt;/h2&gt;
 &lt;p&gt;现在再在终端下访问这个windows的分区。打开终端[快捷键&lt;code&gt;Ctrl+Alt+T&lt;/code&gt;]。&lt;/p&gt;
-&lt;p&gt;&lt;img alt="bash_directory_operations" src="http://caoyijun.com/images/linux/bash_directory_operations.gif" /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="bash_directory_operations" src="//images/linux/bash_directory_operations.gif" /&gt;&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;&lt;code&gt;pwd&lt;/code&gt;&lt;/strong&gt; 显示当前目录的绝对路径 present working directory
 &lt;strong&gt;&lt;code&gt;ls&lt;/code&gt;&lt;/strong&gt; 列出当前目录下的文件和目录 [试试&lt;code&gt;ll&lt;/code&gt;和&lt;code&gt;la&lt;/code&gt; 以及 &lt;code&gt;ls -a&lt;/code&gt;]
 &lt;strong&gt;&lt;code&gt;cd 目录名&lt;/code&gt;&lt;/strong&gt; 切换目录  change directory
@@ -270,17 +270,17 @@ Linux下管理软件是需要root权限的。在终端输入&lt;code&gt;sudo -s&
 &lt;p&gt;&lt;code&gt;apt-get remove gcc g++&lt;/code&gt;  删除gcc和g++&lt;/p&gt;
 &lt;p&gt;这里的&lt;code&gt;apt-get&lt;/code&gt;  &lt;code&gt;install&lt;/code&gt; &lt;code&gt;remove&lt;/code&gt; &lt;code&gt;gcc&lt;/code&gt;等都是可以通过tab补全的。
 Trick: &lt;em&gt;&lt;code&gt;sudo !!&lt;/code&gt;&lt;/em&gt;  双感叹号是上次执行的命令。&lt;/p&gt;
-&lt;p&gt;&lt;img alt="apt_install_pip" src="http://caoyijun.com/images/linux/apt_install_pip.gif" /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="apt_install_pip" src="//images/linux/apt_install_pip.gif" /&gt;&lt;/p&gt;
 &lt;p&gt;一般的软件都可以在终端中直接运行，就像命令一样。并且一般的命令行程序都会有&lt;code&gt;-V&lt;/code&gt;或&lt;code&gt;--version&lt;/code&gt;来得到版本信息。以及&lt;code&gt;-h&lt;/code&gt;或&lt;code&gt;--help&lt;/code&gt;获得帮助的参数。这是个约定俗成的习惯。查看更详细的手册使用&lt;code&gt;man 命令&lt;/code&gt;。但其实第一反映是会去google搜索。&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;Written with &lt;a href="https://stackedit.io/"&gt;StackEdit&lt;/a&gt;.&lt;/p&gt;
-&lt;/blockquote&gt;</summary></entry><entry><title>shell bash 终端 命令行 名词解释</title><link href="http://caoyijun.com/unix-like-shell-bash-terminal-commandline-explain.html" rel="alternate"></link><updated>2014-10-02T00:51:00+08:00</updated><author><name>曹逸君</name></author><id>tag:caoyijun.com,2014-10-02:unix-like-shell-bash-terminal-commandline-explain.html</id><summary type="html">&lt;h1&gt;&amp;lt;&lt;strong&gt;shell&lt;/strong&gt; &lt;strong&gt;bash&lt;/strong&gt; 终端 命令行&amp;gt; 名词解释&lt;/h1&gt;
+&lt;/blockquote&gt;</summary></entry><entry><title>shell bash 终端 命令行 名词解释</title><link href="//unix-like-shell-bash-terminal-commandline-explain.html" rel="alternate"></link><updated>2014-10-02T00:51:00+08:00</updated><author><name>曹逸君</name></author><id>tag:caoyijun.com,2014-10-02:unix-like-shell-bash-terminal-commandline-explain.html</id><summary type="html">&lt;h1&gt;&amp;lt;&lt;strong&gt;shell&lt;/strong&gt; &lt;strong&gt;bash&lt;/strong&gt; 终端 命令行&amp;gt; 名词解释&lt;/h1&gt;
 &lt;p&gt;(本文为谷歌营全员学习计划Linux教学的一部分)&lt;/p&gt;
 &lt;h3&gt;shell bash 终端 命令行&lt;/h3&gt;
 &lt;p&gt;这几个名词本来是不同/不同层次的东西。但经常被混淆。&lt;/p&gt;
 &lt;h4&gt;&lt;strong&gt;shell&lt;/strong&gt;&lt;/h4&gt;
 &lt;p&gt;在图形界面出现之前人们用电脑都是在这么一个黑底白字的界面里敲命令，然后它返回结果的。这个界面其实也是个程序，这&lt;strong&gt;种&lt;/strong&gt;程序被称为shell。&lt;/p&gt;
-&lt;p&gt;&lt;img alt="linux_0.01" src="http://caoyijun.com/images/linux/linux_0.01.jpg" /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="linux_0.01" src="//images/linux/linux_0.01.jpg" /&gt;&lt;/p&gt;
 &lt;p&gt;更广义一点，用来调用其他程序的程序称为shell。比如远程控制软件，你可以通过它执行任意程序/指令。会被称为shell。&lt;/p&gt;
 &lt;h4&gt;&lt;strong&gt;bash&lt;/strong&gt;&lt;/h4&gt;
 &lt;p&gt;早期Unix的一个shell。目前Linux和OS X都将它作为默认shell。[当然bash也是更新到现在，一成不变肯定是要被淘汰的。]&lt;/p&gt;
@@ -293,7 +293,7 @@ Trick: &lt;em&gt;&lt;code&gt;sudo !!&lt;/code&gt;&lt;/em&gt;  双感叹号是上
 &lt;p&gt;还有个名词叫控制台(console)，这个词是在windows下指运行在黑框框里的命令行程序。一般C/C++没写图形的程序都是这种控制台程序(感觉怪怪的，大家叫它命令行程序比较多。)。&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;Written with &lt;a href="https://stackedit.io/"&gt;StackEdit&lt;/a&gt;.&lt;/p&gt;
-&lt;/blockquote&gt;</summary></entry><entry><title>Linux 历史简介</title><link href="http://caoyijun.com/linux-introduction-2-history.html" rel="alternate"></link><updated>2014-09-28T00:56:00+08:00</updated><author><name>曹逸君</name></author><id>tag:caoyijun.com,2014-09-28:linux-introduction-2-history.html</id><summary type="html">&lt;h1&gt;Linux 历史简介&lt;/h1&gt;
+&lt;/blockquote&gt;</summary></entry><entry><title>Linux 历史简介</title><link href="//linux-introduction-2-history.html" rel="alternate"></link><updated>2014-09-28T00:56:00+08:00</updated><author><name>曹逸君</name></author><id>tag:caoyijun.com,2014-09-28:linux-introduction-2-history.html</id><summary type="html">&lt;h1&gt;Linux 历史简介&lt;/h1&gt;
 &lt;h5&gt;关于Linux的起源以及Linus的故事。&lt;/h5&gt;
 &lt;p&gt;(本文为谷歌营全员学习计划Linux教学的一部分)&lt;/p&gt;
 &lt;p&gt;关于Linux的详细历史可以看&lt;code&gt;&amp;lt;Just for Fun&amp;gt;&lt;/code&gt; Linus自传。&lt;/p&gt;
@@ -301,9 +301,9 @@ Trick: &lt;em&gt;&lt;code&gt;sudo !!&lt;/code&gt;&lt;/em&gt;  双感叹号是上
 &lt;p&gt;大概是1991年，芬兰大学生Linus Torvalds同学觉得Unix太特么贵了。自己买不起，自己从小就倒腾各种电子产品，敲代码，就自己动手花了几个月仿照Unix写了个操作系统。&lt;/p&gt;
 &lt;p&gt;并通过邮件列表和BBS发布了出去。由于十分的不完善，Linus同学把它标记为0.01版。&lt;/p&gt;
 &lt;h3&gt;一开始长这样。&lt;/h3&gt;
-&lt;p&gt;&lt;img alt="linux_0.01" src="http://caoyijun.com/images/linux/linux_0.01.jpg" /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="linux_0.01" src="//images/linux/linux_0.01.jpg" /&gt;&lt;/p&gt;
 &lt;p&gt;早期所有操作系统的界面都是这幅样子。你输入一个命令进去。比如ls，回车。它就返回当前目录下所有文件。&lt;/p&gt;
-&lt;p&gt;&lt;img alt="linux_0.01_commands" src="http://caoyijun.com/images/linux/linux_0.01_commands.jpg" /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="linux_0.01_commands" src="//images/linux/linux_0.01_commands.jpg" /&gt;&lt;/p&gt;
 &lt;p&gt;这些都是0.01所支持的命令。其实就是一个个小程序。&lt;/p&gt;
 &lt;p&gt;whoami 这个很有意思，返回当前的用户名。【比较严谨的黑客电影里有时会出现这个命令 
 $whoami
@@ -322,13 +322,13 @@ root是Linux自带的最高权限用户】&lt;/p&gt;
 &lt;h3&gt;开源的思想&lt;/h3&gt;
 &lt;p&gt;&lt;code&gt;开源通常意味着 1.使用它不用付费或受任何其他限制。 2.你可以得到它的源码，并做任意更改。重新发布。 所以你也可以找个发行版改个名字重新发布。当然这种程度的改动只会被其他人嘲笑而不会有人去使用它。&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;开源也有多种不同的协议版本。Linux所使用的GPL最狠。除了可以对程序+源码想干嘛干嘛外，如果你写的程序中含有使用GPL协议的代码，你的程序也必须使用GPL协议。&lt;/p&gt;
-&lt;p&gt;&lt;img alt="gpl_mit.jpg" src="http://caoyijun.com/images/linux/gpl_mit.jpg" /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="gpl_mit.jpg" src="//images/linux/gpl_mit.jpg" /&gt;&lt;/p&gt;
 &lt;p&gt;不必详细记住。知道GPL最严格。MIT最最随意即可&lt;/p&gt;
 &lt;p&gt;正是由于开源的自由主义理念，才得以让Linux在全球最顶尖的Coders&amp;amp;Hackers维护更新下茁壮成长，发展出庞大的家族以及走在业界最前列。比如OS X上一个版本Mavericks新加的内存压缩技术。在这四年前Linux中就出现了。还有更碉堡的CPU、内存热插拔。&lt;/p&gt;
 &lt;p&gt;至今Linux的内核仍在以每天都有新代码提交的速度更新。https://github.com/torvalds/linux [注：linux内核是后来迁入github的。linux的历史可要比github早好多。事实上git就是Linux们为了方便如此大规模的协同开发而开发的。]&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;Written with &lt;a href="https://stackedit.io/"&gt;StackEdit&lt;/a&gt;.&lt;/p&gt;
-&lt;/blockquote&gt;</summary></entry><entry><title>Linux 常识普及</title><link href="http://caoyijun.com/linux-introduction.html" rel="alternate"></link><updated>2014-09-27T00:33:00+08:00</updated><author><name>曹逸君</name></author><id>tag:caoyijun.com,2014-09-27:linux-introduction.html</id><summary type="html">&lt;h1&gt;Linux 常识普及&lt;/h1&gt;
+&lt;/blockquote&gt;</summary></entry><entry><title>Linux 常识普及</title><link href="//linux-introduction.html" rel="alternate"></link><updated>2014-09-27T00:33:00+08:00</updated><author><name>曹逸君</name></author><id>tag:caoyijun.com,2014-09-27:linux-introduction.html</id><summary type="html">&lt;h1&gt;Linux 常识普及&lt;/h1&gt;
 &lt;p&gt;(本文为谷歌营全员学习计划Linux教学的一部分)&lt;/p&gt;
 &lt;h5&gt;本文旨在给不知道的Linux的人提供基本的概念。&lt;/h5&gt;
 &lt;h3&gt;Linux 是个操作系统内核&lt;/h3&gt;
@@ -364,7 +364,7 @@ Linux应用面很广，从手表到超级计算机到服务器以及桌面系统
 一般装自己PC上推荐Ubuntu。桌面环境友好，易于上手。而服务器方面使用Ubuntu的比例正在上涨。毕竟相比CentOS，Ubuntu更新更快，软件源更新。&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;Written with &lt;a href="https://stackedit.io/"&gt;StackEdit&lt;/a&gt;.&lt;/p&gt;
-&lt;/blockquote&gt;</summary></entry><entry><title>看的懂的动态规划解释(动态规划求解0/1背包问题)</title><link href="http://caoyijun.com/Dynamic-Programming-Knapsack-Problem.html" rel="alternate"></link><updated>2014-06-17T23:12:00+08:00</updated><author><name>曹逸君</name></author><id>tag:caoyijun.com,2014-06-17:Dynamic-Programming-Knapsack-Problem.html</id><summary type="html">&lt;p&gt;网上看到的中文对动态规划的解说以及样例让我很火大。不说清楚总体思路就跳到细节里。给的代码也是用尽没有说明的单字母缩写。不明所以的循环。
+&lt;/blockquote&gt;</summary></entry><entry><title>看的懂的动态规划解释(动态规划求解0/1背包问题)</title><link href="//Dynamic-Programming-Knapsack-Problem.html" rel="alternate"></link><updated>2014-06-17T23:12:00+08:00</updated><author><name>曹逸君</name></author><id>tag:caoyijun.com,2014-06-17:Dynamic-Programming-Knapsack-Problem.html</id><summary type="html">&lt;p&gt;网上看到的中文对动态规划的解说以及样例让我很火大。不说清楚总体思路就跳到细节里。给的代码也是用尽没有说明的单字母缩写。不明所以的循环。
 而维基你懂得。你要看懂一篇，先得把里面专业名词，各种数学全了解遍。&lt;/p&gt;
 &lt;p&gt;以0/1背包问题为例。先说明问题。【我就不用背景故事了。钻石还是砖头都无所谓】
 有N个物品。每个物品有两个属性。它所占的空间或着说重量weight.和它的价值value。
@@ -482,7 +482,7 @@ Total revenue:
 &lt;p&gt;这时查看(A,3)100上方的格子，(因为B未选中，我们就可以移动到不包含B的情况了。)。是0.小于100.故A被选中了。&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;Written with &lt;a href="https://stackedit.io/"&gt;StackEdit&lt;/a&gt;.&lt;/p&gt;
-&lt;/blockquote&gt;</summary></entry><entry><title>Quadcopter build log</title><link href="http://caoyijun.com/quadcopter-build-log.html" rel="alternate"></link><updated>2014-04-11T00:56:51+08:00</updated><author><name>曹逸君</name></author><id>tag:caoyijun.com,2014-04-11:quadcopter-build-log.html</id><summary type="html">&lt;h1&gt;四轴[四旋翼]飞行器搭建日志&lt;/h1&gt;
+&lt;/blockquote&gt;</summary></entry><entry><title>Quadcopter build log</title><link href="//quadcopter-build-log.html" rel="alternate"></link><updated>2014-04-11T00:56:51+08:00</updated><author><name>曹逸君</name></author><id>tag:caoyijun.com,2014-04-11:quadcopter-build-log.html</id><summary type="html">&lt;h1&gt;四轴[四旋翼]飞行器搭建日志&lt;/h1&gt;
 &lt;h4&gt;和小伙伴&lt;a href="https://breeswish.org"&gt;@施闻轩&lt;/a&gt;上了一个名为"微小飞行器制作"的课。本以为是教做四轴飞行器的，后来发现主要是做航模的,不过老师也鼓励我们做四轴。&lt;/h4&gt;
 &lt;h3&gt;配置表&lt;/h3&gt;
 &lt;table&gt;
@@ -623,7 +623,7 @@ Arduino的IDE非常友好。插上。File--Examples里面例子很全。而且�
 &lt;p&gt;这周(2014-4-25)新加入的小伙伴&lt;a href="http://www.renren.com/467312940"&gt;@袁炜鸿&lt;/a&gt;第一次过来一起做。本来打算把MPU 6050接上调PID的。。结果传感器扩展板接上去再接MPU的时候正负接反。一缕青烟冒出。&lt;strong&gt;MPU烧坏了&lt;/strong&gt;。好在MPU也不贵。正好我们换&lt;strong&gt;mpu 9150&lt;/strong&gt;。除了加速度陀螺仪还有磁感(电子罗盘)。诡异的是。。mpu 9150价格到了7、80.mpu 6050只有十块不到。磁感这么贵？&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;Written with &lt;a href="https://stackedit.io/"&gt;StackEdit&lt;/a&gt;.&lt;/p&gt;
-&lt;/blockquote&gt;</summary></entry><entry><title>SSH Backdoor a simple example</title><link href="http://caoyijun.com/ssh-backdoor-a-simple-example.html" rel="alternate"></link><updated>2013-12-30T21:49:33+08:00</updated><author><name>曹逸君</name></author><id>tag:caoyijun.com,2013-12-30:ssh-backdoor-a-simple-example.html</id><summary type="html">&lt;h1&gt;SSH Backdoor --- a simple example analysis&lt;/h1&gt;
+&lt;/blockquote&gt;</summary></entry><entry><title>SSH Backdoor a simple example</title><link href="//ssh-backdoor-a-simple-example.html" rel="alternate"></link><updated>2013-12-30T21:49:33+08:00</updated><author><name>曹逸君</name></author><id>tag:caoyijun.com,2013-12-30:ssh-backdoor-a-simple-example.html</id><summary type="html">&lt;h1&gt;SSH Backdoor --- a simple example analysis&lt;/h1&gt;
 &lt;h4&gt;Information security assignment by 曹逸君&lt;/h4&gt;
 &lt;blockquote&gt;
 &lt;p&gt;It's not a secret that there are dozens of ssh backdoor out there.&lt;br /&gt;
@@ -706,7 +706,7 @@ Security is not only about keep the boarder,inner environment monitor is evenly 
 &lt;a href="http://www.openssh.org/"&gt;openssh&lt;/a&gt;&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;Written with &lt;a href="https://stackedit.io/"&gt;StackEdit&lt;/a&gt;.&lt;/p&gt;
-&lt;/blockquote&gt;</summary></entry><entry><title>快速傅里叶变换--用于变调</title><link href="http://caoyijun.com/Fast-Fourier-Transform-to-change-sound-frequency.html" rel="alternate"></link><updated>2013-12-22T22:15:42+08:00</updated><author><name>曹逸君</name></author><id>tag:caoyijun.com,2013-12-22:Fast-Fourier-Transform-to-change-sound-frequency.html</id><summary type="html">&lt;!DOCTYPE html&gt;
+&lt;/blockquote&gt;</summary></entry><entry><title>快速傅里叶变换--用于变调</title><link href="//Fast-Fourier-Transform-to-change-sound-frequency.html" rel="alternate"></link><updated>2013-12-22T22:15:42+08:00</updated><author><name>曹逸君</name></author><id>tag:caoyijun.com,2013-12-22:Fast-Fourier-Transform-to-change-sound-frequency.html</id><summary type="html">&lt;!DOCTYPE html&gt;
 &lt;html&gt;
 &lt;head&gt;
 &lt;meta charset="utf-8"&gt;
@@ -812,7 +812,7 @@ zH表示对向量z的转置并共轭，H代表埃尔米特Hermite  &lt;/p&gt;&lt
 &lt;/blockquote&gt;
 
 &lt;p&gt;&lt;/div&gt;&lt;/body&gt;
-&lt;/html&gt;&lt;/p&gt;</summary></entry><entry><title>同济电费过低提醒</title><link href="http://caoyijun.com/tongji-university-electrictiy-balance-low-warner.html" rel="alternate"></link><updated>2013-11-19T22:47:29+08:00</updated><author><name>曹逸君</name></author><id>tag:caoyijun.com,2013-11-19:tongji-university-electrictiy-balance-low-warner.html</id><summary type="html">&lt;p&gt;这要从几天前宿舍突然断电说起。代码敲得正欢，卡擦。没电了。网也断了（路由断电）。&lt;/p&gt;
+&lt;/html&gt;&lt;/p&gt;</summary></entry><entry><title>同济电费过低提醒</title><link href="//tongji-university-electrictiy-balance-low-warner.html" rel="alternate"></link><updated>2013-11-19T22:47:29+08:00</updated><author><name>曹逸君</name></author><id>tag:caoyijun.com,2013-11-19:tongji-university-electrictiy-balance-low-warner.html</id><summary type="html">&lt;p&gt;这要从几天前宿舍突然断电说起。代码敲得正欢，卡擦。没电了。网也断了（路由断电）。&lt;/p&gt;
 &lt;p&gt;坑爹呢这是，宿舍一伙人第一反映，没电费了，赶紧去交。交完发现，其实我们还有200Kwh剩余。
 
 又交了400￥.于是就有了800Kwh，估计一年都有可能用不完。而断电只是由于不明原因跳闸。&lt;/p&gt;
@@ -829,7 +829,7 @@ zH表示对向量z的转置并共轭，H代表埃尔米特Hermite  &lt;/p&gt;&lt
 &lt;p&gt;在本机无论是nginx+uwsgi。还是直接用web.py自带得webserver都没问题，在服务器上就执着得报错，还偶尔不报，非常郁闷。&lt;/p&gt;
 &lt;p&gt;喔。地址是&lt;a href="http://tjwarner.caoyijun.com/"&gt;http://tjwarner.caoyijun.com/&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;11-25 更新，有7、8个用户，但以脚本抓取得方式很不稳定，查询网站时常timeout。(可能VPS在海外得关系)。&lt;/p&gt;
-&lt;p&gt;信息源不稳定真是个很痛苦得事情，要做很多补丁式得东西。重试、预测等(能源网一天更新一次)。&lt;/p&gt;</summary></entry><entry><title>git hooks 发送邮件</title><link href="http://caoyijun.com/git-hooks-auto-email.html" rel="alternate"></link><updated>2013-11-11T21:41:33+08:00</updated><author><name>曹逸君</name></author><id>tag:caoyijun.com,2013-11-11:git-hooks-auto-email.html</id><summary type="html">&lt;p&gt;前面用git得&lt;code&gt;post-receive&lt;/code&gt;钩子实现了自动部署，很是舒畅，然后想着自动群发个邮件，项目组得人都能及时得知仓库更新、项目进度岂不是很好。
+&lt;p&gt;信息源不稳定真是个很痛苦得事情，要做很多补丁式得东西。重试、预测等(能源网一天更新一次)。&lt;/p&gt;</summary></entry><entry><title>git hooks 发送邮件</title><link href="//git-hooks-auto-email.html" rel="alternate"></link><updated>2013-11-11T21:41:33+08:00</updated><author><name>曹逸君</name></author><id>tag:caoyijun.com,2013-11-11:git-hooks-auto-email.html</id><summary type="html">&lt;p&gt;前面用git得&lt;code&gt;post-receive&lt;/code&gt;钩子实现了自动部署，很是舒畅，然后想着自动群发个邮件，项目组得人都能及时得知仓库更新、项目进度岂不是很好。
 
 我搜到得实现方式有用sendmail得，有用smtp的。但因为我很懒。已经用过web.py得sendmail.简洁到根本不想去搞其他配置。像这样：(其实用python得标准库也很简单。)&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;web&lt;/span&gt;
@@ -949,7 +949,7 @@ zH表示对向量z的转置并共轭，H代表埃尔米特Hermite  &lt;/p&gt;&lt
 
 &lt;p&gt;其实，如果全部用python实现要舒服得多。。=。=&lt;/p&gt;
 &lt;p&gt;好吧。真就有纯Python的实现。只需配置即可。
-&lt;a href="https://github.com/mhagger/git-multimail"&gt;https://github.com/mhagger/git-multimail&lt;/a&gt;&lt;/p&gt;</summary></entry><entry><title>git hooks 自动部署网站</title><link href="http://caoyijun.com/git-hooks-auto-deploy-website.html" rel="alternate"></link><updated>2013-11-10T19:42:10+08:00</updated><author><name>曹逸君</name></author><id>tag:caoyijun.com,2013-11-10:git-hooks-auto-deploy-website.html</id><summary type="html">&lt;p&gt;git的hook提供了非常大得自由度。 
+&lt;a href="https://github.com/mhagger/git-multimail"&gt;https://github.com/mhagger/git-multimail&lt;/a&gt;&lt;/p&gt;</summary></entry><entry><title>git hooks 自动部署网站</title><link href="//git-hooks-auto-deploy-website.html" rel="alternate"></link><updated>2013-11-10T19:42:10+08:00</updated><author><name>曹逸君</name></author><id>tag:caoyijun.com,2013-11-10:git-hooks-auto-deploy-website.html</id><summary type="html">&lt;p&gt;git的hook提供了非常大得自由度。 
 有commit发邮件啦。push后更新网站啦。做测试啦。无所不能。
 
 所谓hook就是.git/hooks目录下得各种脚本。根据名字分别在不同情况下由git调用。这里post-receives是接收push结束后触发。&lt;/p&gt;
