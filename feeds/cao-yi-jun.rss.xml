@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>曹逸君 Blog</title><link>//</link><description></description><atom:link href="//feeds/cao-yi-jun.rss.xml" rel="self"></atom:link><lastBuildDate>Sun, 28 Dec 2014 11:49:33 +0800</lastBuildDate><item><title>机器学习与神经网络</title><link>//machine-learning-and-neural-network.html</link><description>&lt;p&gt;此为在公司的技术分享.
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>曹逸君 Blog</title><link>//</link><description></description><atom:link href="/feeds/cao-yi-jun.rss.xml" rel="self"></atom:link><lastBuildDate>Sun, 28 Dec 2014 11:49:33 +0800</lastBuildDate><item><title>机器学习与神经网络</title><link>//machine-learning-and-neural-network.html</link><description>&lt;p&gt;此为在公司的技术分享.
 &lt;a href="./ppt/ml.htm"&gt;PPT&lt;/a&gt;&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">曹逸君</dc:creator><pubDate>Sun, 28 Dec 2014 11:49:33 +0800</pubDate><guid>tag:caoyijun.com,2014-12-28:machine-learning-and-neural-network.html</guid></item><item><title>安卓九宫格的锁屏图案的最长长度</title><link>//android-lock-graph-longest-path.html</link><description>&lt;p&gt;题干很简单.求安卓九宫格的锁屏图案的最长长度.&lt;/p&gt;
 &lt;p&gt;这里重新描述下九宫格锁屏图案规则.&lt;/p&gt;
 &lt;ol&gt;
